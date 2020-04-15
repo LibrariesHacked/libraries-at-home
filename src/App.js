@@ -35,12 +35,15 @@ const theme = createMuiTheme({
 });
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
+  button: {
+    margin: theme.spacing(2)
   },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3)
+  },
+  root: {
+    flexGrow: 1,
   },
   title: {
     margin: theme.spacing(3)
@@ -62,7 +65,7 @@ function App() {
           <AppBar position="static" color="default" elevation={0}>
             <Container maxWidth="lg">
               <Toolbar>
-                <Button size="large" component={Link} to="/" color="primary" onClick={() => { }}>Home</Button>
+                <Button size="large" className={classes.button} component={Link} to="/" color="primary" onClick={() => { }}>Search</Button>
                 <Button size="large" component={Link} to="/watch" color="primary" onClick={() => { }}>Watch</Button>
                 <Button size="large" component={Link} to="/blogs" color="primary" onClick={() => { }}>Read</Button>
               </Toolbar>
