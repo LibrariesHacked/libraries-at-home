@@ -15,6 +15,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import lightBlue from '@material-ui/core/colors/lightBlue';
 import blueGrey from '@material-ui/core/colors/blueGrey';
 
+import SearchIcon from '@material-ui/icons/SearchTwoTone';
+import MovieIcon from '@material-ui/icons/MovieTwoTone';
+import BookIcon from '@material-ui/icons/BookTwoTone';
+import AudiotrackIcon from '@material-ui/icons/AudiotrackTwoTone';
+
+import Search from './Search';
+
 const theme = createMuiTheme({
   palette: {
     primary: lightBlue,
@@ -65,9 +72,10 @@ function App() {
           <AppBar position="static" color="default" elevation={0}>
             <Container maxWidth="lg">
               <Toolbar>
-                <Button size="large" className={classes.button} component={Link} to="/" color="primary" onClick={() => { }}>Search</Button>
-                <Button size="large" className={classes.button} component={Link} to="/watch" color="primary" onClick={() => { }}>Watch</Button>
-                <Button size="large" className={classes.button} component={Link} to="/read" color="primary" onClick={() => { }}>Read</Button>
+                <Button size="large" className={classes.button} component={Link} to="/" color="primary" onClick={() => { }} startIcon={<SearchIcon />}>Search</Button>
+                <Button size="large" className={classes.button} component={Link} to="/watch" color="primary" onClick={() => { }} startIcon={<MovieIcon />}>Watch</Button>
+                <Button size="large" className={classes.button} component={Link} to="/read" color="primary" onClick={() => { }} startIcon={<BookIcon />}>Read</Button>
+                <Button size="large" className={classes.button} component={Link} to="/listen" color="primary" onClick={() => { }} startIcon={<AudiotrackIcon />}>Listen</Button>
               </Toolbar>
             </Container>
           </AppBar>
@@ -78,7 +86,7 @@ function App() {
                 path='/'
                 exact
                 render={() => {
-                  return <div>Home</div>
+                  return <Search />
                 }}
               />
             </main>
