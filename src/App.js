@@ -18,7 +18,7 @@ import blueGrey from '@material-ui/core/colors/blueGrey';
 import SearchIcon from '@material-ui/icons/SearchTwoTone';
 import MovieIcon from '@material-ui/icons/MovieTwoTone';
 import BookIcon from '@material-ui/icons/BookTwoTone';
-import AudiotrackIcon from '@material-ui/icons/AudiotrackTwoTone';
+import HeadsetIcon from '@material-ui/icons/HeadsetTwoTone';
 
 import Search from './Search';
 
@@ -75,7 +75,7 @@ function App() {
                 <Button size="large" className={classes.button} component={Link} to="/" color="primary" onClick={() => { }} startIcon={<SearchIcon />}>Search</Button>
                 <Button size="large" className={classes.button} component={Link} to="/watch" color="primary" onClick={() => { }} startIcon={<MovieIcon />}>Watch</Button>
                 <Button size="large" className={classes.button} component={Link} to="/read" color="primary" onClick={() => { }} startIcon={<BookIcon />}>Read</Button>
-                <Button size="large" className={classes.button} component={Link} to="/listen" color="primary" onClick={() => { }} startIcon={<AudiotrackIcon />}>Listen</Button>
+                <Button size="large" className={classes.button} component={Link} to="/listen" color="primary" onClick={() => { }} startIcon={<HeadsetIcon />}>Listen</Button>
               </Toolbar>
             </Container>
           </AppBar>

@@ -1,3 +1,4 @@
 {
-  "api": "https://api.mobilelibraries.org/api"
+  "postcode_api": "https://api-geography.librarydata.uk/rest/postcodes/",
+  "services_api": "https://api.librarydata.uk/services/"
 }
