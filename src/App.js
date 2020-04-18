@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { BrowserRouter, Link, Route } from "react-router-dom";
 
@@ -21,6 +21,9 @@ import BookIcon from '@material-ui/icons/BookTwoTone';
 import HeadsetIcon from '@material-ui/icons/HeadsetTwoTone';
 
 import Search from './Search';
+import Watch from './Watch';
+
+import * as services from './helpers/services';
 
 const theme = createMuiTheme({
   palette: {
@@ -59,6 +62,16 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
 
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    async function fetchVideos() {
+      const videos = await services.getServicesYouTubeVideos();
+      setVideos(videos);
+    }
+    fetchVideos();
+  }, []);
+
   const classes = useStyles();
 
   return (
@@ -87,6 +100,13 @@ function App() {
                 exact
                 render={() => {
                   return <Search />
+                }}
+              />
+              <Route
+                path='/watch'
+                exact
+                render={() => {
+                  return <Watch videos={videos} />
                 }}
               />
             </main>

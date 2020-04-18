@@ -18,17 +18,17 @@ const useStyles = makeStyles((theme) => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: '25ch',
+    width: '25ch'
   }
 }));
 
-function App() {
+function Search() {
 
   const classes = useStyles();
 
   return (
     <React.Fragment>
-      <Typography component="h2" variant="h2" color="secondary" className={classes.subtitle}>Search</Typography>
+      <Typography component="h2" variant="h3" color="secondary" className={classes.subtitle}>Search</Typography>
       <div className={classes.search}>
         <TextField
           label="Postcode"
@@ -42,9 +42,8 @@ function App() {
         <br />
         <Button variant="outlined" color="primary">Go</Button>
       </div>
-
     </React.Fragment>
   );
 }
 
-export default App;
+export default Search;
