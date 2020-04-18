@@ -5,16 +5,18 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Dialog from '@material-ui/core/Dialog';
+import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Typography from '@material-ui/core/Typography';
 
 import MovieIcon from '@material-ui/icons/MovieTwoTone';
-import OpenInBrowser from '@material-ui/icons/OpenInBrowserTwoTone';
 import PlaylistPlay from '@material-ui/icons/PlaylistPlayTwoTone';
 
 import { makeStyles } from '@material-ui/core/styles';
+
+import * as serviceHelper from './helpers/services';
 
 import moment from 'moment';
 
@@ -43,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Watch(props) {
-  const { videos } = props;
+  const { services, videos } = props;
   const [dialog_open, setDialogOpen] = useState(false);
   const [video_url, setVideoUrl] = useState('');
 
@@ -66,41 +68,55 @@ function Watch(props) {
     return rv;
   }, {});
 
+  const services_byyoutubeid = {}
+  services.forEach(service => {
+    if (service['YouTube ID']) services_byyoutubeid[service['YouTube ID']] = service;
+  });
+
   return (
     <React.Fragment>
-      <Typography component="h2" variant="h3" color="secondary" className={classes.subtitle}>Watch</Typography>
+      <Typography component="h2" variant="h3" color="secondary" className={classes.subtitle}>Library TV</Typography>
       {Object.keys(videos_bydate).map(date => {
         return <React.Fragment>
           <ListSubheader component="div" disableSticky>{moment(date).calendar(null, {
-            lastDay: '[Yesterday]',
-            sameDay: '[New Today]',
+            lastDay: '[From yesterday]',
+            sameDay: '[New in today]',
             nextDay: '[Tomorrow]',
             lastWeek: '[Last] dddd',
             nextWeek: 'dddd',
             sameElse: 'L'
           })}</ListSubheader>
           <Grid container spacing={3}>
-            {videos_bydate[date].map((item, idx) => (
-              <Grid
+            {videos_bydate[date].map((item, idx) => {
+              const custom_els = item.custom_elements;
+              const media_group = custom_els.filter(x => Object.keys(x)[0] === 'media:group')[0]['media:group'];
+              const media_thumbnail = media_group.filter(x => Object.keys(x)[0] === 'media:thumbnail')[0]['media:thumbnail'];
+              const channel_id = custom_els.filter(x => Object.keys(x)[0] === 'yt:channelid')[0]['yt:channelid'];
+              const service = services_byyoutubeid[channel_id];
+              const service_yt_data = serviceHelper.getServiceYouTubeDataFromId(channel_id);
+              return <Grid
                 key={'grd_vids_' + idx}
                 item xs={12} sm={6} md={4} lg={4} xl={3}>
                 <Card className={classes.root} variant="outlined" className={classes.card}>
                   <CardMedia
                     className={classes.media}
-                    image={item.custom_elements[0]['media:group'][2]['media:thumbnail']._attr['url']}
+                    image={media_thumbnail._attr['url']}
                     title={item.title}
                   />
                   <CardContent className={classes.overlay}>
-                    <Typography variant="small" component="p">{item.title}</Typography>
+                    <Typography variant="caption" component="p">{item.title}</Typography>
                   </CardContent>
                   <CardActions>
                     <Button size="small" color="primary" startIcon={<MovieIcon />} onClick={handlePlayVideo.bind(this, item.guid)}>Play</Button>
-                    <Button size="small" color="primary" startIcon={<PlaylistPlay />}>Channel</Button>
+                    {service ? <Button size="small" color="primary" startIcon={<PlaylistPlay />} target="_blank" href={service_yt_data.url}>{service_yt_data.type}</Button> : null}
                   </CardActions>
                 </Card>
               </Grid>
-            ))}
+            })}
           </Grid>
+          <br />
+          <Divider />
+          <br />
         </React.Fragment>
       })}
       <Dialog maxWidth="sm" onClose={handleCloseVideoDialog} aria-labelledby="YouTube dialog" open={dialog_open}>

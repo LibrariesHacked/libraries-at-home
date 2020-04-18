@@ -23,7 +23,7 @@ import HeadsetIcon from '@material-ui/icons/HeadsetTwoTone';
 import Search from './Search';
 import Watch from './Watch';
 
-import * as services from './helpers/services';
+import * as serviceHelper from './helpers/services';
 
 const theme = createMuiTheme({
   palette: {
@@ -46,11 +46,11 @@ const theme = createMuiTheme({
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    margin: theme.spacing(2)
+    margin: theme.spacing(1)
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3)
+    padding: theme.spacing(2)
   },
   root: {
     flexGrow: 1,
@@ -63,12 +63,18 @@ const useStyles = makeStyles((theme) => ({
 function App() {
 
   const [videos, setVideos] = useState([]);
+  const [services, setServices] = useState([]);
 
   useEffect(() => {
-    async function fetchVideos() {
-      const videos = await services.getServicesYouTubeVideos();
-      setVideos(videos);
+    async function fetchServices() {
+      const services_data = await serviceHelper.getServices();
+      setServices(services_data);
     }
+    async function fetchVideos() {
+      const video_data = await serviceHelper.getServicesYouTubeVideos();
+      setVideos(video_data);
+    }
+    fetchServices();
     fetchVideos();
   }, []);
 
@@ -106,7 +112,7 @@ function App() {
                 path='/watch'
                 exact
                 render={() => {
-                  return <Watch videos={videos} />
+                  return <Watch services={services} videos={videos} />
                 }}
               />
             </main>

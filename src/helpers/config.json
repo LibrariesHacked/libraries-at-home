@@ -1,5 +1,6 @@
 {
   "postcode_api": "https://api-geography.librarydata.uk/rest/postcodes/",
   "video_api": "https://api.librarydata.uk/services/airtable/feeds/youtube.json",
-  "services_api": "https://api.librarydata.uk/services/airtable"
+  "services_api": "https://api.librarydata.uk/services/airtable",
+  "youtube_url": "https://www.youtube.com/"
 }
