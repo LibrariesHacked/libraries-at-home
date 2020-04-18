@@ -76,8 +76,8 @@ function Watch(props) {
   return (
     <React.Fragment>
       <Typography component="h2" variant="h3" color="secondary" className={classes.subtitle}>Library TV</Typography>
-      {Object.keys(videos_bydate).map(date => {
-        return <React.Fragment>
+      {Object.keys(videos_bydate).map((date, idx) => {
+        return <React.Fragment key={'frg_dates_' + idx}>
           <ListSubheader component="div" disableSticky>{moment(date).calendar(null, {
             lastDay: '[From yesterday]',
             sameDay: '[New in today]',
@@ -97,7 +97,7 @@ function Watch(props) {
               return <Grid
                 key={'grd_vids_' + idx}
                 item xs={12} sm={6} md={4} lg={4} xl={3}>
-                <Card className={classes.root} variant="outlined" className={classes.card}>
+                <Card variant="outlined" className={classes.card}>
                   <CardMedia
                     className={classes.media}
                     image={media_thumbnail._attr['url']}
@@ -120,7 +120,7 @@ function Watch(props) {
         </React.Fragment>
       })}
       <Dialog maxWidth="sm" onClose={handleCloseVideoDialog} aria-labelledby="YouTube dialog" open={dialog_open}>
-        <iframe className={classes.video} width="560" height="315" src={video_url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        <iframe title="Video" className={classes.video} width="560" height="315" src={video_url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </Dialog>
     </React.Fragment>
   );
