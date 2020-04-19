@@ -19,6 +19,8 @@ import moment from 'moment';
 
 import * as serviceHelper from './helpers/services';
 
+const config = require('./helpers/config.json');
+
 const useStyles = makeStyles((theme) => ({
   subtitle: {
     textAlign: 'center'
@@ -74,17 +76,11 @@ function Watch(props) {
 
   return (
     <React.Fragment>
-      <Typography component="h2" variant="h6" color="secondary" className={classes.subtitle}>Watch library TV</Typography>
+      <Typography component="h2" variant="h6" color="secondary" className={classes.subtitle}>Library TV</Typography>
+      <Typography component="p" variant="body1" color="secondary" className={classes.subtitle}>Watch videos published by library services on YouTube</Typography>
       {Object.keys(videos_bydate).map((date, idx) => {
         return <React.Fragment key={'frg_dates_' + idx}>
-          <ListSubheader component="div" disableSticky>{moment(date, 'YYYY-MM-DD').calendar(null, {
-            lastDay: '[From yesterday]',
-            sameDay: '[New in today]',
-            nextDay: '[Tomorrow]',
-            lastWeek: '[Last] dddd',
-            nextWeek: 'dddd',
-            sameElse: 'L'
-          })}</ListSubheader>
+          <ListSubheader component="div" disableSticky>{moment(date, 'YYYY-MM-DD').calendar(null, config.calendar_display)}</ListSubheader>
           <Grid container spacing={3}>
             {videos_bydate[date].map((item, idx) => {
               const custom_els = item.custom_elements;

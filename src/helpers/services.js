@@ -28,3 +28,10 @@ export async function getServicesYouTubeVideos() {
   if (response && response.data) return response.data.items;
   return [];
 }
+
+export async function getServicesBlogs() {
+  let url = config.blogs_api;
+  let response = await axios.get(url);
+  if (response && response.data) return response.data.items;
+  return [];
+}

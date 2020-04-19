@@ -72,7 +72,7 @@ function Service(props) {
       <div className={classes.social}>
         {config.services_text.social.filter(s => s.field in service).map((social, idx) => {
           const IconName = social_icons[social.icon];
-          return <IconButton component="a" className={classes.socialIcon} target="_blank" href={social.url + service[social.field]} title={social.title}><IconName /></IconButton>;
+          return <IconButton key={'icn_social_' + idx} component="a" className={classes.socialIcon} target="_blank" href={social.url + service[social.field]} title={social.title}><IconName /></IconButton>;
         })}
       </div>
       <Grid container spacing={3}>

@@ -1,8 +1,17 @@
 {
   "postcode_api": "https://api-geography.librarydata.uk/rest/postcodes/",
   "video_api": "https://api.librarydata.uk/services/airtable/feeds/youtube.json",
+  "blogs_api": "https://api.librarydata.uk/services/airtable/feeds/blogs.json",
   "services_api": "https://api.librarydata.uk/services/airtable",
   "youtube_url": "https://www.youtube.com/",
+  "calendar_display": {
+    "lastDay": "[From Yesterday]",
+    "sameDay": "[New Today]",
+    "nextDay": "[Tomorrow]",
+    "lastWeek": "[Last] dddd",
+    "nextWeek": "dddd",
+    "sameElse": "L"
+  },
   "services_text": {
     "social": [
       {
@@ -59,7 +68,7 @@
         "field": "Ebook URL",
         "title": "Library ebooks",
         "description": "Read ebooks on your devices",
-        "link_text": "Find an Ebook"
+        "link_text": "Find an ebook"
       }
     ],
     "service_links": [

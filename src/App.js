@@ -24,6 +24,8 @@ import SearchIcon from '@material-ui/icons/SearchTwoTone';
 import Footer from './Footer';
 import Search from './Search';
 import Watch from './Watch';
+import Read from './Read';
+import Listen from './Listen';
 
 import * as serviceHelper from './helpers/services';
 
@@ -69,8 +71,11 @@ function App() {
 
   const [loading_services, setLoadingServices] = useState(false);
   const [loading_videos, setLoadingVideos] = useState(false);
+  const [loading_blogs, setLoadingBlogs] = useState(false);
   const [videos, setVideos] = useState([]);
+  const [blogs, setBlogs] = useState([]);
   const [services, setServices] = useState([]);
+  const [service, setService] = useState({});
 
   useEffect(() => {
     async function fetchServices() {
@@ -85,8 +90,15 @@ function App() {
       setVideos(video_data);
       setLoadingVideos(false);
     }
+    async function fetchBlogs() {
+      setLoadingBlogs(true);
+      const blog_data = await serviceHelper.getServicesBlogs();
+      setBlogs(blog_data);
+      setLoadingBlogs(false);
+    }
     fetchServices();
     fetchVideos();
+    fetchBlogs();
   }, []);
 
   const classes = useStyles();
@@ -116,7 +128,7 @@ function App() {
                 path='/'
                 exact
                 render={() => {
-                  return <Search services={services} />
+                  return <Search loading_services={loading_services} services={services} service={service} setService={setService} />
                 }}
               />
               <Route
@@ -124,6 +136,20 @@ function App() {
                 exact
                 render={() => {
                   return <Watch services={services} videos={videos} />
+                }}
+              />
+              <Route
+                path='/read'
+                exact
+                render={() => {
+                  return <Read loading_blogs={loading_blogs} blogs={blogs} />
+                }}
+              />
+              <Route
+                path='/listen'
+                exact
+                render={() => {
+                  return <Listen />
                 }}
               />
             </main>

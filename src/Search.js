@@ -31,36 +31,36 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Search(props) {
-  const { services } = props;
-  const [loading, setloading] = useState(false);
+  const { loading_services, services, service, setService } = props;
+  const [loading_postcode, setloadingPostcode] = useState(false);
   const [postcode, setPostcode] = useState('');
   const [error_message, setErrorMessage] = useState('');
-  const [service, setService] = useState('');
 
   const classes = useStyles();
 
   const validatePostcode = (pc) => /^[A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}$/.test(pc);
 
   const handlePostcodeSearch = async () => {
-    setloading(true);
+    setloadingPostcode(true);
     if (validatePostcode(postcode.trim())) {
       const service = await postcodeHelper.getServiceDataFromPostcode(postcode.trim(), services);
       setService(service);
     } else {
       setErrorMessage('Is that a UK postcode?');
     }
-    setloading(false);
+    setloadingPostcode(false);
   }
 
   const handlePostcodeChange = (e) => {
-    const val = e.target.value;
+    const val = e.target.value.toUpperCase();
     if (error_message !== '' && validatePostcode(val.trim())) setErrorMessage('');
-    setPostcode(e.target.value.toUpperCase());
+    setPostcode(val);
   }
 
   return (
     <React.Fragment>
-      <Typography component="h2" variant="h6" color="secondary" className={classes.subtitle}>Find your library service</Typography>
+      <Typography component="h2" variant="h6" color="secondary" className={classes.subtitle}>Library services</Typography>
+      <Typography component="p" variant="body1" color="secondary" className={classes.subtitle}>Start by finding your local library service</Typography>
       <div className={classes.search}>
         <TextField
           error={error_message !== ''}
@@ -75,7 +75,7 @@ function Search(props) {
           InputProps={{
             endAdornment: (<InputAdornment position="end">
               <IconButton
-                disabled={services.length === 0}
+                disabled={loading_services || loading_postcode}
                 aria-label="search for postcode"
                 onClick={handlePostcodeSearch}
               >
@@ -85,7 +85,7 @@ function Search(props) {
           }}
         />
       </div>
-      {loading ? <LinearProgress color="secondary" /> : null}
+      {loading_postcode ? <LinearProgress color="secondary" /> : null}
       {Object.keys(service).length > 0 ?
         <div>
           <Service service={service} />
