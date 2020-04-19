@@ -4,6 +4,26 @@
   "services_api": "https://api.librarydata.uk/services/airtable",
   "youtube_url": "https://www.youtube.com/",
   "services_text": {
+    "social": [
+      {
+        "field": "Instagram name",
+        "icon": "InstagramIcon",
+        "url": "https://www.instagram.com/",
+        "title": "See photos on Instagram"
+      },
+      {
+        "field": "Facebook page name",
+        "icon": "FacebookIcon",
+        "url": "https://www.facebook.com/",
+        "title": "Follow on Facebook"
+      },
+      {
+        "field": "Twitter handle",
+        "icon": "TwitterIcon",
+        "url": "https://twitter.com/",
+        "title": "See tweets on twitter"
+      }
+    ],
     "library_service": [
       {
         "field": "Service URL",
@@ -12,16 +32,34 @@
         "link_text": "Go to service website"
       },
       {
+        "field": "Catalogue URL",
+        "title": "Browse the catalogue",
+        "description": "Find out what's in your libraries",
+        "link_text": "Online catalogue"
+      },
+      {
         "field": "New member URL",
         "title": "Join [service] libraries",
-        "description": "Start having fun",
+        "description": "Start having fun with libraries",
         "link_text": "Join now"
       },
       {
-        "field": "Childrens service URL ",
+        "field": "Childrens service URL",
         "title": "Info for children",
-        "description": "Find out what the library offers",
-        "link_text": "Explore children's services"
+        "description": "Libraries are for everyone",
+        "link_text": "See children's services"
+      },
+      {
+        "field": "Audiobook URL",
+        "title": "Library audiobooks",
+        "description": "Listen to stories for free from libraries",
+        "link_text": "Find an audiobook"
+      },
+      {
+        "field": "Ebook URL",
+        "title": "Library ebooks",
+        "description": "Read ebooks on your devices",
+        "link_text": "Find an Ebook"
       }
     ],
     "service_links": [
@@ -38,6 +76,10 @@
         "text": "Check if the library service can come to your home"
       },
       {
+        "field": "Events URL",
+        "text": "See events going on in libraries"
+      },
+      {
         "field": "Computer access URL",
         "text": "Use a computer in your library"
       },
@@ -47,7 +89,7 @@
       },
       {
         "field": "Fees and charges URL",
-        "text": "Check the charges for library services"
+        "text": "Understand the fees and charges for library services"
       },
       {
         "field": "News or Blog URL",

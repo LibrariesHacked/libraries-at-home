@@ -16,11 +16,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import lightBlue from '@material-ui/core/colors/lightBlue';
 import blueGrey from '@material-ui/core/colors/blueGrey';
 
-import SearchIcon from '@material-ui/icons/SearchTwoTone';
-import MovieIcon from '@material-ui/icons/MovieTwoTone';
 import BookIcon from '@material-ui/icons/BookTwoTone';
 import HeadsetIcon from '@material-ui/icons/HeadsetTwoTone';
+import MovieIcon from '@material-ui/icons/MovieTwoTone';
+import SearchIcon from '@material-ui/icons/SearchTwoTone';
 
+import Footer from './Footer';
 import Search from './Search';
 import Watch from './Watch';
 
@@ -34,6 +35,9 @@ const theme = createMuiTheme({
   overrides: {
     MuiButton: {
       text: {
+        textTransform: 'none'
+      },
+      root: {
         textTransform: 'none'
       }
     },
@@ -54,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2)
   },
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   title: {
     margin: theme.spacing(3)
@@ -123,6 +127,9 @@ function App() {
                 }}
               />
             </main>
+          </Container>
+          <Container maxWidth="lg">
+            <Footer />
           </Container>
         </div>
       </BrowserRouter>

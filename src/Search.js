@@ -25,7 +25,8 @@ const useStyles = makeStyles((theme) => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: '25ch'
+    width: '25ch',
+    backgroundColor: 'white'
   }
 }));
 
@@ -42,8 +43,8 @@ function Search(props) {
 
   const handlePostcodeSearch = async () => {
     setloading(true);
-    if (validatePostcode(postcode)) {
-      const service = await postcodeHelper.getServiceDataFromPostcode(postcode, services);
+    if (validatePostcode(postcode.trim())) {
+      const service = await postcodeHelper.getServiceDataFromPostcode(postcode.trim(), services);
       setService(service);
     } else {
       setErrorMessage('Is that a UK postcode?');
@@ -53,7 +54,7 @@ function Search(props) {
 
   const handlePostcodeChange = (e) => {
     const val = e.target.value;
-    if (error_message !== '' && validatePostcode(val)) setErrorMessage('');
+    if (error_message !== '' && validatePostcode(val.trim())) setErrorMessage('');
     setPostcode(e.target.value.toUpperCase());
   }
 
@@ -74,6 +75,7 @@ function Search(props) {
           InputProps={{
             endAdornment: (<InputAdornment position="end">
               <IconButton
+                disabled={services.length === 0}
                 aria-label="search for postcode"
                 onClick={handlePostcodeSearch}
               >
