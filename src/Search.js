@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
+import SearchIcon from '@material-ui/icons/SearchTwoTone';
+
 import { makeStyles } from '@material-ui/core/styles';
 
+import Service from './Service';
+
+import * as postcodeHelper from './helpers/postcodes';
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -22,26 +29,66 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Search() {
+function Search(props) {
+  const { services } = props;
+  const [loading, setloading] = useState(false);
+  const [postcode, setPostcode] = useState('');
+  const [error_message, setErrorMessage] = useState('');
+  const [service, setService] = useState('');
 
   const classes = useStyles();
 
+  const validatePostcode = (pc) => /^[A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}$/.test(pc);
+
+  const handlePostcodeSearch = async () => {
+    setloading(true);
+    if (validatePostcode(postcode)) {
+      const service = await postcodeHelper.getServiceDataFromPostcode(postcode, services);
+      setService(service);
+    } else {
+      setErrorMessage('Is that a UK postcode?');
+    }
+    setloading(false);
+  }
+
+  const handlePostcodeChange = (e) => {
+    const val = e.target.value;
+    if (error_message !== '' && validatePostcode(val)) setErrorMessage('');
+    setPostcode(e.target.value.toUpperCase());
+  }
+
   return (
     <React.Fragment>
-      <Typography component="h2" variant="h3" color="secondary" className={classes.subtitle}>Search</Typography>
+      <Typography component="h2" variant="h6" color="secondary" className={classes.subtitle}>Find your library service</Typography>
       <div className={classes.search}>
         <TextField
+          error={error_message !== ''}
           label="Postcode"
           id="txt_postcode"
-          defaultValue=""
           className={classes.textField}
-          helperText="Enter your postcode"
           margin="normal"
           variant="outlined"
+          value={postcode}
+          onChange={handlePostcodeChange}
+          helperText={error_message}
+          InputProps={{
+            endAdornment: (<InputAdornment position="end">
+              <IconButton
+                aria-label="search for postcode"
+                onClick={handlePostcodeSearch}
+              >
+                <SearchIcon color="primary" />
+              </IconButton>
+            </InputAdornment>)
+          }}
         />
-        <br />
-        <Button variant="outlined" color="primary">Go</Button>
       </div>
+      {loading ? <LinearProgress color="secondary" /> : null}
+      {Object.keys(service).length > 0 ?
+        <div>
+          <Service service={service} />
+        </div>
+        : null}
     </React.Fragment>
   );
 }

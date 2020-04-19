@@ -6,6 +6,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
@@ -62,17 +63,23 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
 
+  const [loading_services, setLoadingServices] = useState(false);
+  const [loading_videos, setLoadingVideos] = useState(false);
   const [videos, setVideos] = useState([]);
   const [services, setServices] = useState([]);
 
   useEffect(() => {
     async function fetchServices() {
+      setLoadingServices(true);
       const services_data = await serviceHelper.getServices();
       setServices(services_data);
+      setLoadingServices(false);
     }
     async function fetchVideos() {
+      setLoadingVideos(true);
       const video_data = await serviceHelper.getServicesYouTubeVideos();
       setVideos(video_data);
+      setLoadingVideos(false);
     }
     fetchServices();
     fetchVideos();
@@ -98,14 +105,14 @@ function App() {
               </Toolbar>
             </Container>
           </AppBar>
-
+          {loading_services || loading_videos ? <LinearProgress color="secondary" /> : null}
           <Container maxWidth="lg">
             <main className={classes.content}>
               <Route
                 path='/'
                 exact
                 render={() => {
-                  return <Search />
+                  return <Search services={services} />
                 }}
               />
               <Route

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
+import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Dialog from '@material-ui/core/Dialog';
 import Divider from '@material-ui/core/Divider';
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Typography from '@material-ui/core/Typography';
@@ -16,9 +16,9 @@ import PlaylistPlay from '@material-ui/icons/PlaylistPlayTwoTone';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import * as serviceHelper from './helpers/services';
-
 import moment from 'moment';
+
+import * as serviceHelper from './helpers/services';
 
 const useStyles = makeStyles((theme) => ({
   subtitle: {
@@ -75,10 +75,10 @@ function Watch(props) {
 
   return (
     <React.Fragment>
-      <Typography component="h2" variant="h3" color="secondary" className={classes.subtitle}>Library TV</Typography>
+      <Typography component="h2" variant="h6" color="secondary" className={classes.subtitle}>Watch library TV</Typography>
       {Object.keys(videos_bydate).map((date, idx) => {
         return <React.Fragment key={'frg_dates_' + idx}>
-          <ListSubheader component="div" disableSticky>{moment(date).calendar(null, {
+          <ListSubheader component="div" disableSticky>{moment(date, 'YYYY-MM-DD').calendar(null, {
             lastDay: '[From yesterday]',
             sameDay: '[New in today]',
             nextDay: '[Tomorrow]',

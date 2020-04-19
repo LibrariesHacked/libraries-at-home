@@ -2,5 +2,27 @@
   "postcode_api": "https://api-geography.librarydata.uk/rest/postcodes/",
   "video_api": "https://api.librarydata.uk/services/airtable/feeds/youtube.json",
   "services_api": "https://api.librarydata.uk/services/airtable",
-  "youtube_url": "https://www.youtube.com/"
+  "youtube_url": "https://www.youtube.com/",
+  "services_text": {
+    "library_service": [
+      {
+        "field": "Service URL",
+        "title": "Visit [service] website",
+        "description": "Information on using your library",
+        "link_text": "Go to the service website"
+      },
+      {
+        "field": "New member URL",
+        "title": "Join the library",
+        "description": "Start having fun",
+        "link_text": "Join up now"
+      },
+      {
+        "field": "Childrens service URL ",
+        "title": "Info for children",
+        "description": "Find out what the library offers",
+        "link_text": "Explore children's services"
+      }
+    ]
+  }
 }
