@@ -9,19 +9,53 @@
         "field": "Service URL",
         "title": "Visit [service] website",
         "description": "Information on using your library",
-        "link_text": "Go to the service website"
+        "link_text": "Go to service website"
       },
       {
         "field": "New member URL",
-        "title": "Join the library",
+        "title": "Join [service] libraries",
         "description": "Start having fun",
-        "link_text": "Join up now"
+        "link_text": "Join now"
       },
       {
         "field": "Childrens service URL ",
         "title": "Info for children",
         "description": "Find out what the library offers",
         "link_text": "Explore children's services"
+      }
+    ],
+    "service_links": [
+      {
+        "field": "Libraries URL",
+        "text": "Find your local library"
+      },
+      {
+        "field": "Mobile libraries URL",
+        "text": "Find out when the mobile library visits"
+      },
+      {
+        "field": "Home service URL",
+        "text": "Check if the library service can come to your home"
+      },
+      {
+        "field": "Computer access URL",
+        "text": "Use a computer in your library"
+      },
+      {
+        "field": "Wifi access URL",
+        "text": "Connect to WiFi in your library"
+      },
+      {
+        "field": "Fees and charges URL",
+        "text": "Check the charges for library services"
+      },
+      {
+        "field": "News or Blog URL",
+        "text": "Read latest news from the library"
+      },
+      {
+        "field": "Podcast URL",
+        "text": "Listen to a library Podcast"
       }
     ]
   }
