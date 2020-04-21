@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Blogs(props) {
+function BlogPosts(props) {
   const { loading_blogs, blogs } = props;
   const classes = useStyles();
 
@@ -67,4 +67,4 @@ function Blogs(props) {
   );
 }
 
-export default Blogs;
+export default BlogPosts;

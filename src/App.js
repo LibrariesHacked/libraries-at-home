@@ -149,7 +149,7 @@ function App() {
                 path='/listen'
                 exact
                 render={() => {
-                  return <Listen />
+                  return <Listen loading_services={loading_services} services={services} />
                 }}
               />
             </main>

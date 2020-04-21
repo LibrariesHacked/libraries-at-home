@@ -2,6 +2,7 @@ import React from 'react';
 
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
+import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 
 import FavoriteIcon from '@material-ui/icons/FavoriteTwoTone';
@@ -25,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
   footerText: {
     verticalAlign: 'middle',
     display: 'inline-flex'
+  },
+  footerRight: {
+    textAlign: 'right'
   }
 }));
 
@@ -36,10 +40,13 @@ function Footer(props) {
       <Divider />
       <Grid container spacing={3} className={classes.grid}>
         <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-          <Typography variant="body1" color="secondary" className={classes.footerText}>LibrariesHacked. Built with <FavoriteIcon color="error" className={classes.loveIcon} /> for libraries.</Typography>
+          <Typography variant="body1" color="secondary" className={classes.footerText}>Libraries Hacked. Built with <FavoriteIcon color="error" className={classes.loveIcon} /> for libraries.</Typography>
         </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-          <Typography variant="body1" color="secondary" className={classes.footerText}>Data compiled with thanks to @calire, @shedsue, @richardveevers</Typography>
+        <Grid className={classes.footerRight} item xs={12} sm={12} md={6} lg={6} xl={6}>
+          <Typography variant="body1" color="secondary" className={classes.footerText}>Data compiled with thanks to</Typography><br/>
+          <Link className={classes.link} rel="noopener" target="_blank" href="https://twitter.com/calire" title="Claire">@calire</Link><br/>
+          <Link className={classes.link} rel="noopener" target="_blank" href="https://twitter.com/shedsue" title="Sue">@shedsue</Link><br/>
+          <Link className={classes.link} rel="noopener" target="_blank" href="https://twitter.com/richardveevers" title="Richard">@richardveevers</Link>
         </Grid>
       </Grid>
     </div>
