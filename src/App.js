@@ -26,6 +26,8 @@ import Search from './Search';
 import Watch from './Watch';
 import Read from './Read';
 import Listen from './Listen';
+import MarkdownPage from './MarkdownPage';
+import About from './pages/about.md';
 
 import * as serviceHelper from './helpers/services';
 
@@ -53,7 +55,7 @@ const theme = createMuiTheme({
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    margin: theme.spacing(1)
+    marginRight: theme.spacing(1)
   },
   content: {
     flexGrow: 1,
@@ -150,6 +152,13 @@ function App() {
                 exact
                 render={() => {
                   return <Listen loading_services={loading_services} services={services} />
+                }}
+              />
+              <Route
+                path='/about'
+                exact
+                render={() => {
+                  return <MarkdownPage page={About} />
                 }}
               />
             </main>
