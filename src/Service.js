@@ -70,6 +70,7 @@ function Service(props) {
     <div className={classes.root}>
       <Typography className={classes.header} component="h2" variant="h5" color="secondary">{'Your local library service is '}<span className={classes.serviceName}>{service.Name}</span></Typography>
       <div className={classes.social}>
+        <Typography className={classes.header} component="h3" variant="h5" color="secondary">Connect on social media</Typography>
         {config.services_text.social.filter(s => s.field in service).map((social, idx) => {
           const IconName = social_icons[social.icon];
           return <IconButton key={'icn_social_' + idx} component="a" className={classes.socialIcon} target="_blank" href={social.url + service[social.field]} title={social.title}><IconName /></IconButton>;
