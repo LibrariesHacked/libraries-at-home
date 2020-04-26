@@ -103,7 +103,7 @@ function Watch(props) {
                   </CardContent>
                   <CardActions>
                     <Button size="small" color="primary" startIcon={<MovieIcon />} onClick={handlePlayVideo.bind(this, item.guid)}>Play</Button>
-                    {service ? <Button size="small" color="primary" startIcon={<PlaylistPlay />} target="_blank" href={service_yt_data.url}>{service_yt_data.type}</Button> : null}
+                    {service ? <Button size="small" color="primary" startIcon={<PlaylistPlay />} target="_blank" rel="noopener" href={service_yt_data.url}>{service_yt_data.type}</Button> : null}
                   </CardActions>
                 </Card>
               </Grid>

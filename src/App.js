@@ -43,6 +43,17 @@ const theme = createMuiTheme({
       },
       root: {
         textTransform: 'none'
+      },
+      textPrimary: {
+        color: blue[800]
+      }
+    },
+    MuiTypography: {
+      colorPrimary: {
+        color: blue[800]
+      },
+      colorSecondary: {
+        color: brown[600]
       }
     },
     MuiTab: {
@@ -111,7 +122,7 @@ function App() {
         <div className={classes.root}>
           <CssBaseline />
           <Container maxWidth="lg">
-            <Typography color="secondary" variant="h4" component="h1" className={classes.title}>Libraries at home</Typography>
+            <Typography color="textSecondary" variant="h4" component="h1" className={classes.title}>Libraries at home</Typography>
           </Container>
           <AppBar position="static" color="default" elevation={0}>
             <Container maxWidth="lg">
@@ -126,41 +137,11 @@ function App() {
           {loading_services || loading_videos ? <LinearProgress color="secondary" /> : null}
           <Container maxWidth="lg">
             <main className={classes.content}>
-              <Route
-                path='/'
-                exact
-                render={() => {
-                  return <Search loading_services={loading_services} services={services} service={service} setService={setService} />
-                }}
-              />
-              <Route
-                path='/watch'
-                exact
-                render={() => {
-                  return <Watch services={services} videos={videos} />
-                }}
-              />
-              <Route
-                path='/read'
-                exact
-                render={() => {
-                  return <Read loading_blogs={loading_blogs} blogs={blogs} />
-                }}
-              />
-              <Route
-                path='/listen'
-                exact
-                render={() => {
-                  return <Listen loading_services={loading_services} services={services} />
-                }}
-              />
-              <Route
-                path='/about'
-                exact
-                render={() => {
-                  return <MarkdownPage page={About} />
-                }}
-              />
+              <Route path='/' exact render={() => <Search loading_services={loading_services} services={services} service={service} setService={setService} />} />
+              <Route path='/watch' exact render={() => <Watch services={services} videos={videos} />} />
+              <Route path='/read' exact render={() => <Read loading_blogs={loading_blogs} blogs={blogs} />} />
+              <Route path='/listen' exact render={() => <Listen loading_services={loading_services} services={services} />} />
+              <Route path='/about' exact render={() => <MarkdownPage page={About} />} />
             </main>
           </Container>
           <Container maxWidth="lg">

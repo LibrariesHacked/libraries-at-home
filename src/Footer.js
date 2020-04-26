@@ -40,7 +40,7 @@ function Footer(props) {
       <Divider />
       <Grid container spacing={3} className={classes.grid}>
         <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-          <Typography variant="body1" color="secondary" className={classes.footerText}>Libraries Hacked. Built with <FavoriteIcon color="error" className={classes.loveIcon} /> for libraries.</Typography>
+          <Typography variant="body1" color="secondary" className={classes.footerText}>Libraries Hacked. Built for libraries <FavoriteIcon color="error" className={classes.loveIcon} /></Typography>
         </Grid>
         <Grid className={classes.footerRight} item xs={12} sm={12} md={6} lg={6} xl={6}>
           <Typography variant="body1" color="secondary">Data compiled with thanks to:</Typography>
