@@ -13,8 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core/styles';
-import lightBlue from '@material-ui/core/colors/lightBlue';
-import blueGrey from '@material-ui/core/colors/blueGrey';
+import blue from '@material-ui/core/colors/blue';
+import brown from '@material-ui/core/colors/brown';
 
 import BookIcon from '@material-ui/icons/BookTwoTone';
 import HeadsetIcon from '@material-ui/icons/HeadsetTwoTone';
@@ -33,8 +33,8 @@ import * as serviceHelper from './helpers/services';
 
 const theme = createMuiTheme({
   palette: {
-    primary: lightBlue,
-    secondary: blueGrey
+    primary: blue,
+    secondary: brown
   },
   overrides: {
     MuiButton: {

@@ -43,10 +43,12 @@ function Footer(props) {
           <Typography variant="body1" color="secondary" className={classes.footerText}>Libraries Hacked. Built with <FavoriteIcon color="error" className={classes.loveIcon} /> for libraries.</Typography>
         </Grid>
         <Grid className={classes.footerRight} item xs={12} sm={12} md={6} lg={6} xl={6}>
-          <Typography variant="body1" color="secondary" className={classes.footerText}>Data compiled with thanks to</Typography><br/>
-          <Link className={classes.link} rel="noopener" target="_blank" href="https://twitter.com/calire" title="Claire">@calire</Link><br/>
-          <Link className={classes.link} rel="noopener" target="_blank" href="https://twitter.com/shedsue" title="Sue">@shedsue</Link><br/>
-          <Link className={classes.link} rel="noopener" target="_blank" href="https://twitter.com/richardveevers" title="Richard">@richardveevers</Link>
+          <Typography variant="body1" color="secondary">Data compiled with thanks to:</Typography>
+          <Typography variant="body1">
+            <Link rel="noopener" target="_blank" href="https://twitter.com/calire" title="Claire">@calire</Link><br />
+            <Link rel="noopener" target="_blank" href="https://twitter.com/shedsue" title="Sue">@shedsue</Link><br />
+            <Link rel="noopener" target="_blank" href="https://twitter.com/richardveevers" title="Richard">@richardveevers</Link>
+          </Typography>
         </Grid>
       </Grid>
     </div>
