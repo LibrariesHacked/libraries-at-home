@@ -14,7 +14,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core/styles';
 import blue from '@material-ui/core/colors/blue';
-import brown from '@material-ui/core/colors/brown';
+import blueGrey from '@material-ui/core/colors/blueGrey';
 
 import BookIcon from '@material-ui/icons/BookTwoTone';
 import HeadsetIcon from '@material-ui/icons/HeadsetTwoTone';
@@ -27,14 +27,18 @@ import Watch from './Watch';
 import Read from './Read';
 import Listen from './Listen';
 import MarkdownPage from './MarkdownPage';
+
 import About from './pages/about.md';
+import Accessibility from './pages/accessibility.md';
+import Data from './pages/data.md';
+import Privacy from './pages/privacy.md';
 
 import * as serviceHelper from './helpers/services';
 
 const theme = createMuiTheme({
   palette: {
     primary: blue,
-    secondary: brown
+    secondary: blueGrey
   },
   overrides: {
     MuiButton: {
@@ -53,7 +57,7 @@ const theme = createMuiTheme({
         color: blue[800]
       },
       colorSecondary: {
-        color: brown[600]
+        color: blueGrey[600]
       }
     },
     MuiTab: {
@@ -142,6 +146,9 @@ function App() {
               <Route path='/read' exact render={() => <Read loading_blogs={loading_blogs} blogs={blogs} />} />
               <Route path='/listen' exact render={() => <Listen loading_services={loading_services} services={services} />} />
               <Route path='/about' exact render={() => <MarkdownPage page={About} />} />
+              <Route path='/accessibility' exact render={() => <MarkdownPage page={Accessibility} />} />
+              <Route path='/data' exact render={() => <MarkdownPage page={Data} />} />
+              <Route path='/privacy' exact render={() => <MarkdownPage page={Privacy} />} />
             </main>
           </Container>
           <Container maxWidth="lg">

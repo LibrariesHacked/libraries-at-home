@@ -1,3 +1,4 @@
-# About Libraries at home
+## Data
 
-Should be printed information
+To be useful this site relies on accurate and up to date data.
+

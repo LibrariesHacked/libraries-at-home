@@ -9,11 +9,14 @@ import Typography from '@material-ui/core/Typography';
 
 import { makeStyles } from '@material-ui/core/styles';
 
+import AndroidIcon from '@material-ui/icons/AndroidTwoTone';
 import OpenInNewIcon from '@material-ui/icons/OpenInNewTwoTone';
 import ChevronRightIcon from '@material-ui/icons/ChevronRightTwoTone';
+
 import InstagramIcon from 'mdi-material-ui/Instagram';
 import FacebookIcon from 'mdi-material-ui/Facebook';
 import TwitterIcon from 'mdi-material-ui/Twitter';
+import AppleIcon from 'mdi-material-ui/AppleIos';
 
 import Alert from '@material-ui/lab/Alert';
 import AlertTitle from '@material-ui/lab/AlertTitle';
@@ -30,6 +33,14 @@ const useStyles = makeStyles((theme) => ({
   header: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
+    textAlign: 'center'
+  },
+  socialHeader: {
+    textAlign: 'center'
+  },
+  appsHeader: {
+    marginTop: theme.spacing(2),
+    textAlign: 'center'
   },
   root: {
     paddingTop: theme.spacing(2)
@@ -42,7 +53,15 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  apps: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   socialIcon: {
+    margin: theme.spacing(1)
+  },
+  appsIcon: {
     margin: theme.spacing(1)
   },
   leadButton: {
@@ -68,9 +87,9 @@ function Service(props) {
 
   return (
     <div className={classes.root}>
-      <Typography className={classes.header} component="h2" variant="h5" color="secondary">{'Your local library service is '}<span className={classes.serviceName}>{service.Name}</span></Typography>
+      <Typography className={classes.header} component="h2" variant="h5" color="secondary">{'Your library service is '}<span className={classes.serviceName}>{service.Name}</span></Typography>
+      <Typography className={classes.socialHeader} component="h3" variant="h6" color="secondary">Connect on social media</Typography>
       <div className={classes.social}>
-        <Typography className={classes.header} component="h3" variant="h5" color="secondary">Connect on social media</Typography>
         {config.services_text.social.filter(s => s.field in service).map((social, idx) => {
           const IconName = social_icons[social.icon];
           return <IconButton key={'icn_social_' + idx} component="a" className={classes.socialIcon} target="_blank" href={social.url + service[social.field]} title={social.title}><IconName /></IconButton>;
@@ -99,6 +118,15 @@ function Service(props) {
           })}
         </Typography>
       </Paper>
+      {service['Android app URL'] || service['iOS app URL'] ?
+        <React.Fragment>
+          <Typography className={classes.appsHeader} component="h3" variant="h6" color="secondary">Use the library on your phone</Typography>
+          <div className={classes.apps}>
+            {service['Android app URL'] ? <IconButton component="a" className={classes.socialIcon} target="_blank" href={service['Android app URL']} title="Library app for Android"><AndroidIcon /></IconButton> : null}
+            {service['iOS app URL'] ? <IconButton component="a" className={classes} target="_blank" href={service['iOS app URL']} title="Library app for iOS"><AppleIcon /></IconButton> : null}
+          </div>
+        </React.Fragment> : null
+      }
     </div>
   );
 }

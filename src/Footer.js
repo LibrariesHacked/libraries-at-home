@@ -1,4 +1,5 @@
 import React from 'react';
+import RouteLink from "react-router-dom/Link";
 
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
@@ -40,9 +41,13 @@ function Footer(props) {
       <Divider />
       <Grid container spacing={3} className={classes.grid}>
         <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-          <Typography variant="body1" color="secondary" className={classes.footerText}>Libraries Hacked. Built for libraries <FavoriteIcon color="error" className={classes.loveIcon} /></Typography>
+          <Typography variant="body1" color="secondary" className={classes.footerText}>Built by Libraries Hacked for libraries <FavoriteIcon color="error" className={classes.loveIcon} /></Typography>
+          <Typography variant="body1">
+            <Link component={RouteLink} to="/about" title="About Libraries at home">About</Link><br/>
+            <Link component={RouteLink} to="/privacy" title="Your privacy on this site">Privacy</Link>
+          </Typography>
         </Grid>
-        <Grid className={classes.footerRight} item xs={12} sm={12} md={6} lg={6} xl={6}>
+        <Grid className={classes.footerRight} item xs={12} sm={6} md={6} lg={6} xl={6}>
           <Typography variant="body1" color="secondary">Data compiled with thanks to:</Typography>
           <Typography variant="body1">
             <Link rel="noopener" target="_blank" href="https://twitter.com/calire" title="Claire">@calire</Link><br />

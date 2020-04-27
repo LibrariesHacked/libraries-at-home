@@ -18,15 +18,15 @@ const options = {
       component: Typography,
       props: {
         gutterBottom: true,
-        variant: 'h5',
+        variant: 'h3',
         color: 'secondary'
       },
     },
-    h2: { component: Typography, props: { gutterBottom: true, variant: 'h6', color: 'secondary' } },
-    h3: { component: Typography, props: { gutterBottom: true, variant: 'subtitle1', color: 'secondary' } },
+    h2: { component: Typography, props: { gutterBottom: true, variant: 'h4', color: 'secondary' } },
+    h3: { component: Typography, props: { gutterBottom: true, variant: 'h5', color: 'secondary' } },
     h4: {
       component: Typography,
-      props: { gutterBottom: true, variant: 'caption', paragraph: true, color: 'secondary' },
+      props: { gutterBottom: true, variant: 'h6', paragraph: true, color: 'secondary' },
     },
     p: { component: Typography, props: { paragraph: true, color: 'secondary' } },
     a: { component: Link },
