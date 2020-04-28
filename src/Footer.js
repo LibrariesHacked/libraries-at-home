@@ -40,7 +40,7 @@ function Footer(props) {
     <div className={classes.root}>
       <Divider />
       <Grid container spacing={3} className={classes.grid}>
-        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+        <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
           <Typography variant="body1" color="secondary" className={classes.footerText}>Built by Libraries Hacked for libraries <FavoriteIcon color="error" className={classes.loveIcon} /></Typography>
           <Typography variant="body1">
             <Link component={RouteLink} to="/about" title="About Libraries at home">About</Link><br />
