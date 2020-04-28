@@ -4,17 +4,17 @@ To be useful this site relies on open data. The following sources are used in th
 
 ### Library service data
 
-Library service data was compiled with help from friends [@calire](https://twitter.com/calire), [@shedsue](https://twitter.com/shedsue), and [@richardveevers](https://twitter.com/richardveevers). It is held in an Airtable spreadsheet online. A read only view is available.
+Library service data was compiled with help from friends. It is held in an Airtable spreadsheet online.
 
-- [Airtable library services spreadsheet](https://airtable.com/shrKkzYDUNMMM6qrJ)
+| Dataset name | Licence | Attribution |
+| ------------ | ------- | ----------- |
+| [Airtable library services spreadsheet](https://airtable.com/shrKkzYDUNMMM6qrJ) | [CC0 1.0 Universal (CC0 1.0) Public Domain Dedication](https://creativecommons.org/publicdomain/zero/1.0/) |  None required |
 
-For edit access please email [info@librarieshacked.org](mailto:info@librarieshacked.org). Library services, or any enthusiastic individuals are welcome to maintain the data held in this sheet.
+For edit access please [email for more info](mailto:info@librarieshacked.org). Library services, or any enthusiastic individuals are welcome to edit and maintain the data held in this sheet.
 
-This data is made available under a [CC0 1.0 Universal (CC0 1.0) Public Domain Dedication](https://creativecommons.org/publicdomain/zero/1.0/).
+### ONS data
 
-### ONS geography data
-
-Library authorities in the UK were listed with the use of data from the Office for National Statistics. The postcode lookup also uses lookups against local authority codes, also provided by ONS.
+Library authorities in the UK were listed with the use of data from the Office for National Statistics (ONS).
 
 | Dataset name | Licence | Attribution |
 | ------------ | ------- | ----------- |

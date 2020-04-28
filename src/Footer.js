@@ -44,8 +44,8 @@ function Footer(props) {
           <Typography variant="body1" color="secondary" className={classes.footerText}>Built by Libraries Hacked for libraries <FavoriteIcon color="error" className={classes.loveIcon} /></Typography>
           <Typography variant="body1">
             <Link component={RouteLink} to="/about" title="About Libraries at home">About</Link><br />
-            <Link component={RouteLink} to="/data" title="Data used on this site and licensing">Data</Link><br />
-            <Link component={RouteLink} to="/privacy" title="Your privacy on this site">Privacy</Link>
+            <Link component={RouteLink} to="/privacy" title="Your privacy on this site">Privacy</Link><br />
+            <Link component={RouteLink} to="/data" title="Data used on this site and licensing">Data</Link>
           </Typography>
         </Grid>
         <Grid className={classes.footerRight} item xs={12} sm={6} md={6} lg={6} xl={6}>
