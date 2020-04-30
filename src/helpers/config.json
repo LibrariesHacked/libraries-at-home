@@ -18,32 +18,32 @@
         "field": "Instagram name",
         "icon": "InstagramIcon",
         "url": "https://www.instagram.com/",
-        "title": "See photos on Instagram"
+        "title": "See library pictures on Instagram"
       },
       {
         "field": "Facebook page name",
         "icon": "FacebookIcon",
         "url": "https://www.facebook.com/",
-        "title": "Follow on Facebook"
+        "title": "Follow the library on Facebook"
       },
       {
         "field": "Twitter handle",
         "icon": "TwitterIcon",
         "url": "https://twitter.com/",
-        "title": "See tweets on twitter"
+        "title": "See library tweets on twitter"
       }
     ],
     "library_service": [
       {
         "field": "Service URL",
-        "title": "Visit [service] website",
-        "description": "Information on using your library",
-        "link_text": "Go to service website"
+        "title": "Visit [service] libraries website",
+        "description": "Information to help you use your library",
+        "link_text": "Go to the website"
       },
       {
         "field": "Catalogue URL",
         "title": "Browse the catalogue",
-        "description": "Find out what's in your libraries",
+        "description": "Find items in your libraries",
         "link_text": "Online catalogue"
       },
       {
@@ -61,7 +61,7 @@
       {
         "field": "Audiobook URL",
         "title": "Library audiobooks",
-        "description": "Listen to stories for free from libraries",
+        "description": "Listen to stories from libraries",
         "link_text": "Find an audiobook"
       },
       {
@@ -90,11 +90,11 @@
       },
       {
         "field": "Computer access URL",
-        "text": "Use a computer in your library"
+        "text": "Use a computer in the library"
       },
       {
         "field": "Wifi access URL",
-        "text": "Connect to WiFi in your library"
+        "text": "Use Wifi on your own device in the library"
       },
       {
         "field": "Fees and charges URL",
@@ -109,5 +109,10 @@
         "text": "Listen to a library Podcast"
       }
     ]
+  },
+  "podcasts": {
+    "service_name_field": "Name",
+    "podcast_name_field": "Podcast name",
+    "url_field": "Podcast URL"
   }
 }

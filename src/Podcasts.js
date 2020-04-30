@@ -5,9 +5,11 @@ import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-import ChevronRightIcon from '@material-ui/icons/ChevronRightTwoTone';
+import MicIcon from '@material-ui/icons/MicTwoTone';
 
 import { makeStyles } from '@material-ui/core/styles';
+
+const config = require('./helpers/config.json');
 
 const useStyles = makeStyles((theme) => ({
   columnLink: {
@@ -21,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
   linkContainer: {
     marginTop: theme.spacing(2),
     padding: theme.spacing(2)
+  },
+  link: {
+    display: 'inline'
   },
   linkText: {
     columnWidth: "16em"
@@ -41,13 +46,13 @@ function Podcasts(props) {
             return (
               <React.Fragment key={'frg_podcasts_' + idx}>
                 <Typography component="span" className={classes.columnLink}>
-                  <ChevronRightIcon />
-                  <Link key={'typ_link_' + idx} target="_blank" href={item['Podcast URL']} variant="body1">{item.Name}</Link>
+                  <MicIcon />
+                  <span>{item[config.podcasts.service_name_field]}.&nbsp;</span>
+                  <Link  className={classes.link} rel="noopener" target="_blank" href={item[config.podcasts.url_field]} variant="body1">{item[config.podcasts.podcast_name_field]}</Link>
                 </Typography>
                 <br />
               </React.Fragment>)
           })}
-
         </Typography>
       </Paper>
     </React.Fragment>

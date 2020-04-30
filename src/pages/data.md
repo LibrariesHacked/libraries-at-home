@@ -14,7 +14,7 @@ For edit access please [email for more info](mailto:info@librarieshacked.org). L
 
 ### ONS data
 
-Library authorities in the UK were listed with the use of data from the Office for National Statistics (ONS).
+Library authorities in the UK were listed with the use of open data from the Office for National Statistics (ONS).
 
 | Dataset name | Licence | Attribution |
 | ------------ | ------- | ----------- |

@@ -20,7 +20,7 @@ function Read(props) {
   return (
     <React.Fragment>
       <Typography component="h2" variant="h6" color="secondary" className={classes.subtitle}>Read</Typography>
-      <Typography component="p" variant="body1" color="secondary" className={classes.subtitle}>Reading is good</Typography>
+      <Typography component="p" variant="body1" color="secondary" className={classes.subtitle}>See what library services are writing</Typography>
       <BlogPosts loading_blogs={loading_blogs} blogs={blogs} />
     </React.Fragment>
   );

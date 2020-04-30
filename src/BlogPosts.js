@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
     padding: theme.spacing(2)
   },
+  link: {
+    display: 'inline'
+  },
   linkText: {
     columnWidth: "16em"
   }
@@ -52,12 +55,16 @@ function BlogPosts(props) {
           {Object.keys(blogs_bydate).slice(0, 3).map((date, blg_idx) => {
             return <React.Fragment key={'frg_blogdates_' + blg_idx}>
               <ListSubheader component="span" className={classes.columnLink}>{moment(date, 'YYYY-MM-DD').calendar(null, config.calendar_display)}</ListSubheader>
+              <br/>
               {blogs_bydate[date].map((item, idx) => {
-                return <Typography key={'typ_links_' + idx} component="span" className={classes.columnLink}>
-                  <ChevronRightIcon />
-                  <Link key={'typ_link_' + idx} target="_blank" href={item.url} variant="body1">{item.title + ' (' + item.author + ')'}</Link>
-                  <br />
-                </Typography>
+                return (
+                  <React.Fragment key={'typ_links_' + idx}>
+                    <Typography component="span" className={classes.columnLink}>
+                      <ChevronRightIcon />
+                      <Link className={classes.link} key={'typ_link_' + idx} target="_blank" href={item.url} variant="body1">{item.title}</Link>
+                    </Typography>
+                    <br />
+                  </React.Fragment>)
               })}
             </React.Fragment>
           })}
