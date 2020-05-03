@@ -8,12 +8,15 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Dialog from '@material-ui/core/Dialog';
 import Grid from '@material-ui/core/Grid';
 import ListSubheader from '@material-ui/core/ListSubheader';
+import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 
 import MovieIcon from '@material-ui/icons/MovieTwoTone';
 import PlaylistPlay from '@material-ui/icons/PlaylistPlayTwoTone';
 
 import { makeStyles } from '@material-ui/core/styles';
+
+import Rating from '@material-ui/lab/Rating';
 
 import moment from 'moment';
 
@@ -39,6 +42,9 @@ const useStyles = makeStyles((theme) => ({
     left: '0px',
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
     width: '100%'
+  },
+  rating: {
+    marginLeft: theme.spacing(1)
   },
   video: {
     maxWidth: '100%'
@@ -86,6 +92,9 @@ function Watch(props) {
               const custom_els = item.custom_elements;
               const media_group = custom_els.filter(x => Object.keys(x)[0] === 'media:group')[0]['media:group'];
               const media_thumbnail = media_group.filter(x => Object.keys(x)[0] === 'media:thumbnail')[0]['media:thumbnail'];
+              const media_community = media_group.filter(x => Object.keys(x)[0] === 'media:community')[0]['media:community'];
+              const media_starrating = media_community.filter(x => Object.keys(x)[0] === 'media:starrating')[0]['media:starrating'];
+              const rating = media_starrating['_attr']['average'];
               const channel_id = custom_els.filter(x => Object.keys(x)[0] === 'yt:channelid')[0]['yt:channelid'];
               const service = services_byyoutubeid[channel_id];
               const service_yt_data = serviceHelper.getServiceYouTubeDataFromId(channel_id);
@@ -103,7 +112,14 @@ function Watch(props) {
                   </CardContent>
                   <CardActions>
                     <Button size="small" color="primary" startIcon={<MovieIcon />} onClick={handlePlayVideo.bind(this, item.guid)}>Play</Button>
-                    {service ? <Button size="small" color="primary" startIcon={<PlaylistPlay />} target="_blank" rel="noopener" href={service_yt_data.url}>{service_yt_data.type}</Button> : null}
+                    {service ? <Button size="small" color="primary" startIcon={<PlaylistPlay />} target="_blank" rel="noopener" href={service_yt_data.url}>{service.Name}</Button> : null}
+                    {
+                      media_starrating ?
+                        <Tooltip title={rating ? 'Rated ' + rating : 'No rating'} aria-label="add">
+                          <Rating size="small" className={classes.rating} name="read-only" value={rating} precision={0.5} readOnly />
+                        </Tooltip>
+                        : null
+                    }
                   </CardActions>
                 </Card>
               </Grid>

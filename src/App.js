@@ -47,18 +47,9 @@ const theme = createMuiTheme({
       },
       root: {
         textTransform: 'none'
-      },
-      textPrimary: {
-        color: blue[800]
       }
     },
     MuiTypography: {
-      colorPrimary: {
-        color: blue[800]
-      },
-      colorSecondary: {
-        color: blueGrey[600]
-      }
     },
     MuiTab: {
       root: {
