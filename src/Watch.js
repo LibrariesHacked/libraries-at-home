@@ -114,9 +114,9 @@ function Watch(props) {
                     <Button size="small" color="primary" startIcon={<MovieIcon />} onClick={handlePlayVideo.bind(this, item.guid)}>Play</Button>
                     {service ? <Button size="small" color="primary" startIcon={<PlaylistPlay />} target="_blank" rel="noopener" href={service_yt_data.url}>{service.Name}</Button> : null}
                     {
-                      media_starrating ?
+                      media_starrating && rating && rating > 0 ?
                         <Tooltip title={rating ? 'Rated ' + rating : 'No rating'} aria-label="add">
-                          <Rating size="small" className={classes.rating} name="read-only" value={rating} precision={0.5} readOnly />
+                          <span><Rating size="small" className={classes.rating} name="read-only" value={rating} precision={0.5} readOnly /></span>
                         </Tooltip>
                         : null
                     }
