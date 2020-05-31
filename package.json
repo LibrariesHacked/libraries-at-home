@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.2.0"
+    "gh-pages": "^2.2.0",
+    "standard": "^14.3.4"
   }
 }
