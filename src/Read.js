@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function Read (props) {
-  const { loading_blogs, blogs } = props
+  const { loadingBlogs, blogs } = props
 
   const classes = useStyles()
 
@@ -21,7 +21,7 @@ function Read (props) {
     <>
       <Typography component='h2' variant='h6' color='secondary' className={classes.subtitle}>Read</Typography>
       <Typography component='p' variant='body1' color='secondary' className={classes.subtitle}>See what library services are writing</Typography>
-      <BlogPosts loading_blogs={loading_blogs} blogs={blogs} />
+      <BlogPosts loadingBlogs={loadingBlogs} blogs={blogs} />
     </>
   )
 }

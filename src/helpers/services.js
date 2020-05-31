@@ -10,14 +10,14 @@ export async function getServices () {
 }
 
 export function getServiceYouTubeDataFromId (id) {
-  const youtube_url = config.youtube_url
-  const id_types = {
+  const youtubeUrl = config.youtubeUrl
+  const idTypes = {
     UC: ['channel/', 'Channel'],
     PL: ['playlist/', 'Playlist']
   }
-  const type = id_types[id.substring(0, 2)]
+  const type = idTypes[id.substring(0, 2)]
   return {
-    url: youtube_url + (type ? type[0] : 'user/') + id,
+    url: youtubeUrl + (type ? type[0] : 'user/') + id,
     type: (type ? type[1] : 'Account')
   }
 }

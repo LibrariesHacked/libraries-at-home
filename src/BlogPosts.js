@@ -36,10 +36,10 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function BlogPosts (props) {
-  const { loading_blogs, blogs } = props
+  const { loadingBlogs, blogs } = props
   const classes = useStyles()
 
-  const blogs_bydate = blogs.reduce(function (rv, x) {
+  const blogsByDate = blogs.reduce(function (rv, x) {
     const datetime = new Date(x.date)
     const date = datetime.getFullYear() + '-' + (datetime.getMonth() + 1) + '-' + datetime.getDate();
     (rv[date] = rv[date] || []).push(x)
@@ -50,23 +50,25 @@ function BlogPosts (props) {
     <>
       <Paper variant='outlined' className={classes.linkContainer}>
         <Typography component='h3' variant='h6' color='secondary' className={classes.header}>Recent library blogs</Typography>
-        {loading_blogs ? <LinearProgress color='secondary' /> : null}
+        {loadingBlogs ? <LinearProgress color='secondary' /> : null}
         <Typography component='p' variant='body1' className={classes.linkText}>
-          {Object.keys(blogs_bydate).slice(0, 3).map((date, blg_idx) => {
-            return <React.Fragment key={'frg_blogdates_' + blg_idx}>
-              <ListSubheader component='span' className={classes.columnLink}>{moment(date, 'YYYY-MM-DD').calendar(null, config.calendar_display)}</ListSubheader>
-              <br />
-              {blogs_bydate[date].map((item, idx) => {
-                return (
-                  <React.Fragment key={'typ_links_' + idx}>
-                    <Typography component='span' className={classes.columnLink}>
-                      <ChevronRightIcon />
-                      <Link className={classes.link} key={'typ_link_' + idx} target='_blank' href={item.url} variant='body1'>{item.title}</Link>
-                    </Typography>
-                    <br />
-                  </React.Fragment>)
-              })}
-                   </React.Fragment>
+          {Object.keys(blogsByDate).slice(0, 3).map((date, blgIdx) => {
+            return (
+              <React.Fragment key={'frg_blogdates_' + blgIdx}>
+                <ListSubheader component='span' className={classes.columnLink}>{moment(date, 'YYYY-MM-DD').calendar(null, config.calendar_display)}</ListSubheader>
+                <br />
+                {blogsByDate[date].map((item, idx) => {
+                  return (
+                    <React.Fragment key={'typ_links_' + idx}>
+                      <Typography component='span' className={classes.columnLink}>
+                        <ChevronRightIcon />
+                        <Link className={classes.link} key={'typ_link_' + idx} target='_blank' href={item.url} variant='body1'>{item.title}</Link>
+                      </Typography>
+                      <br />
+                    </React.Fragment>)
+                })}
+              </React.Fragment>
+            )
           })}
         </Typography>
       </Paper>

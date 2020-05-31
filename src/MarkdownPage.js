@@ -87,19 +87,19 @@ const options = {
 
 function MarkdownPage (props) {
   const { page } = props
-  const [page_text, setPageText] = useState('')
+  const [pageText, setPageText] = useState('')
   const classes = useStyles()
 
   useEffect(() => {
     async function fetchPage () {
-      const page_data = await fetch(page)
-      const page_text = await page_data.text()
-      setPageText(page_text)
+      const pageData = await window.fetch(page)
+      const pageText = await pageData.text()
+      setPageText(pageText)
     }
     fetchPage()
   }, [page])
 
-  return <ReactMarkdown className={classes.root} options={options} {...props}>{page_text}</ReactMarkdown>
+  return <ReactMarkdown className={classes.root} options={options} {...props}>{pageText}</ReactMarkdown>
 }
 
 export default MarkdownPage

@@ -33,14 +33,14 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function Podcasts (props) {
-  const { loading_services, services } = props
+  const { loadingServices, services } = props
   const classes = useStyles()
 
   return (
     <>
       <Paper variant='outlined' className={classes.linkContainer}>
         <Typography component='h3' variant='h6' color='secondary' className={classes.header}>Library podcasts</Typography>
-        {loading_services ? <LinearProgress color='secondary' /> : null}
+        {loadingServices ? <LinearProgress color='secondary' /> : null}
         <Typography component='p' variant='body1' className={classes.linkText}>
           {services.filter(s => s['Podcast URL'] && s['Podcast URL'] !== '').map((item, idx) => {
             return (

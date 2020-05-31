@@ -31,10 +31,10 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function Search (props) {
-  const { loading_services, services, service, setService } = props
-  const [loading_postcode, setloadingPostcode] = useState(false)
+  const { loadingServices, services, service, setService } = props
+  const [loadingPostcode, setloadingPostcode] = useState(false)
   const [postcode, setPostcode] = useState('')
-  const [error_message, setErrorMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const classes = useStyles()
 
@@ -53,7 +53,7 @@ function Search (props) {
 
   const handlePostcodeChange = (e) => {
     const val = e.target.value.toUpperCase()
-    if (error_message !== '' && validatePostcode(val.trim())) setErrorMessage('')
+    if (errorMessage !== '' && validatePostcode(val.trim())) setErrorMessage('')
     setPostcode(val)
   }
 
@@ -63,7 +63,7 @@ function Search (props) {
       <Typography component='p' variant='body1' color='secondary' className={classes.subtitle}>Start by finding your local library service</Typography>
       <div className={classes.search}>
         <TextField
-          error={error_message !== ''}
+          error={errorMessage !== ''}
           label='Postcode'
           id='txt_postcode'
           className={classes.textField}
@@ -71,25 +71,29 @@ function Search (props) {
           variant='outlined'
           value={postcode}
           onChange={handlePostcodeChange}
-          helperText={error_message}
+          helperText={errorMessage}
           InputProps={{
-            endAdornment: (<InputAdornment position='end'>
-              <IconButton
-                disabled={loading_services || loading_postcode}
-                aria-label='search for postcode'
-                onClick={handlePostcodeSearch}
-              >
-                <SearchIcon color='primary' />
-              </IconButton>
-                           </InputAdornment>)
+            endAdornment: (
+              <InputAdornment position='end'>
+                <IconButton
+                  disabled={loadingServices || loadingPostcode}
+                  aria-label='search for postcode'
+                  onClick={handlePostcodeSearch}
+                >
+                  <SearchIcon color='primary' />
+                </IconButton>
+              </InputAdornment>
+            )
           }}
         />
       </div>
-      {loading_postcode ? <LinearProgress color='secondary' /> : null}
+      {loadingPostcode ? <LinearProgress color='secondary' /> : null}
       {Object.keys(service).length > 0
-        ? <div>
-          <Service service={service} />
-        </div>
+        ? (
+          <div>
+            <Service service={service} />
+          </div>
+        )
         : null}
     </>
   )

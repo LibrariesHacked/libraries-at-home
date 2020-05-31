@@ -10,8 +10,8 @@ export async function getPostcodeData (postcode) {
 }
 
 export async function getServiceDataFromPostcode (postcode, services) {
-  const postcode_data = await getPostcodeData(postcode)
-  const services_filtered = services.filter(s => s.Code === postcode_data.library_service)
-  if (services_filtered.length > 0) return services_filtered[0]
+  const postcodeData = await getPostcodeData(postcode)
+  const servicesFiltered = services.filter(s => s.Code === postcodeData.library_service)
+  if (servicesFiltered.length > 0) return servicesFiltered[0]
   return {}
 }
