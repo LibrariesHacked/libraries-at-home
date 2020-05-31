@@ -9,7 +9,6 @@ The project uses npm for dependences and package management. To get started run 
 ```
 npm install
 ```
-
 The following scripts are then also available.
 
 ### `npm start`
