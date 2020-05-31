@@ -21,6 +21,8 @@ import AppleIcon from 'mdi-material-ui/AppleIos'
 import Alert from '@material-ui/lab/Alert'
 import AlertTitle from '@material-ui/lab/AlertTitle'
 
+import moment from 'moment'
+
 const config = require('./helpers/config.json')
 
 const socialIcons = {
@@ -88,6 +90,14 @@ function Service (props) {
   return (
     <div className={classes.root}>
       <Typography className={classes.header} component='h2' variant='h5' color='secondary'>{'Your library service is '}<span className={classes.serviceName}>{service.Name}</span></Typography>
+      {service['Reopen date']
+        ? (
+          <Alert severity='warning'>
+            <AlertTitle>Information on reopening</AlertTitle>
+            {'From ' + moment(service['Reopen date']).format('Do MMMM') + ' ' + service['Reopen info'] + '. '}
+            <Button color='warning' component='a' target='_blank' href={service['Reopen info URL']}>Find out more about reopening</Button>
+          </Alert>
+        ) : null}
       <Typography className={classes.socialHeader} component='h3' variant='h6' color='secondary'>Connect on social media</Typography>
       <div className={classes.social}>
         {config.services_text.social.filter(s => s.field in service).map((social, idx) => {
