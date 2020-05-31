@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-import IconButton from '@material-ui/core/IconButton';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import LinearProgress from '@material-ui/core/LinearProgress';
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import LinearProgress from '@material-ui/core/LinearProgress'
+import TextField from '@material-ui/core/TextField'
+import Typography from '@material-ui/core/Typography'
 
-import SearchIcon from '@material-ui/icons/SearchTwoTone';
+import SearchIcon from '@material-ui/icons/SearchTwoTone'
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
 
-import Service from './Service';
+import Service from './Service'
 
-import * as postcodeHelper from './helpers/postcodes';
+import * as postcodeHelper from './helpers/postcodes'
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -28,71 +28,75 @@ const useStyles = makeStyles((theme) => ({
     width: '25ch',
     backgroundColor: 'white'
   }
-}));
+}))
 
-function Search(props) {
-  const { loading_services, services, service, setService } = props;
-  const [loading_postcode, setloadingPostcode] = useState(false);
-  const [postcode, setPostcode] = useState('');
-  const [error_message, setErrorMessage] = useState('');
+function Search (props) {
+  const { loadingServices, services, service, setService } = props
+  const [loadingPostcode, setloadingPostcode] = useState(false)
+  const [postcode, setPostcode] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
 
-  const classes = useStyles();
+  const classes = useStyles()
 
-  const validatePostcode = (pc) => /^[A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}$/.test(pc);
+  const validatePostcode = (pc) => /^[A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}$/.test(pc)
 
   const handlePostcodeSearch = async () => {
-    setloadingPostcode(true);
+    setloadingPostcode(true)
     if (validatePostcode(postcode.trim())) {
-      const service = await postcodeHelper.getServiceDataFromPostcode(postcode.trim(), services);
-      setService(service);
+      const service = await postcodeHelper.getServiceDataFromPostcode(postcode.trim(), services)
+      setService(service)
     } else {
-      setErrorMessage('Is that a UK postcode?');
+      setErrorMessage('Is that a UK postcode?')
     }
-    setloadingPostcode(false);
+    setloadingPostcode(false)
   }
 
   const handlePostcodeChange = (e) => {
-    const val = e.target.value.toUpperCase();
-    if (error_message !== '' && validatePostcode(val.trim())) setErrorMessage('');
-    setPostcode(val);
+    const val = e.target.value.toUpperCase()
+    if (errorMessage !== '' && validatePostcode(val.trim())) setErrorMessage('')
+    setPostcode(val)
   }
 
   return (
-    <React.Fragment>
-      <Typography component="h2" variant="h6" color="secondary" className={classes.subtitle}>Library services</Typography>
-      <Typography component="p" variant="body1" color="secondary" className={classes.subtitle}>Start by finding your local library service</Typography>
+    <>
+      <Typography component='h2' variant='h6' color='secondary' className={classes.subtitle}>Library services</Typography>
+      <Typography component='p' variant='body1' color='secondary' className={classes.subtitle}>Start by finding your local library service</Typography>
       <div className={classes.search}>
         <TextField
-          error={error_message !== ''}
-          label="Postcode"
-          id="txt_postcode"
+          error={errorMessage !== ''}
+          label='Postcode'
+          id='txt_postcode'
           className={classes.textField}
-          margin="normal"
-          variant="outlined"
+          margin='normal'
+          variant='outlined'
           value={postcode}
           onChange={handlePostcodeChange}
-          helperText={error_message}
+          helperText={errorMessage}
           InputProps={{
-            endAdornment: (<InputAdornment position="end">
-              <IconButton
-                disabled={loading_services || loading_postcode}
-                aria-label="search for postcode"
-                onClick={handlePostcodeSearch}
-              >
-                <SearchIcon color="primary" />
-              </IconButton>
-            </InputAdornment>)
+            endAdornment: (
+              <InputAdornment position='end'>
+                <IconButton
+                  disabled={loadingServices || loadingPostcode}
+                  aria-label='search for postcode'
+                  onClick={handlePostcodeSearch}
+                >
+                  <SearchIcon color='primary' />
+                </IconButton>
+              </InputAdornment>
+            )
           }}
         />
       </div>
-      {loading_postcode ? <LinearProgress color="secondary" /> : null}
-      {Object.keys(service).length > 0 ?
-        <div>
-          <Service service={service} />
-        </div>
+      {loadingPostcode ? <LinearProgress color='secondary' /> : null}
+      {Object.keys(service).length > 0
+        ? (
+          <div>
+            <Service service={service} />
+          </div>
+        )
         : null}
-    </React.Fragment>
-  );
+    </>
+  )
 }
 
-export default Search;
+export default Search

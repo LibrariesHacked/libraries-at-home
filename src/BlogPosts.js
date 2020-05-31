@@ -1,18 +1,18 @@
-import React from 'react';
+import React from 'react'
 
-import LinearProgress from '@material-ui/core/LinearProgress';
-import Link from '@material-ui/core/Link';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+import LinearProgress from '@material-ui/core/LinearProgress'
+import Link from '@material-ui/core/Link'
+import ListSubheader from '@material-ui/core/ListSubheader'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
 
-import ChevronRightIcon from '@material-ui/icons/ChevronRightTwoTone';
+import ChevronRightIcon from '@material-ui/icons/ChevronRightTwoTone'
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
 
-import moment from 'moment';
+import moment from 'moment'
 
-const config = require('./helpers/config.json');
+const config = require('./helpers/config.json')
 
 const useStyles = makeStyles((theme) => ({
   columnLink: {
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   header: {
     marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(1)
   },
   linkContainer: {
     marginTop: theme.spacing(2),
@@ -31,47 +31,49 @@ const useStyles = makeStyles((theme) => ({
     display: 'inline'
   },
   linkText: {
-    columnWidth: "16em"
+    columnWidth: '16em'
   }
-}));
+}))
 
-function BlogPosts(props) {
-  const { loading_blogs, blogs } = props;
-  const classes = useStyles();
+function BlogPosts (props) {
+  const { loadingBlogs, blogs } = props
+  const classes = useStyles()
 
-  const blogs_bydate = blogs.reduce(function (rv, x) {
-    let datetime = new Date(x['date']);
-    let date = datetime.getFullYear() + '-' + (datetime.getMonth() + 1) + '-' + datetime.getDate();
-    (rv[date] = rv[date] || []).push(x);
-    return rv;
-  }, {});
+  const blogsByDate = blogs.reduce(function (rv, x) {
+    const datetime = new Date(x.date)
+    const date = datetime.getFullYear() + '-' + (datetime.getMonth() + 1) + '-' + datetime.getDate();
+    (rv[date] = rv[date] || []).push(x)
+    return rv
+  }, {})
 
   return (
-    <React.Fragment>
-      <Paper variant="outlined" className={classes.linkContainer}>
-        <Typography component="h3" variant="h6" color="secondary" className={classes.header}>Recent library blogs</Typography>
-        {loading_blogs ? <LinearProgress color="secondary" /> : null}
-        <Typography component="p" variant="body1" className={classes.linkText}>
-          {Object.keys(blogs_bydate).slice(0, 3).map((date, blg_idx) => {
-            return <React.Fragment key={'frg_blogdates_' + blg_idx}>
-              <ListSubheader component="span" className={classes.columnLink}>{moment(date, 'YYYY-MM-DD').calendar(null, config.calendar_display)}</ListSubheader>
-              <br/>
-              {blogs_bydate[date].map((item, idx) => {
-                return (
-                  <React.Fragment key={'typ_links_' + idx}>
-                    <Typography component="span" className={classes.columnLink}>
-                      <ChevronRightIcon />
-                      <Link className={classes.link} key={'typ_link_' + idx} target="_blank" href={item.url} variant="body1">{item.title}</Link>
-                    </Typography>
-                    <br />
-                  </React.Fragment>)
-              })}
-            </React.Fragment>
+    <>
+      <Paper variant='outlined' className={classes.linkContainer}>
+        <Typography component='h3' variant='h6' color='secondary' className={classes.header}>Recent library blogs</Typography>
+        {loadingBlogs ? <LinearProgress color='secondary' /> : null}
+        <Typography component='p' variant='body1' className={classes.linkText}>
+          {Object.keys(blogsByDate).slice(0, 3).map((date, blgIdx) => {
+            return (
+              <React.Fragment key={'frg_blogdates_' + blgIdx}>
+                <ListSubheader component='span' className={classes.columnLink}>{moment(date, 'YYYY-MM-DD').calendar(null, config.calendar_display)}</ListSubheader>
+                <br />
+                {blogsByDate[date].map((item, idx) => {
+                  return (
+                    <React.Fragment key={'typ_links_' + idx}>
+                      <Typography component='span' className={classes.columnLink}>
+                        <ChevronRightIcon />
+                        <Link className={classes.link} key={'typ_link_' + idx} target='_blank' href={item.url} variant='body1'>{item.title}</Link>
+                      </Typography>
+                      <br />
+                    </React.Fragment>)
+                })}
+              </React.Fragment>
+            )
           })}
         </Typography>
       </Paper>
-    </React.Fragment>
-  );
+    </>
+  )
 }
 
-export default BlogPosts;
+export default BlogPosts
