@@ -62,7 +62,7 @@ function BlogPosts (props) {
                     <React.Fragment key={'typ_links_' + idx}>
                       <Typography component='span' className={classes.columnLink}>
                         <ChevronRightIcon />
-                        <Link className={classes.link} key={'typ_link_' + idx} target='_blank' href={item.url} variant='body1'>{item.title}</Link>
+                        <Link className={classes.link} key={'typ_link_' + idx} target='_blank' rel='noopener' href={item.url} variant='body1'>{item.title}</Link>
                       </Typography>
                       <br />
                     </React.Fragment>)

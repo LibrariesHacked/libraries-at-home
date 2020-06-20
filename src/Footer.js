@@ -41,7 +41,7 @@ function Footer (props) {
       <Divider />
       <Grid container spacing={3} className={classes.grid}>
         <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
-          <Typography variant='body1' color='secondary' className={classes.footerText}>Built by Libraries Hacked for libraries <FavoriteIcon color='error' className={classes.loveIcon} /></Typography>
+          <Typography variant='body1' color='secondary' className={classes.footerText}>Built by Libraries Hacked <FavoriteIcon color='error' className={classes.loveIcon} /></Typography>
           <Typography variant='body1'>
             <Link component={RouteLink} to='/about' title='About Libraries at home'>About</Link><br />
             <Link component={RouteLink} to='/privacy' title='Your privacy on this site'>Privacy</Link><br />
@@ -49,7 +49,7 @@ function Footer (props) {
           </Typography>
         </Grid>
         <Grid className={classes.footerRight} item xs={12} sm={6} md={6} lg={6} xl={6}>
-          <Typography variant='body1' color='secondary'>Data compiled with thanks to:</Typography>
+          <Typography variant='body1' color='secondary'>Data compiled with thanks to</Typography>
           <Typography variant='body1'>
             <Link rel='noopener' target='_blank' href='https://twitter.com/calire' title='Claire'>@calire</Link><br />
             <Link rel='noopener' target='_blank' href='https://twitter.com/shedsue' title='Sue'>@shedsue</Link><br />

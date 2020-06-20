@@ -27,8 +27,12 @@ import * as serviceHelper from './helpers/services'
 
 const theme = createMuiTheme({
   palette: {
-    primary: blue,
-    secondary: blueGrey
+    primary: {
+      main: blue[800]
+    },
+    secondary: {
+      main: blueGrey[600]
+    }
   },
   overrides: {
     MuiButton: {
