@@ -82,8 +82,8 @@ function Watch (props) {
 
   return (
     <>
-      <Typography component='h2' variant='h6' color='secondary' className={classes.subtitle}>Library TV</Typography>
-      <Typography component='p' variant='body1' color='secondary' className={classes.subtitle}>Watch videos published by library services on YouTube</Typography>
+      <Typography component='h2' variant='h6' className={classes.subtitle}>Library TV</Typography>
+      <Typography component='p' variant='body1' className={classes.subtitle}>Watch videos published by library services on YouTube</Typography>
       {Object.keys(videosByDate).map((date, idx) => {
         return (
           <React.Fragment key={'frg_dates_' + idx}>

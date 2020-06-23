@@ -49,8 +49,8 @@ function BlogPosts (props) {
   return (
     <>
       <Paper variant='outlined' className={classes.linkContainer}>
-        <Typography component='h3' variant='h6' color='secondary' className={classes.header}>Recent library blogs</Typography>
-        {loadingBlogs ? <LinearProgress color='secondary' /> : null}
+        <Typography component='h3' variant='h6' className={classes.header}>Recent library blogs</Typography>
+        {loadingBlogs ? <LinearProgress /> : null}
         <Typography component='p' variant='body1' className={classes.linkText}>
           {Object.keys(blogsByDate).slice(0, 3).map((date, blgIdx) => {
             return (

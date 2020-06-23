@@ -59,8 +59,8 @@ function Search (props) {
 
   return (
     <>
-      <Typography component='h2' variant='h6' color='secondary' className={classes.subtitle}>Library services</Typography>
-      <Typography component='p' variant='body1' color='secondary' className={classes.subtitle}>Start by finding your local library service</Typography>
+      <Typography component='h2' variant='h6' className={classes.subtitle}>Library services</Typography>
+      <Typography component='p' variant='body1' className={classes.subtitle}>Start by finding your local library service</Typography>
       <div className={classes.search}>
         <TextField
           error={errorMessage !== ''}
@@ -87,7 +87,7 @@ function Search (props) {
           }}
         />
       </div>
-      {loadingPostcode ? <LinearProgress color='secondary' /> : null}
+      {loadingPostcode ? <LinearProgress color='primary' /> : null}
       {Object.keys(service).length > 0
         ? (
           <div>

@@ -19,8 +19,8 @@ function Read (props) {
 
   return (
     <>
-      <Typography component='h2' variant='h6' color='secondary' className={classes.subtitle}>Read</Typography>
-      <Typography component='p' variant='body1' color='secondary' className={classes.subtitle}>See what library services are writing</Typography>
+      <Typography component='h2' variant='h6' className={classes.subtitle}>Read</Typography>
+      <Typography component='p' variant='body1' className={classes.subtitle}>See what library services are writing</Typography>
       <BlogPosts loadingBlogs={loadingBlogs} blogs={blogs} />
     </>
   )

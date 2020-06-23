@@ -30,10 +30,14 @@ const useStyles = makeStyles((theme) => ({
   },
   footerRight: {
     textAlign: 'right'
+  },
+  tapTarget: {
+    lineHeight: 2.2,
+    fontSize: 16
   }
 }))
 
-function Footer (props) {
+function Footer () {
   const classes = useStyles()
 
   return (
@@ -41,19 +45,21 @@ function Footer (props) {
       <Divider />
       <Grid container spacing={3} className={classes.grid}>
         <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
-          <Typography variant='body1' color='secondary' className={classes.footerText}>Built by Libraries Hacked <FavoriteIcon color='error' className={classes.loveIcon} /></Typography>
-          <Typography variant='body1'>
-            <Link component={RouteLink} to='/about' title='About Libraries at home'>About</Link><br />
-            <Link component={RouteLink} to='/privacy' title='Your privacy on this site'>Privacy</Link><br />
-            <Link component={RouteLink} to='/data' title='Data used on this site and licensing'>Data</Link>
+          <Typography variant='body2' className={classes.footerText}>Built by Libraries Hacked</Typography><br />
+          <Typography variant='button'>
+            <Link component={RouteLink} to='/about' title='About Libraries at home' className={classes.tapTarget}>About</Link><br />
+            <Link component={RouteLink} to='/accessibility' title='How we make this site accessible' className={classes.tapTarget}>Accessibility</Link><br />
+            <Link component={RouteLink} to='/privacy' title='Your privacy on this site' className={classes.tapTarget}>Privacy</Link><br />
+            <Link component={RouteLink} to='/data' title='Data used on this site and licensing' className={classes.tapTarget}>Data</Link>
           </Typography>
         </Grid>
         <Grid className={classes.footerRight} item xs={12} sm={6} md={6} lg={6} xl={6}>
-          <Typography variant='body1' color='secondary'>Data compiled with thanks to</Typography>
-          <Typography variant='body1'>
-            <Link rel='noopener' target='_blank' href='https://twitter.com/calire' title='Claire'>@calire</Link><br />
-            <Link rel='noopener' target='_blank' href='https://twitter.com/shedsue' title='Sue'>@shedsue</Link><br />
-            <Link rel='noopener' target='_blank' href='https://twitter.com/richardveevers' title='Richard'>@richardveevers</Link>
+          <Typography variant='body2'>Data compiled with thanks to</Typography>
+          <Typography variant='button'>
+            <Link rel='noopener' target='_blank' href='https://twitter.com/calire' title='Claire' className={classes.tapTarget}>@calire</Link><br />
+            <Link rel='noopener' target='_blank' href='https://twitter.com/shedsue' title='Sue' className={classes.tapTarget}>@shedsue</Link><br />
+            <Link rel='noopener' target='_blank' href='https://twitter.com/richardveevers' title='Richard' className={classes.tapTarget}>@richardveevers</Link><br />
+            <FavoriteIcon color='error' className={classes.loveIcon} />
           </Typography>
         </Grid>
       </Grid>

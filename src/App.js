@@ -43,6 +43,11 @@ const theme = createMuiTheme({
         textTransform: 'none'
       }
     },
+    MuiTypography: {
+      button: {
+        textTransform: 'none'
+      }
+    },
     MuiTab: {
       root: {
         textTransform: 'none'
@@ -102,7 +107,7 @@ function App () {
         <div className={classes.root}>
           <CssBaseline />
           <AppHeader
-            loadingServices={loadingServices} loadingVideos={loadingVideos}
+            loading={loadingServices || loadingVideos}
           />
           <Container maxWidth='lg'>
             <main className={classes.content}>
@@ -114,6 +119,7 @@ function App () {
               <Route path='/accessibility' exact render={() => <MarkdownPage page={Accessibility} />} />
               <Route path='/data' exact render={() => <MarkdownPage page={Data} />} />
               <Route path='/privacy' exact render={() => <MarkdownPage page={Privacy} />} />
+              <Route path={['/http:', '/https:']} component={props => { window.location.replace(props.location.pathname.substr(1)); return null }} />
             </main>
           </Container>
           <Container maxWidth='lg'>

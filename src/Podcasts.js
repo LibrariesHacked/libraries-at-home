@@ -39,8 +39,8 @@ function Podcasts (props) {
   return (
     <>
       <Paper variant='outlined' className={classes.linkContainer}>
-        <Typography component='h3' variant='h6' color='secondary' className={classes.header}>Library podcasts</Typography>
-        {loadingServices ? <LinearProgress color='secondary' /> : null}
+        <Typography component='h3' variant='h6' className={classes.header}>Library podcasts</Typography>
+        {loadingServices ? <LinearProgress color='primary' /> : null}
         <Typography component='p' variant='body1' className={classes.linkText}>
           {services.filter(s => s['Podcast URL'] && s['Podcast URL'] !== '').map((item, idx) => {
             return (

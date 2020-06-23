@@ -55,6 +55,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  alert: {
+    backgroundColor: 'white'
+  },
   apps: {
     display: 'flex',
     alignItems: 'center',
@@ -89,16 +92,16 @@ function Service (props) {
 
   return (
     <div className={classes.root}>
-      <Typography className={classes.header} component='h2' variant='h5' color='secondary'>{'Your library service is '}<span className={classes.serviceName}>{service.Name}</span></Typography>
+      <Typography className={classes.header} component='h2' variant='h5'>{'Your library service is '}<span className={classes.serviceName}>{service.Name}</span></Typography>
       {service['Reopen date']
         ? (
-          <Alert severity='warning'>
+          <Alert className={classes.alert} severity='warning' variant='outlined'>
             <AlertTitle>Information on reopening</AlertTitle>
             {'From ' + moment(service['Reopen date']).format('Do MMMM') + ' ' + service['Reopen info'] + '. '}
             <Button color='warning' component='a' target='_blank' href={service['Reopen info URL']}>Find out more about reopening</Button>
           </Alert>
         ) : null}
-      <Typography className={classes.socialHeader} component='h3' variant='h6' color='secondary'>Connect on social media</Typography>
+      <Typography className={classes.socialHeader} component='h3' variant='h6'>Connect on social media</Typography>
       <div className={classes.social}>
         {config.services_text.social.filter(s => s.field in service).map((social, idx) => {
           const IconName = socialIcons[social.icon]
@@ -109,17 +112,17 @@ function Service (props) {
         {config.services_text.library_service.filter(s => s.field in service).map((library, idx) => {
           return (
             <Grid key={'grd_service_' + idx} item xs={12} sm={6} md={4} lg={4} xl={4}>
-              <Alert severity='info'>
+              <Alert className={classes.alert} severity='info' variant='outlined'>
                 <AlertTitle>{library.title.replace('[service]', service.Name)}</AlertTitle>
                 {library.description}<br />
-                <Button className={classes.leadButton} variant='outlined' size='large' color='primary' startIcon={<OpenInNewIcon />} target='_blank' href={service[library.field]}>{library.link_text}</Button>
+                <Button className={classes.leadButton} size='large' color='primary' startIcon={<OpenInNewIcon />} target='_blank' href={service[library.field]}>{library.link_text}</Button>
               </Alert>
             </Grid>
           )
         })}
       </Grid>
       <Paper variant='outlined' className={classes.linkContainer}>
-        <Typography component='h3' variant='h6' color='secondary' className={classes.header}>Useful links</Typography>
+        <Typography component='h3' variant='h6' className={classes.header}>Useful links</Typography>
         <Typography component='p' variant='body1' className={classes.linkText}>
           {config.services_text.service_links.filter(s => s.field in service).map((link, idx) => {
             return (
@@ -135,7 +138,7 @@ function Service (props) {
       {service['Android app URL'] || service['iOS app URL']
         ? (
           <>
-            <Typography className={classes.appsHeader} component='h3' variant='h6' color='secondary'>Use the library on your phone</Typography>
+            <Typography className={classes.appsHeader} component='h3' variant='h6'>Use the library on your phone</Typography>
             <div className={classes.apps}>
               {service['Android app URL'] ? <IconButton component='a' className={classes.socialIcon} target='_blank' href={service['Android app URL']} title='Library app for Android'><AndroidIcon /></IconButton> : null}
               {service['iOS app URL'] ? <IconButton component='a' className={classes} target='_blank' href={service['iOS app URL']} title='Library app for iOS'><AppleIcon /></IconButton> : null}

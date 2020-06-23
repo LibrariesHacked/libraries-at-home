@@ -17,8 +17,8 @@ function Listen (props) {
 
   return (
     <>
-      <Typography component='h2' variant='h6' color='secondary' className={classes.subtitle}>Listen</Typography>
-      <Typography component='p' variant='body1' color='secondary' className={classes.subtitle}>Beautiful noise</Typography>
+      <Typography component='h2' variant='h6' className={classes.subtitle}>Listen</Typography>
+      <Typography component='p' variant='body1' className={classes.subtitle}>Beautiful noise</Typography>
       <Podcasts loading_blogs={props.loading_blogs} services={props.services} />
     </>
   )
