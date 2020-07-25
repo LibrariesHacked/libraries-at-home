@@ -45,7 +45,7 @@ function Footer () {
       <Divider />
       <Grid container spacing={3} className={classes.grid}>
         <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
-          <Typography variant='body2' className={classes.footerText}>Built by Libraries Hacked</Typography><br />
+          <Typography variant='body1' className={classes.footerText}>Built by Libraries Hacked</Typography><br />
           <Typography variant='button'>
             <Link component={RouteLink} to='/about' title='About Libraries at home' className={classes.tapTarget}>About</Link><br />
             <Link component={RouteLink} to='/accessibility' title='How we make this site accessible' className={classes.tapTarget}>Accessibility</Link><br />
@@ -54,7 +54,7 @@ function Footer () {
           </Typography>
         </Grid>
         <Grid className={classes.footerRight} item xs={12} sm={6} md={6} lg={6} xl={6}>
-          <Typography variant='body2'>Data compiled with thanks to</Typography>
+          <Typography variant='body1'>Data help from</Typography>
           <Typography variant='button'>
             <Link rel='noopener' target='_blank' href='https://twitter.com/calire' title='Claire' className={classes.tapTarget}>@calire</Link><br />
             <Link rel='noopener' target='_blank' href='https://twitter.com/shedsue' title='Sue' className={classes.tapTarget}>@shedsue</Link><br />

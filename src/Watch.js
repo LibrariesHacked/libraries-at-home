@@ -22,6 +22,9 @@ import moment from 'moment'
 
 import * as serviceHelper from './helpers/services'
 
+import { useApplicationStateValue } from './context/applicationState'
+import { useViewStateValue } from './context/viewState'
+
 const config = require('./helpers/config.json')
 
 const useStyles = makeStyles((theme) => ({
@@ -51,12 +54,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-function Watch (props) {
-  const { services, videos } = props
+function Watch () {
+  const [{ videos, services }, dispatchApplication] = useApplicationStateValue() //eslint-disable-line
+  const [{ loadingVideos }, dispatchView] = useViewStateValue() //eslint-disable-line
+  const classes = useStyles()
   const [dialogOpen, setDialogOpen] = useState(false)
   const [videoUrl, setVideoUrl] = useState('')
-
-  const classes = useStyles()
 
   const handleCloseVideoDialog = () => {
     setDialogOpen(false)
@@ -87,7 +90,7 @@ function Watch (props) {
       {Object.keys(videosByDate).map((date, idx) => {
         return (
           <React.Fragment key={'frg_dates_' + idx}>
-            <ListSubheader component='div' disableSticky>{moment(date, 'YYYY-MM-DD').calendar(null, config.calendar_display)}</ListSubheader>
+            <ListSubheader component='div' disableSticky>{moment(date, 'YYYY-MM-DD').calendar(null, config.calendarDisplay)}</ListSubheader>
             <Grid container spacing={3}>
               {videosByDate[date].map((item, idx) => {
                 const customEls = item.custom_elements

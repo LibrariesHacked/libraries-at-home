@@ -1,6 +1,5 @@
 import React from 'react'
 
-import LinearProgress from '@material-ui/core/LinearProgress'
 import Link from '@material-ui/core/Link'
 import ListSubheader from '@material-ui/core/ListSubheader'
 import Paper from '@material-ui/core/Paper'
@@ -11,6 +10,8 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRightTwoTone'
 import { makeStyles } from '@material-ui/core/styles'
 
 import moment from 'moment'
+
+import { useApplicationStateValue } from './context/applicationState'
 
 const config = require('./helpers/config.json')
 
@@ -35,8 +36,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-function BlogPosts (props) {
-  const { loadingBlogs, blogs } = props
+function BlogPosts () {
+  const [{ blogs }, dispatchApplication] = useApplicationStateValue() //eslint-disable-line
   const classes = useStyles()
 
   const blogsByDate = blogs.reduce(function (rv, x) {
@@ -50,12 +51,11 @@ function BlogPosts (props) {
     <>
       <Paper variant='outlined' className={classes.linkContainer}>
         <Typography component='h3' variant='h6' className={classes.header}>Recent library blogs</Typography>
-        {loadingBlogs ? <LinearProgress /> : null}
         <Typography component='p' variant='body1' className={classes.linkText}>
           {Object.keys(blogsByDate).slice(0, 3).map((date, blgIdx) => {
             return (
               <React.Fragment key={'frg_blogdates_' + blgIdx}>
-                <ListSubheader component='span' className={classes.columnLink}>{moment(date, 'YYYY-MM-DD').calendar(null, config.calendar_display)}</ListSubheader>
+                <ListSubheader component='span' className={classes.columnLink}>{moment(date, 'YYYY-MM-DD').calendar(null, config.calendarDisplay)}</ListSubheader>
                 <br />
                 {blogsByDate[date].map((item, idx) => {
                   return (

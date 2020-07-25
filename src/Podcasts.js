@@ -1,6 +1,5 @@
 import React from 'react'
 
-import LinearProgress from '@material-ui/core/LinearProgress'
 import Link from '@material-ui/core/Link'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
@@ -8,6 +7,8 @@ import Typography from '@material-ui/core/Typography'
 import MicIcon from '@material-ui/icons/MicTwoTone'
 
 import { makeStyles } from '@material-ui/core/styles'
+
+import { useApplicationStateValue } from './context/applicationState'
 
 const config = require('./helpers/config.json')
 
@@ -32,15 +33,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-function Podcasts (props) {
-  const { loadingServices, services } = props
+function Podcasts () {
+  const [{ services }, dispatchApplication] = useApplicationStateValue() //eslint-disable-line
   const classes = useStyles()
 
   return (
     <>
       <Paper variant='outlined' className={classes.linkContainer}>
         <Typography component='h3' variant='h6' className={classes.header}>Library podcasts</Typography>
-        {loadingServices ? <LinearProgress color='primary' /> : null}
         <Typography component='p' variant='body1' className={classes.linkText}>
           {services.filter(s => s['Podcast URL'] && s['Podcast URL'] !== '').map((item, idx) => {
             return (

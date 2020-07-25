@@ -1,10 +1,10 @@
 {
-  "postcode_api": "https://api-geography.librarydata.uk/rest/postcodes/",
-  "video_api": "https://api.librarydata.uk/services/airtable/feeds/youtube.json",
-  "blogs_api": "https://api.librarydata.uk/services/airtable/feeds/blogs.json",
-  "services_api": "https://api.librarydata.uk/services/airtable",
-  "youtube_url": "https://www.youtube.com/",
-  "calendar_display": {
+  "postcodeApi": "https://api-geography.librarydata.uk/rest/postcodes/",
+  "videoApi": "https://api.librarydata.uk/services/airtable/feeds/youtube.json",
+  "blogsApi": "https://api.librarydata.uk/services/airtable/feeds/blogs.json",
+  "servicesApi": "https://api.librarydata.uk/services/airtable",
+  "youTubeUrl": "https://www.youtube.com/",
+  "calendarDisplay": {
     "lastDay": "[From Yesterday]",
     "sameDay": "[New Today]",
     "nextDay": "[Tomorrow]",

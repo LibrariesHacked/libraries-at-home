@@ -12,14 +12,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-function Listen (props) {
+function Listen () {
   const classes = useStyles()
 
   return (
     <>
       <Typography component='h2' variant='h6' className={classes.subtitle}>Listen</Typography>
       <Typography component='p' variant='body1' className={classes.subtitle}>Beautiful noise</Typography>
-      <Podcasts loading_blogs={props.loading_blogs} services={props.services} />
+      <Podcasts />
     </>
   )
 }

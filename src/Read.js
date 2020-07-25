@@ -12,16 +12,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-function Read (props) {
-  const { loadingBlogs, blogs } = props
-
+function Read () {
   const classes = useStyles()
 
   return (
     <>
       <Typography component='h2' variant='h6' className={classes.subtitle}>Read</Typography>
       <Typography component='p' variant='body1' className={classes.subtitle}>See what library services are writing</Typography>
-      <BlogPosts loadingBlogs={loadingBlogs} blogs={blogs} />
+      <BlogPosts />
     </>
   )
 }

@@ -3,14 +3,14 @@ import axios from 'axios'
 const config = require('./config.json')
 
 export async function getServices () {
-  const url = config.services_api
+  const url = config.servicesApi
   const response = await axios.get(url)
   if (response && response.data) return response.data
   return []
 }
 
 export function getServiceYouTubeDataFromId (id) {
-  const youtubeUrl = config.youtubeUrl
+  const youtubeUrl = config.youTubeUrl
   const idTypes = {
     UC: ['channel/', 'Channel'],
     PL: ['playlist/', 'Playlist']
@@ -23,14 +23,14 @@ export function getServiceYouTubeDataFromId (id) {
 }
 
 export async function getServicesYouTubeVideos () {
-  const url = config.video_api
+  const url = config.videoApi
   const response = await axios.get(url)
   if (response && response.data) return response.data.items
   return []
 }
 
 export async function getServicesBlogs () {
-  const url = config.blogs_api
+  const url = config.blogsApi
   const response = await axios.get(url)
   if (response && response.data) return response.data.items
   return []
