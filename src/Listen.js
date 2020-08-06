@@ -7,6 +7,10 @@ import { makeStyles } from '@material-ui/core/styles'
 import Podcasts from './Podcasts'
 
 const useStyles = makeStyles((theme) => ({
+  header: {
+    textAlign: 'center',
+    fontWeight: 700
+  },
   subtitle: {
     textAlign: 'center'
   }
@@ -17,7 +21,7 @@ function Listen () {
 
   return (
     <>
-      <Typography component='h2' variant='h6' className={classes.subtitle}>Listen</Typography>
+      <Typography component='h2' variant='h5' className={classes.header}>Listen</Typography>
       <Typography component='p' variant='body1' className={classes.subtitle}>Beautiful noise</Typography>
       <Podcasts />
     </>

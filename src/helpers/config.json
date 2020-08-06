@@ -18,56 +18,59 @@
         "field": "Instagram name",
         "icon": "InstagramIcon",
         "url": "https://www.instagram.com/",
-        "title": "See library pictures on Instagram"
+        "title": "See pictures on Instagram",
+        "colour": "#405DE6"
       },
       {
         "field": "Facebook page name",
         "icon": "FacebookIcon",
         "url": "https://www.facebook.com/",
-        "title": "Follow the library on Facebook"
+        "title": "Follow on Facebook",
+        "colour": "#4267B2"
       },
       {
         "field": "Twitter handle",
         "icon": "TwitterIcon",
         "url": "https://twitter.com/",
-        "title": "See library tweets on twitter"
+        "title": "See library tweets",
+        "colour": "#1DA1F2"
       }
     ],
     "library_service": [
       {
         "field": "Service URL",
-        "title": "Visit [service] libraries website",
-        "description": "Information to help you use your library",
+        "title": "Visit [service] website",
+        "description": "Information about your library service",
         "link_text": "Go to the website"
       },
       {
         "field": "Catalogue URL",
         "title": "Browse the catalogue",
-        "description": "Find items in your libraries",
+        "description": "Find an item to borrow",
         "link_text": "Online catalogue"
       },
       {
         "field": "New member URL",
         "title": "Join [service] libraries",
-        "description": "Start having fun with libraries",
+        "description": "Start having fun",
         "link_text": "Join now"
       },
       {
         "field": "Childrens service URL",
         "title": "Info for children",
-        "description": "Libraries are for everyone",
+        "description": "Libraries for everyone",
         "link_text": "See children's services"
       },
       {
         "field": "Audiobook URL",
         "title": "Library audiobooks",
-        "description": "Listen to stories from libraries",
+        "description": "Listen to stories",
         "link_text": "Find an audiobook"
       },
       {
         "field": "Ebook URL",
         "title": "Library ebooks",
-        "description": "Read ebooks on your devices",
+        "description": "Read ebooks on devices",
         "link_text": "Find an ebook"
       }
     ],
@@ -78,31 +81,31 @@
       },
       {
         "field": "Mobile libraries URL",
-        "text": "Find out when the mobile library visits"
+        "text": "Discover when the mobile library visits"
       },
       {
         "field": "Home service URL",
-        "text": "Check if the library service can come to your home"
+        "text": "Check if the library can come to your home"
       },
       {
         "field": "Events URL",
-        "text": "See events going on in libraries"
+        "text": "See events in libraries"
       },
       {
         "field": "Computer access URL",
-        "text": "Use a computer in the library"
+        "text": "Book a computer in the library"
       },
       {
         "field": "Wifi access URL",
-        "text": "Use Wifi on your own device in the library"
+        "text": "Use Wifi in the library"
       },
       {
         "field": "Fees and charges URL",
-        "text": "Understand the fees and charges for library services"
+        "text": "Understand fees and charges for library services"
       },
       {
         "field": "News or Blog URL",
-        "text": "Read latest news from the library"
+        "text": "Read latest library news"
       },
       {
         "field": "Podcast URL",

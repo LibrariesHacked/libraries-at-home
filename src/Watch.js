@@ -11,7 +11,7 @@ import ListSubheader from '@material-ui/core/ListSubheader'
 import Tooltip from '@material-ui/core/Tooltip'
 import Typography from '@material-ui/core/Typography'
 
-import MovieIcon from '@material-ui/icons/MovieTwoTone'
+import PlayIcon from '@material-ui/icons/PlayCircleOutlineTwoTone'
 import PlaylistPlay from '@material-ui/icons/PlaylistPlayTwoTone'
 
 import { makeStyles } from '@material-ui/core/styles'
@@ -28,6 +28,10 @@ import { useViewStateValue } from './context/viewState'
 const config = require('./helpers/config.json')
 
 const useStyles = makeStyles((theme) => ({
+  header: {
+    fontWeight: 700,
+    textAlign: 'center'
+  },
   subtitle: {
     textAlign: 'center'
   },
@@ -38,13 +42,18 @@ const useStyles = makeStyles((theme) => ({
     height: 150
   },
   overlay: {
-    fontWeight: 500,
     color: '#ffffff',
     position: 'absolute',
     top: '0px',
     left: '0px',
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
     width: '100%'
+  },
+  overlayTitle: {
+    fontWeight: 700
+  },
+  playIcon: {
+    color: '#2e7d32'
   },
   rating: {
     marginLeft: theme.spacing(1)
@@ -85,7 +94,7 @@ function Watch () {
 
   return (
     <>
-      <Typography component='h2' variant='h6' className={classes.subtitle}>Library TV</Typography>
+      <Typography component='h2' variant='h5' className={classes.header}>Library TV</Typography>
       <Typography component='p' variant='body1' className={classes.subtitle}>Watch videos published by library services on YouTube</Typography>
       {Object.keys(videosByDate).map((date, idx) => {
         return (
@@ -114,11 +123,11 @@ function Watch () {
                         title={item.title}
                       />
                       <CardContent className={classes.overlay}>
-                        <Typography variant='caption' component='p'>{item.title}</Typography>
+                        <Typography className={classes.overlayTitle} variant='caption' component='p'>{item.title}</Typography>
                       </CardContent>
                       <CardActions>
-                        <Button size='small' color='primary' startIcon={<MovieIcon />} onClick={handlePlayVideo.bind(this, item.guid)}>Play</Button>
-                        {service ? <Button size='small' color='primary' startIcon={<PlaylistPlay />} target='_blank' rel='noopener' href={serviceYtData.url}>{service.Name}</Button> : null}
+                        <Button size='small' className={classes.playIcon} startIcon={<PlayIcon />} onClick={handlePlayVideo.bind(this, item.guid)}>Play</Button>
+                        {service ? <Button size='small' color='secondary' startIcon={<PlaylistPlay />} target='_blank' rel='noopener' href={serviceYtData.url}>{service.Name}</Button> : null}
                         {
                           mediaStarRating && rating && rating > 0
                             ? (

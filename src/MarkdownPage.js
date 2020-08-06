@@ -63,12 +63,12 @@ const options = {
       component: Typography,
       props: {
         gutterBottom: true,
-        variant: 'h3',
+        variant: 'h4',
         color: 'secondary'
       }
     },
-    h2: { component: Typography, props: { gutterBottom: true, variant: 'h4', color: 'secondary' } },
-    h3: { component: Typography, props: { gutterBottom: true, variant: 'h5', color: 'secondary' } },
+    h2: { component: Typography, props: { gutterBottom: true, variant: 'h5', color: 'secondary' } },
+    h3: { component: Typography, props: { gutterBottom: true, variant: 'h6', color: 'secondary' } },
     h4: {
       component: Typography,
       props: { gutterBottom: true, variant: 'h6', paragraph: true, color: 'secondary' }

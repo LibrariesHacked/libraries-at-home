@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme) => ({
   },
   header: {
     marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1)
+    marginBottom: theme.spacing(1),
+    fontWeight: 700
   },
   linkContainer: {
     marginTop: theme.spacing(2),
@@ -39,16 +40,15 @@ function Podcasts () {
 
   return (
     <>
-      <Paper variant='outlined' className={classes.linkContainer}>
+      <Paper elevation={0} className={classes.linkContainer}>
         <Typography component='h3' variant='h6' className={classes.header}>Library podcasts</Typography>
         <Typography component='p' variant='body1' className={classes.linkText}>
           {services.filter(s => s['Podcast URL'] && s['Podcast URL'] !== '').map((item, idx) => {
             return (
               <React.Fragment key={'frg_podcasts_' + idx}>
                 <Typography component='span' className={classes.columnLink}>
-                  <MicIcon />
-                  <span>{item[config.podcasts.service_name_field]}.&nbsp;</span>
-                  <Link className={classes.link} rel='noopener' target='_blank' href={item[config.podcasts.url_field]} variant='body1'>{item[config.podcasts.podcast_name_field]}</Link>
+                  <MicIcon color='secondary' />
+                  <Link className={classes.link} rel='noopener' target='_blank' href={item[config.podcasts.url_field]} variant='body1'>{item[config.podcasts.service_name_field] + '. ' + item[config.podcasts.podcast_name_field]}</Link>
                 </Typography>
                 <br />
               </React.Fragment>)
