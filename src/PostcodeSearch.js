@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: theme.spacing(),
     paddingBottom: theme.spacing(),
     paddingLeft: theme.spacing(2),
-    fontWeight: 500
+    fontWeight: theme.typography.fontWeightBold
   },
   search: {
     position: 'relative',

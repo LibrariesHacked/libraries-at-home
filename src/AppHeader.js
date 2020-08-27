@@ -202,7 +202,7 @@ function AppHeader (props) {
                       to={(tabValue === site ? link.to : sites[tabValue].url + link.to)}
                       disableRipple={location.pathname === link.to}
                       disableFocusRipple={location.pathname === link.to}
-                      color={(tabValue === site && location.pathname === link.to ? 'secondary' : 'primary')}
+                      color='secondary'
                     >
                       {link.icon}
                     </IconButton>
@@ -219,7 +219,7 @@ function AppHeader (props) {
                       to={(tabValue === site ? link.to : sites[tabValue].url + link.to)}
                       disableRipple={location.pathname === link.to}
                       disableFocusRipple={location.pathname === link.to}
-                      color={(tabValue === site && location.pathname === link.to ? 'secondary' : 'primary')}
+                      color='secondary'
                       size='large'
                     >
                       {link.icon}{link.short}
@@ -237,7 +237,7 @@ function AppHeader (props) {
                       to={(tabValue === site ? link.to : sites[tabValue].url + link.to)}
                       disableRipple={location.pathname === link.to}
                       disableFocusRipple={location.pathname === link.to}
-                      color={(tabValue === site && location.pathname === link.to ? 'secondary' : 'primary')}
+                      color='secondary'
                       size='large'
                     >
                       {link.icon}{link.title}

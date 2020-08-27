@@ -19,8 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   header: {
     marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-    fontWeight: 700
+    marginBottom: theme.spacing(1)
   },
   linkContainer: {
     marginTop: theme.spacing(2),

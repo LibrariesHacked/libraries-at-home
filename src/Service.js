@@ -33,7 +33,6 @@ const socialIcons = {
 
 const useStyles = makeStyles((theme) => ({
   alertTitle: {
-    fontWeight: 700
   },
   centerHeader: {
     marginTop: theme.spacing(1),
@@ -43,22 +42,20 @@ const useStyles = makeStyles((theme) => ({
   header: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
-    textAlign: 'center',
-    fontWeight: 700
+    textAlign: 'center'
   },
   socialHeader: {
     textAlign: 'center'
   },
   appsHeader: {
     marginTop: theme.spacing(2),
-    textAlign: 'center',
-    fontWeight: 700
+    textAlign: 'center'
   },
   root: {
     paddingTop: theme.spacing(2)
   },
   serviceName: {
-    fontWeight: 700
+    fontWeight: theme.typography.fontWeightBold
   },
   social: {
     display: 'flex',
@@ -117,7 +114,8 @@ function Service () {
                     className={classes.socialIcon}
                     target='_blank'
                     href={social.url + service[social.field]}
-                    title={social.title}>
+                    title={social.title}
+                  >
                     <IconName />
                   </IconButton>
                 )

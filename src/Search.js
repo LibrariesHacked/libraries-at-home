@@ -21,8 +21,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '5px'
   },
   title: {
-    textAlign: 'center',
-    fontWeight: 700
+    textAlign: 'center'
   }
 }))
 
@@ -30,7 +29,7 @@ function Search () {
   const classes = useStyles()
   return (
     <>
-      <Typography component='h2' variant='h5' className={classes.title}>Your library service</Typography>
+      <Typography component='h2' variant='h6' color='secondary' className={classes.title}>Your library service</Typography>
       <Typography component='p' variant='body1' className={classes.subtitle}>Search by postcode to find library services in your area</Typography>
       <div className={classes.search}>
         <PostcodeSearch settings={false} />

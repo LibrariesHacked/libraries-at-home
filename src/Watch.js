@@ -29,7 +29,6 @@ const config = require('./helpers/config.json')
 
 const useStyles = makeStyles((theme) => ({
   header: {
-    fontWeight: 700,
     textAlign: 'center'
   },
   subtitle: {
@@ -50,7 +49,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%'
   },
   overlayTitle: {
-    fontWeight: 700
   },
   playIcon: {
     color: '#2e7d32'
@@ -94,7 +92,7 @@ function Watch () {
 
   return (
     <>
-      <Typography component='h2' variant='h5' className={classes.header}>Library TV</Typography>
+      <Typography component='h2' variant='h6' color='secondary' className={classes.header}>Library TV</Typography>
       <Typography component='p' variant='body1' className={classes.subtitle}>Watch videos published by library services on YouTube</Typography>
       {Object.keys(videosByDate).map((date, idx) => {
         return (
