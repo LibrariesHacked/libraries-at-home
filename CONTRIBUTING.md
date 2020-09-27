@@ -1,4 +1,4 @@
-# Contributing to Libraries Hacked
+# Contributing to Libraries Hacked projects
 
 :+1::tada: First off, thanks for taking the time to contribute! :tada::+1:
 
@@ -33,13 +33,9 @@ This project and everyone participating in it is governed by a [Code of Conduct]
 
 This section guides you through submitting a bug report. Following these guidelines helps maintainers and the community understand your report :pencil:, reproduce the behavior :computer: :computer:, and find related reports :mag_right:.
 
-Before creating bug reports, please check [this list](#before-submitting-a-bug-report) as you might find out that you don't need to create one. When you are creating a bug report, please [include as many details as possible](#how-do-i-submit-a-good-bug-report).
+Before creating bug reports, please perform a [cursory search](https://github.com/search?q=+is%3Aissue+user%3Alibrarieshacked)** to see if the problem has already been reported. If it has **and the issue is still open**, add a comment to the existing issue instead of opening a new one. When you are creating a bug report, please [include as many details as possible](#how-do-i-submit-a-good-bug-report).
 
 > **Note:** If you find a **Closed** issue that seems like it is the same thing that you're experiencing, open a new issue and include a link to the original issue in the body of your new one.
-
-#### Before Submitting A Bug Report
-
-* **Perform a [cursory search](https://github.com/search?q=+is%3Aissue+user%3Alibrarieshacked)** to see if the problem has already been reported. If it has **and the issue is still open**, add a comment to the existing issue instead of opening a new one.
 
 #### How Do I Submit A (Good) Bug Report?
 
@@ -65,11 +61,7 @@ Include details about your configuration and environment:
 
 This section guides you through submitting an enhancement suggestion, including completely new features and minor improvements to existing functionality. Following these guidelines helps maintainers and the community understand your suggestion :pencil: and find related suggestions :mag_right:.
 
-Before creating enhancement suggestions, please check [this list](#before-submitting-an-enhancement-suggestion) as you might find out that you don't need to create one. When you are creating an enhancement suggestion, please [include as many details as possible](#how-do-i-submit-a-good-enhancement-suggestion).
-
-#### Before Submitting An Enhancement Suggestion
-
-* **Perform a [cursory search](https://github.com/search?q=+is%3Aissue+user%3Alibrarieshacked)** to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
+Before creating enhancement suggestions, please perform a [cursory search](https://github.com/search?q=+is%3Aissue+user%3Alibrarieshacked) to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one. When you are creating an enhancement suggestion, please [include as many details as possible](#how-do-i-submit-a-good-enhancement-suggestion).
 
 #### How Do I Submit A (Good) Enhancement Suggestion?
 

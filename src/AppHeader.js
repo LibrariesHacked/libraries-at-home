@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 import AppBar from '@material-ui/core/AppBar'
 import Button from '@material-ui/core/Button'
+import Chip from '@material-ui/core/Chip'
 import Container from '@material-ui/core/Container'
 import Hidden from '@material-ui/core/Hidden'
 import IconButton from '@material-ui/core/IconButton'
@@ -11,22 +12,23 @@ import Tab from '@material-ui/core/Tab'
 import Tabs from '@material-ui/core/Tabs'
 import Toolbar from '@material-ui/core/Toolbar'
 import Tooltip from '@material-ui/core/Tooltip'
-import Typography from '@material-ui/core/Typography'
 
-import BusinessIcon from '@material-ui/icons/BusinessTwoTone'
-import DirectionBusIcon from '@material-ui/icons/DirectionsBusTwoTone'
-import WeekendIcon from '@material-ui/icons/WeekendTwoTone'
-import LocationOnIcon from '@material-ui/icons/LocationOnTwoTone'
-import MapIcon from '@material-ui/icons/MapTwoTone'
 import BookIcon from '@material-ui/icons/BookTwoTone'
+import CancelIcon from '@material-ui/icons/CancelTwoTone'
+import DirectionBusIcon from '@material-ui/icons/DirectionsBusTwoTone'
+import GridOnIcon from '@material-ui/icons/GridOnTwoTone'
 import HeadsetIcon from '@material-ui/icons/HeadsetTwoTone'
+import ImportContactsIcon from '@material-ui/icons/ImportContactsTwoTone'
+import MapIcon from '@material-ui/icons/MapTwoTone'
 import MovieIcon from '@material-ui/icons/MovieTwoTone'
 import SearchIcon from '@material-ui/icons/SearchTwoTone'
-import WidgetsIcon from '@material-ui/icons/WidgetsTwoTone'
+import PetsIcon from '@material-ui/icons/PetsTwoTone'
 
 import { makeStyles } from '@material-ui/core/styles'
 
 import PostcodeSearch from './PostcodeSearch'
+
+import { useSearchStateValue } from './context/searchState'
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -42,12 +44,18 @@ const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1
   },
-  iconTitle: {
-    marginLeft: theme.spacing(1)
+  siteTitle: {
+    margin: theme.spacing(1),
+    padding: theme.spacing(1),
+    display: 'inline-block',
+    verticalAlign: 'middle',
+    color: theme.palette.primary.main,
+    backgroundColor: 'rgba(250, 250, 250, 0.8)',
+    border: '1px solid #e5e5e5',
+    borderRadius: 26
   },
-  tabBar: {
-    borderTop: '1px solid #e8e8e8',
-    borderBottom: '1px solid #e8e8e8'
+  siteTitleIcon: {
+    verticalAlign: 'sub'
   },
   title: {
     margin: theme.spacing(2),
@@ -69,6 +77,7 @@ const useStyles = makeStyles((theme) => ({
 
 function AppHeader (props) {
   const { site } = props
+  const [{ currentServiceSystemName }, dispatchSearch] = useSearchStateValue() //eslint-disable-line
 
   const [appsOpen, setAppsOpen] = useState(false)
   const [tabValue, setTabValue] = useState(site)
@@ -76,33 +85,51 @@ function AppHeader (props) {
   const location = useLocation()
   const classes = useStyles()
 
+  const currentServicePath = (path) => {
+    if (currentServiceSystemName) return path + '?service=' + currentServiceSystemName
+    return path
+  }
+
   const sites = [
+    {
+      title: 'Library lab',
+      url: 'https://www.librarylab.uk',
+      icon: <PetsIcon />,
+      links: [
+        {
+          title: 'About library lab',
+          short: 'Lab',
+          icon: <PetsIcon />,
+          to: '/'
+        }
+      ]
+    },
     {
       title: 'Libraries at home',
       url: 'https://www.librariesathome.co.uk',
-      icon: <WeekendIcon />,
+      icon: <ImportContactsIcon />,
       links: [
         {
-          title: <span className={classes.iconTitle}>Search</span>,
-          short: <span className={classes.iconTitle}>Search</span>,
+          title: 'Find service',
+          short: 'Find',
           icon: <SearchIcon />,
-          to: '/'
+          to: currentServicePath('/')
         },
         {
-          title: <span className={classes.iconTitle}>Watch</span>,
-          short: <span className={classes.iconTitle}>Watch</span>,
+          title: 'Watch library TV',
+          short: 'Watch',
           icon: <MovieIcon />,
           to: '/watch'
         },
         {
-          title: <span className={classes.iconTitle}>Read</span>,
-          short: <span className={classes.iconTitle}>Read</span>,
+          title: 'Read blogs',
+          short: 'Read',
           icon: <BookIcon />,
           to: '/read'
         },
         {
-          title: <span className={classes.iconTitle}>Listen</span>,
-          short: <span className={classes.iconTitle}>Listen</span>,
+          title: 'Listen podcasts',
+          short: 'Listen',
           icon: <HeadsetIcon />,
           to: '/listen'
         }
@@ -114,20 +141,20 @@ function AppHeader (props) {
       icon: <DirectionBusIcon />,
       links: [
         {
-          title: <span className={classes.iconTitle}>Mobile vans</span>,
-          short: <span className={classes.iconTitle}>Vans</span>,
+          title: 'Find my stop',
+          short: 'Stops',
+          icon: <GridOnIcon />,
+          to: '/stops'
+        },
+        {
+          title: 'Mobile vans',
+          short: 'Vans',
           icon: <DirectionBusIcon />,
           to: '/'
         },
         {
-          title: <span className={classes.iconTitle}>Stop locations</span>,
-          short: <span className={classes.iconTitle}>Stops</span>,
-          icon: <LocationOnIcon />,
-          to: '/stops'
-        },
-        {
-          title: <span className={classes.iconTitle}>Map</span>,
-          short: <span className={classes.iconTitle}>Map</span>,
+          title: 'Map of stops',
+          short: 'Map',
           icon: <MapIcon />,
           to: '/map'
         }
@@ -139,16 +166,16 @@ function AppHeader (props) {
       icon: <MapIcon />,
       links: [
         {
-          title: <span className={classes.iconTitle}>Libraries</span>,
-          short: <span className={classes.iconTitle}>Libraries</span>,
-          icon: <BusinessIcon />,
-          to: '/'
+          title: 'Find my library',
+          short: 'Find',
+          icon: <GridOnIcon />,
+          to: currentServicePath('/')
         },
         {
-          title: <span className={classes.iconTitle}>Library map</span>,
-          short: <span className={classes.iconTitle}>Map</span>,
+          title: 'Map of libraries',
+          short: 'Map',
           icon: <MapIcon />,
-          to: '/map'
+          to: currentServicePath('/map')
         }
       ]
     }
@@ -159,22 +186,28 @@ function AppHeader (props) {
   return (
     <>
       <Container maxWidth='lg' className={classes.topTitle}>
-        <IconButton className={classes.topIcon} color='primary' onClick={() => { setAppsOpen(!appsOpen); setTabValue(site) }}>
-          <WidgetsIcon />
-        </IconButton>
-        <Typography color='secondary' variant='h6' component='h1' className={classes.title}>{sites[site].title}</Typography>
+        <Toolbar>
+          <IconButton className={classes.topIcon} color='primary' onClick={() => { setAppsOpen(!appsOpen); setTabValue(site) }}>
+            {appsOpen ? <CancelIcon /> : <PetsIcon />}
+          </IconButton>
+          <span className={classes.grow} />
+          <Chip
+            label={sites[site].title}
+            color='secondary'
+          />
+        </Toolbar>
       </Container>
       {appsOpen ? (
-        <AppBar position='static' color='default' elevation={0}>
+        <AppBar position='static' color='default' elevation={0} className={appBarClass}>
           <Container maxWidth='lg'>
             <Tabs
-              className={classes.tabBar}
+              centered
               value={tabValue}
               onChange={(e, v) => { setTabValue(v) }}
               variant='scrollable'
               scrollButtons='on'
               indicatorColor='primary'
-              textColor='primary'
+              textColor='secondary'
             >
               {sites.map((s, idx) => {
                 return (
@@ -193,24 +226,7 @@ function AppHeader (props) {
       >
         <Container maxWidth='lg'>
           <Toolbar>
-            <Hidden smUp>
-              {sites[tabValue].links.map((link, idx) => {
-                return (
-                  <Tooltip title={link.title} key={'icnb_menu_md_' + idx}>
-                    <IconButton
-                      component={Link}
-                      to={(tabValue === site ? link.to : sites[tabValue].url + link.to)}
-                      disableRipple={location.pathname === link.to}
-                      disableFocusRipple={location.pathname === link.to}
-                      color='secondary'
-                    >
-                      {link.icon}
-                    </IconButton>
-                  </Tooltip>
-                )
-              })}
-            </Hidden>
-            <Hidden xsDown mdUp>
+            <Hidden mdUp>
               {sites[tabValue].links.map((link, idx) => {
                 return (
                   <Tooltip title={link.title} key={'icnb_menu_lg_' + idx}>
@@ -221,8 +237,9 @@ function AppHeader (props) {
                       disableFocusRipple={location.pathname === link.to}
                       color='secondary'
                       size='large'
+                      startIcon={link.icon}
                     >
-                      {link.icon}{link.short}
+                      {link.short}
                     </Button>
                   </Tooltip>
                 )
@@ -239,8 +256,9 @@ function AppHeader (props) {
                       disableFocusRipple={location.pathname === link.to}
                       color='secondary'
                       size='large'
+                      startIcon={link.icon}
                     >
-                      {link.icon}{link.title}
+                      {link.title}
                     </Button>
                   </Tooltip>
                 )

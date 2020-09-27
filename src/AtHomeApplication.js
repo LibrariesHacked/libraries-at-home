@@ -72,7 +72,7 @@ function AtHomeApplication () {
     <BrowserRouter>
       <div className={classes.root}>
         <AppHeader
-          site={0}
+          site={1}
           loading={loadingServices || loadingVideos || loadingBlogs}
         />
         {loading ? <LinearProgress color='primary' /> : null}

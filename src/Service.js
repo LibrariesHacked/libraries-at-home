@@ -2,7 +2,6 @@ import React from 'react'
 
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
-import IconButton from '@material-ui/core/IconButton'
 import Link from '@material-ui/core/Link'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
@@ -69,8 +68,7 @@ const useStyles = makeStyles((theme) => ({
   },
   socialIcon: {
     marginBottom: theme.spacing(2),
-    marginRight: theme.spacing(1),
-    background: '#ffffff'
+    marginRight: theme.spacing(1)
   },
   appsIcon: {
     margin: theme.spacing(1)
@@ -105,21 +103,32 @@ function Service () {
               {config.services_text.social.filter(s => s.field in service).map((social, idx) => {
                 const IconName = socialIcons[social.icon]
                 return (
-                  <IconButton
+                  <Button
+                    key={'icn_social_' + idx}
                     style={
                       { color: social.colour }
                     }
-                    key={'icn_social_' + idx}
-                    component='a'
                     className={classes.socialIcon}
                     target='_blank'
                     href={social.url + service[social.field]}
                     title={social.title}
+                    startIcon={<IconName />}
                   >
-                    <IconName />
-                  </IconButton>
+                    {social.title}
+                  </Button>
                 )
               })}
+            </div>
+            <div className={classes.social}>
+              {service['Android app URL'] || service['iOS app URL']
+                ? (
+                  <>
+                    <div className={classes.apps}>
+                      {service['Android app URL'] ? <Button color='primary' className={classes.socialIcon} target='_blank' href={service['Android app URL']} title='Library app for Android' startIcon={<AndroidIcon />}>Library app for Android</Button> : null}
+                      {service['iOS app URL'] ? <Button color='primary' className={classes.socialIcon} target='_blank' href={service['iOS app URL']} title='Library app for iOS' startIcon={<AppleIcon />}>Library app for iOS</Button> : null}
+                    </div>
+                  </>
+                ) : null}
             </div>
             <Grid container spacing={3}>
               {config.services_text.library_service.filter(s => s.field in service).map((library, idx) => {
@@ -148,16 +157,6 @@ function Service () {
                 })}
               </Typography>
             </Paper>
-            {service['Android app URL'] || service['iOS app URL']
-              ? (
-                <>
-                  <Typography className={classes.appsHeader} component='h3' variant='h6'>Use the library on your phone</Typography>
-                  <div className={classes.apps}>
-                    {service['Android app URL'] ? <IconButton color='secondary' component='a' className={classes.socialIcon} target='_blank' href={service['Android app URL']} title='Library app for Android'><AndroidIcon /></IconButton> : null}
-                    {service['iOS app URL'] ? <IconButton color='secondary' component='a' className={classes.socialIcon} target='_blank' href={service['iOS app URL']} title='Library app for iOS'><AppleIcon /></IconButton> : null}
-                  </div>
-                </>
-              ) : null}
           </>) : null}
     </div>
   )
