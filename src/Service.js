@@ -124,8 +124,8 @@ function Service () {
                 ? (
                   <>
                     <div className={classes.apps}>
-                      {service['Android app URL'] ? <Button color='primary' className={classes.socialIcon} target='_blank' href={service['Android app URL']} title='Library app for Android' startIcon={<AndroidIcon />}>Library app for Android</Button> : null}
-                      {service['iOS app URL'] ? <Button color='primary' className={classes.socialIcon} target='_blank' href={service['iOS app URL']} title='Library app for iOS' startIcon={<AppleIcon />}>Library app for iOS</Button> : null}
+                      {service['Android app URL'] ? <Button size='large' color='primary' className={classes.socialIcon} target='_blank' href={service['Android app URL']} title='Library app for Android' startIcon={<AndroidIcon />}>Library app for Android</Button> : null}
+                      {service['iOS app URL'] ? <Button size='large' color='primary' className={classes.socialIcon} target='_blank' href={service['iOS app URL']} title='Library app for iOS' startIcon={<AppleIcon />}>Library app for iOS</Button> : null}
                     </div>
                   </>
                 ) : null}
