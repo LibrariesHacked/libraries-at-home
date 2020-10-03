@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 
+import CircularProgress from '@material-ui/core/CircularProgress'
 import IconButton from '@material-ui/core/IconButton'
 import InputBase from '@material-ui/core/InputBase'
 import ListSubheader from '@material-ui/core/ListSubheader'
@@ -25,7 +26,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1
   },
   iconButton: {
-    padding: 10
+    padding: theme.spacing()
+  },
+  iconProgress: {
+    margin: theme.spacing()
   },
   inputInput: {
     paddingTop: theme.spacing(),
@@ -61,7 +65,7 @@ function PostcodeSearch (props) {
   const { settings } = props
   const [{ services }, dispatchApplication] = useApplicationStateValue() //eslint-disable-line
   const [{ searchType, searchPostcode, searchDistance }, dispatchSearch] = useSearchStateValue() //eslint-disable-line
-  const [{ }, dispatchView] = useViewStateValue() //eslint-disable-line
+  const [{ loadingPostcode }, dispatchView] = useViewStateValue() //eslint-disable-line
 
   const [tempPostcode, setTempPostcode] = useState(searchPostcode)
   const [anchor, setAnchor] = useState(null)
@@ -110,12 +114,14 @@ function PostcodeSearch (props) {
         }}
         value={tempPostcode}
         onChange={(e) => setTempPostcode(e.target.value.toUpperCase())}
+        onKeyDown={(e) => { if (e.keyCode === 13) postcodeSearch() }}
       />
       <div className={classes.grow} />
       {searchType === 'postcode'
         ? (
           <Tooltip title='Clear search'>
             <IconButton
+              aria-label='Clear search'
               className={classes.iconButton}
               onClick={() => dispatchSearch({ type: 'ClearAll' })}
             >
@@ -125,18 +131,23 @@ function PostcodeSearch (props) {
         )
         : null}
       <Tooltip title='Search by postcode'>
-        <IconButton
-          color='primary'
-          className={classes.iconButton}
-          onClick={() => postcodeSearch()}
-        >
-          <SearchIcon />
-        </IconButton>
+        {!loadingPostcode
+          ? (
+            <IconButton
+              aria-label='Search'
+              color='primary'
+              className={classes.iconButton}
+              onClick={() => postcodeSearch()}
+            >
+              <SearchIcon />
+            </IconButton>
+          ) : <CircularProgress size={22} className={classes.iconProgress} />}
       </Tooltip>
       {settings
         ? (
           <Tooltip title='Change search settings'>
             <IconButton
+              aria-label='Open search settings menu'
               className={classes.iconButton}
               color='secondary'
               onClick={(e) => { openSettingsMenu(e) }}

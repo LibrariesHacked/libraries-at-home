@@ -144,13 +144,13 @@ function AppHeader (props) {
           title: 'Find my stop',
           short: 'Stops',
           icon: <GridOnIcon />,
-          to: '/stops'
+          to: '/'
         },
         {
           title: 'Mobile vans',
           short: 'Vans',
           icon: <DirectionBusIcon />,
-          to: '/'
+          to: '/mobiles'
         },
         {
           title: 'Map of stops',
@@ -187,7 +187,7 @@ function AppHeader (props) {
     <>
       <Container maxWidth='lg' className={classes.topTitle}>
         <Toolbar>
-          <IconButton className={classes.topIcon} color='primary' onClick={() => { setAppsOpen(!appsOpen); setTabValue(site) }}>
+          <IconButton aria-label='Toggle site menu' className={classes.topIcon} color='primary' onClick={() => { setAppsOpen(!appsOpen); setTabValue(site) }}>
             {appsOpen ? <CancelIcon /> : <PetsIcon />}
           </IconButton>
           <span className={classes.grow} />
