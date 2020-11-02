@@ -7,6 +7,7 @@ import ListSubheader from '@material-ui/core/ListSubheader'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import Tooltip from '@material-ui/core/Tooltip'
+import MyLocationIcon from '@material-ui/icons/MyLocation';
 
 import { fade } from '@material-ui/core/styles/colorManipulator'
 import { makeStyles } from '@material-ui/core/styles'
@@ -53,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-function usePrevious (value) {
+function usePrevious(value) {
   const ref = useRef()
   useEffect(() => {
     ref.current = value
@@ -61,7 +62,7 @@ function usePrevious (value) {
   return ref.current
 }
 
-function PostcodeSearch (props) {
+function PostcodeSearch(props) {
   const { settings } = props
   const [{ services }, dispatchApplication] = useApplicationStateValue() //eslint-disable-line
   const [{ searchType, searchPostcode, searchDistance }, dispatchSearch] = useSearchStateValue() //eslint-disable-line
@@ -69,11 +70,44 @@ function PostcodeSearch (props) {
 
   const [tempPostcode, setTempPostcode] = useState(searchPostcode)
   const [anchor, setAnchor] = useState(null)
+  const [locationLoading, setLocationLoading] = useState(false)
+  const [lonLat, setLonLat] = useState([])
 
   const prevProps = usePrevious({ searchPostcode })
+
   useEffect(() => {
     if (prevProps && searchPostcode !== prevProps.searchPostcode) setTempPostcode(searchPostcode)
-  }, [searchPostcode]) // eslint-disable-line
+
+    const getLocation = async () => {
+      if (locationLoading){
+        const pos = await geoHelper.getCurrentPosition()
+        setLonLat(pos)
+        setLocationLoading(false)
+      }
+    }
+
+    const search = async (postcode) => {
+      dispatchView({ type: 'ToggleLoadingPostcode' })
+      dispatchView({ type: 'LoadingPostcode' })
+      const service = await geoHelper.getServiceDataFromPostcode(postcode, services)
+      dispatchSearch({ type: 'SetPostcodeSearch', searchPostcode: tempPostcode, searchPosition: service.location })
+      dispatchSearch({ type: 'SetService', service: service.service })
+      dispatchView({ type: 'ToggleLoadingPostcode' })
+    }
+
+    const getPostcode = async () => {
+      let postcode = null
+      if (lonLat.length > 0) {
+        postcode = await geoHelper.getCurrentPostcode(...lonLat)
+      }
+      if (postcode) {
+        setTempPostcode(postcode)
+        search(postcode)
+      }
+    }
+    getLocation()
+    getPostcode()
+  }, [searchPostcode, locationLoading, lonLat]) // eslint-disable-line
 
   const openSettingsMenu = (e) => setAnchor(e.currentTarget)
 
@@ -84,7 +118,6 @@ function PostcodeSearch (props) {
     dispatchSearch({ type: 'SetSearchDistance', searchDistance: searchDistance })
     if (searchType === 'postcode') postcodeSearch()
   }
-
   const postcodeSearch = async () => {
     dispatchView({ type: 'ToggleLoadingPostcode' })
     if (tempPostcode === '') {
@@ -103,6 +136,10 @@ function PostcodeSearch (props) {
     dispatchView({ type: 'ToggleLoadingPostcode' })
   }
 
+  useEffect(() => {
+    
+  }, [lonLat])
+
   const classes = useStyles()
 
   return (
@@ -117,13 +154,27 @@ function PostcodeSearch (props) {
         onKeyDown={(e) => { if (e.keyCode === 13) postcodeSearch() }}
       />
       <div className={classes.grow} />
+      <Tooltip title='Use your current location'>
+        <IconButton
+          aria-label='Search'
+          color='primary'
+          className={classes.iconButton}
+          onClick={() => setLocationLoading(true)}
+        >
+          <MyLocationIcon />
+        </IconButton>
+      </Tooltip>
       {searchType === 'postcode'
         ? (
           <Tooltip title='Clear search'>
             <IconButton
               aria-label='Clear search'
               className={classes.iconButton}
-              onClick={() => dispatchSearch({ type: 'ClearAll' })}
+              onClick={() => {
+                setLonLat([])
+                setTempPostcode('')
+                dispatchSearch({ type: 'ClearAll' })
+              }}
             >
               <ClearIcon />
             </IconButton>
