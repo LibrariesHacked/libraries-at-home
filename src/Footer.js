@@ -51,7 +51,7 @@ function Footer () {
             <Link component={RouteLink} to='/privacy' title='Your privacy on this site' className={classes.tapTarget}>Privacy</Link><br />
             <Link component={RouteLink} to='/data' title='Data used on this site and licensing' className={classes.tapTarget}>Data</Link><br />
             <Link href='https://github.com/LibrariesHacked/libraries-at-home' target='_blank' title='Project on GitHub' className={classes.tapTarget}>GitHub</Link><br />
-            <Link href='https://www.librarylab.uk/docs/libraries-at-home' target='_blank' title='About the library lab projects and documentation for this project' className={classes.tapTarget}>About this project</Link>
+            <Link href='https://www.librarylab.uk/libraries-at-home' target='_blank' title='About the library lab projects and documentation for this project' className={classes.tapTarget}>About this project</Link>
           </Typography>
         </Grid>
         <Grid className={classes.footerRight} item xs={12} sm={6} md={6} lg={6} xl={6}>
