@@ -7,7 +7,7 @@ import ListSubheader from '@material-ui/core/ListSubheader'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import Tooltip from '@material-ui/core/Tooltip'
-import MyLocationIcon from '@material-ui/icons/MyLocation';
+import MyLocationIcon from '@material-ui/icons/MyLocation'
 
 import { fade } from '@material-ui/core/styles/colorManipulator'
 import { makeStyles } from '@material-ui/core/styles'
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-function usePrevious(value) {
+function usePrevious (value) {
   const ref = useRef()
   useEffect(() => {
     ref.current = value
@@ -62,7 +62,7 @@ function usePrevious(value) {
   return ref.current
 }
 
-function PostcodeSearch(props) {
+function PostcodeSearch (props) {
   const { settings } = props
   const [{ services }, dispatchApplication] = useApplicationStateValue() //eslint-disable-line
   const [{ searchType, searchPostcode, searchDistance }, dispatchSearch] = useSearchStateValue() //eslint-disable-line
@@ -79,7 +79,7 @@ function PostcodeSearch(props) {
     if (prevProps && searchPostcode !== prevProps.searchPostcode) setTempPostcode(searchPostcode)
 
     const getLocation = async () => {
-      if (locationLoading){
+      if (locationLoading) {
         const pos = await geoHelper.getCurrentPosition()
         setLonLat(pos)
         setLocationLoading(false)
@@ -137,7 +137,7 @@ function PostcodeSearch(props) {
   }
 
   useEffect(() => {
-    
+
   }, [lonLat])
 
   const classes = useStyles()

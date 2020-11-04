@@ -2,13 +2,13 @@ import axios from 'axios'
 
 const config = require('./config.json')
 
-export function getPosition(options = {}) {
+export function getPosition (options = {}) {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(resolve, reject, options)
   })
 }
 
-export async function getCurrentPosition() {
+export async function getCurrentPosition () {
   var options = {
     enableHighAccuracy: true,
     timeout: 10000,
@@ -19,7 +19,7 @@ export async function getCurrentPosition() {
   return [position.coords.longitude, position.coords.latitude]
 }
 
-export async function getCurrentPostcode(lon, lat) {
+export async function getCurrentPostcode (lon, lat) {
   const uri = `https://api.postcodes.io/postcodes?lon=${lon}&lat=${lat}`
   try {
     const res = await axios.get(uri)
@@ -34,7 +34,7 @@ export async function getCurrentPostcode(lon, lat) {
   }
 }
 
-export async function getPostcode(postcode) {
+export async function getPostcode (postcode) {
   const response = await axios.get(config.postcodeApi + postcode)
   return {
     location: [response.data.longitude, response.data.latitude],
@@ -43,7 +43,7 @@ export async function getPostcode(postcode) {
   }
 }
 
-export async function getServiceDataFromPostcode(postcode, services) {
+export async function getServiceDataFromPostcode (postcode, services) {
   const postcodeData = await getPostcode(postcode)
   const servicesFiltered = services.filter(s => s.Code === postcodeData.library_service)
   if (servicesFiltered.length > 0) return { service: servicesFiltered[0], location: postcodeData.location }
