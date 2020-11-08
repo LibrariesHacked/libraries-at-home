@@ -67,6 +67,11 @@ const searchReducer = (state, action) => {
         ...state,
         service: action.service
       }
+    case 'SetLocation':
+      return {
+        ...state,
+        searchPosition: action.searchPosition
+      }
     case 'ClearAll':
       return {
         ...state,
@@ -82,8 +87,10 @@ const searchReducer = (state, action) => {
 
 const initialViewState = {
   notificationOpen: false,
+  notificationSeverity: '',
   notificationMessage: '',
   loadingPostcode: false,
+  loadingLocation: false,
   loadingServices: false,
   loadingVideos: false,
   loadingBlogs: false
@@ -91,16 +98,16 @@ const initialViewState = {
 
 const viewReducer = (state, action) => {
   switch (action.type) {
-    case 'SetNotificationMessage':
-      return { ...state, notificationMessage: action.notificationMessage }
-    case 'SetNotification':
-      return { ...state, notificationOpen: action.notificationOpen }
     case 'ShowNotification':
-      return { ...state, notificationOpen: true, notificationMessage: action.notificationMessage }
+      return { ...state, notificationOpen: true, notificationSeverity: action.notificationSeverity, notificationMessage: action.notificationMessage }
+    case 'CloseNotification':
+      return { ...state, notificationOpen: false }
     case 'SetPostcodeSearch':
       return { ...state, loadingPostcode: false, mapPosition: action.mapPosition, mapZoom: [13] }
     case 'ToggleLoadingPostcode':
       return { ...state, loadingPostcode: !state.loadingPostcode }
+    case 'ToggleLoadingLocation':
+      return { ...state, loadingLocation: !state.loadingLocation }
     case 'ToggleLoadingServices':
       return { ...state, loadingServices: !state.loadingServices }
     case 'ToggleLoadingVideos':

@@ -14,6 +14,7 @@ import Watch from './Watch'
 import Read from './Read'
 import Listen from './Listen'
 import MarkdownPage from './MarkdownPage'
+import Notification from './Notification'
 
 import About from './pages/about.md'
 import Accessibility from './pages/accessibility.md'
@@ -92,6 +93,7 @@ function AtHomeApplication () {
         <Container maxWidth='lg'>
           <Footer />
         </Container>
+        <Notification />
       </div>
     </BrowserRouter>
   )

@@ -49,3 +49,7 @@ export async function getServiceDataFromPostcode (postcode, services) {
   if (servicesFiltered.length > 0) return { service: servicesFiltered[0], location: postcodeData.location }
   return {}
 }
+
+export function validatePostcode (postcode) {
+  return /^[A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}$/.test(postcode.trim())
+}
