@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 import PostcodeSearch from './PostcodeSearch'
 import Service from './Service'
+import ServiceFilter from './ServiceFilter'
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -30,9 +31,12 @@ function Search () {
   return (
     <>
       <Typography component='h2' variant='h6' color='secondary' className={classes.title}>Your library service</Typography>
-      <Typography component='p' variant='body1' className={classes.subtitle}>Search by postcode to find library services in your area</Typography>
+      <Typography component='p' variant='body1' className={classes.subtitle}>Search by postcode to find the library service in your area</Typography>
       <div className={classes.search}>
         <PostcodeSearch settings={false} />
+      </div>
+      <div className={classes.search}>
+        <ServiceFilter />
       </div>
       <Service />
     </>

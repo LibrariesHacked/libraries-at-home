@@ -45,7 +45,8 @@ const initialSearchState = {
   searchType: '',
   searchDistance: 1609,
   searchPosition: [],
-  service: {}
+  service: {},
+  currentServiceSystemName: null
 }
 
 const searchReducer = (state, action) => {
@@ -60,12 +61,14 @@ const searchReducer = (state, action) => {
         ...state,
         searchPostcode: action.searchPostcode,
         searchPosition: action.searchPosition,
-        searchType: 'postcode'
+        searchType: 'postcode',
+        currentServiceSystemName: null
       }
     case 'SetService':
       return {
         ...state,
-        service: action.service
+        service: action.service,
+        currentServiceSystemName: action.service.systemName
       }
     case 'SetLocation':
       return {
@@ -78,7 +81,8 @@ const searchReducer = (state, action) => {
         searchPostcode: '',
         searchPosition: [],
         searchType: '',
-        service: {}
+        service: {},
+        currentServiceSystemName: null
       }
     default:
       return state

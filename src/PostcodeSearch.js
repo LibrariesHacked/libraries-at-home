@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { withRouter } from 'react-router'
 
 import Box from '@material-ui/core/Box'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import Divider from '@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
 import InputBase from '@material-ui/core/InputBase'
 import ListSubheader from '@material-ui/core/ListSubheader'
@@ -22,6 +24,7 @@ import { useSearchStateValue } from './context/searchState'
 import { useViewStateValue } from './context/viewState'
 
 import * as geoHelper from './helpers/geo'
+import * as urlHelper from './helpers/url'
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -110,11 +113,12 @@ function PostcodeSearch (props) {
   const clearSearch = () => {
     setTempPostcode('')
     dispatchSearch({ type: 'ClearAll' })
+    urlHelper.clearService(props.history)
   }
 
   const postcodeSearch = async (postcode = tempPostcode) => {
     if (!postcode || postcode === '') {
-      dispatchView({ type: 'ShowNotification', notificationMessage: 'You must enter a postcode', notificationSeverity: 'warning' })
+      dispatchView({ type: 'ShowNotification', notificationMessage: 'Please enter a postcode before searching', notificationSeverity: 'warning' })
       return
     }
     dispatchView({ type: 'ToggleLoadingPostcode' })
@@ -123,8 +127,9 @@ function PostcodeSearch (props) {
       const service = await geoHelper.getServiceDataFromPostcode(postcode.trim(), services)
       dispatchSearch({ type: 'SetPostcodeSearch', searchPostcode: postcode, searchPosition: service.location })
       dispatchSearch({ type: 'SetService', service: service.service })
+      urlHelper.addService(props.history, service.systemName)
     } else {
-      dispatchView({ type: 'ShowNotification', notificationMessage: 'Could not find postcode', notificationSeverity: 'error' })
+      dispatchView({ type: 'ShowNotification', notificationMessage: 'We could not find that postcode', notificationSeverity: 'error' })
     }
     dispatchView({ type: 'ToggleLoadingPostcode' })
   }
@@ -142,20 +147,6 @@ function PostcodeSearch (props) {
         onChange={(e) => setTempPostcode(e.target.value.toUpperCase())}
         onKeyDown={(e) => { if (e.keyCode === 13) postcodeSearch() }}
       />
-      <div className={classes.grow} />
-      <Tooltip title='Use your current location'>
-        {!loadingLocation
-          ? (
-            <IconButton
-              aria-label='Search by current location'
-              color='primary'
-              className={classes.iconButton}
-              onClick={() => getLocation()}
-            >
-              <MyLocationIcon />
-            </IconButton>
-          ) : <Box position='relative' display='inline-flex' className={classes.iconProgress}><CircularProgress size={22} /></Box>}
-      </Tooltip>
       {searchType === 'postcode'
         ? (
           <Tooltip title='Clear search'>
@@ -169,6 +160,7 @@ function PostcodeSearch (props) {
           </Tooltip>
         )
         : null}
+      <div className={classes.grow} />
       <Tooltip title='Search by postcode'>
         {!loadingPostcode
           ? (
@@ -179,6 +171,20 @@ function PostcodeSearch (props) {
               onClick={() => postcodeSearch()}
             >
               <SearchIcon />
+            </IconButton>
+          ) : <Box position='relative' display='inline-flex' className={classes.iconProgress}><CircularProgress size={22} /></Box>}
+      </Tooltip>
+      <Divider orientation='vertical' flexItem />
+      <Tooltip title='Use your current location'>
+        {!loadingLocation
+          ? (
+            <IconButton
+              aria-label='Search by current location'
+              color='primary'
+              className={classes.iconButton}
+              onClick={() => getLocation()}
+            >
+              <MyLocationIcon />
             </IconButton>
           ) : <Box position='relative' display='inline-flex' className={classes.iconProgress}><CircularProgress size={22} /></Box>}
       </Tooltip>
@@ -214,4 +220,4 @@ function PostcodeSearch (props) {
   )
 }
 
-export default PostcodeSearch
+export default withRouter(PostcodeSearch)

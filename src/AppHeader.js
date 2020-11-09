@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
 
 function AppHeader (props) {
   const { site } = props
-  const [{ currentServiceSystemName }, dispatchSearch] = useSearchStateValue() //eslint-disable-line
+  const [{ currentServiceSystemName }] = useSearchStateValue() //eslint-disable-line
 
   const [appsOpen, setAppsOpen] = useState(false)
   const [tabValue, setTabValue] = useState(site)
