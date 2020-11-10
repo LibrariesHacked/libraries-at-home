@@ -127,7 +127,7 @@ function PostcodeSearch (props) {
       const service = await geoHelper.getServiceDataFromPostcode(postcode.trim(), services)
       dispatchSearch({ type: 'SetPostcodeSearch', searchPostcode: postcode, searchPosition: service.location })
       dispatchSearch({ type: 'SetService', service: service.service })
-      urlHelper.addService(props.history, service.systemName)
+      urlHelper.addService(props.history, service.service.systemName)
     } else {
       dispatchView({ type: 'ShowNotification', notificationMessage: 'We could not find that postcode', notificationSeverity: 'error' })
     }
