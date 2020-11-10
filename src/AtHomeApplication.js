@@ -14,6 +14,7 @@ import Watch from './Watch'
 import Read from './Read'
 import Listen from './Listen'
 import MarkdownPage from './MarkdownPage'
+import Notification from './Notification'
 
 import About from './pages/about.md'
 import Accessibility from './pages/accessibility.md'
@@ -24,6 +25,7 @@ import * as serviceHelper from './helpers/services'
 
 import { useApplicationStateValue } from './context/applicationState'
 import { useViewStateValue } from './context/viewState'
+import { useSearchStateValue } from './context/searchState'
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -36,16 +38,27 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function AtHomeApplication () {
-  const [{ loadingServices, loadingVideos, loadingBlogs, loadingPostcode }] = useViewStateValue()
-  const [{ videos, blogs, services, service }, dispatchApplication] = useApplicationStateValue() //eslint-disable-line
-  const [{ }, dispatchView] = useViewStateValue() //eslint-disable-line
+  const [{ loadingServices, loadingVideos, loadingBlogs, loadingPostcode }, dispatchView] = useViewStateValue()
+  const [{ }, dispatchApplication] = useApplicationStateValue() //eslint-disable-line
+  const [{ }, dispatchSearch] = useSearchStateValue() //eslint-disable-line
 
   useEffect(() => {
     async function fetchServices () {
       dispatchView({ type: 'ToggleLoadingServices' })
       const servicesData = await serviceHelper.getServices()
+      const serviceSystemNameLookup = {}
+      servicesData.forEach(service => {
+        serviceSystemNameLookup[service.systemName] = service
+      })
       dispatchApplication({ type: 'AddServices', services: servicesData })
       dispatchView({ type: 'ToggleLoadingServices' })
+      // Process any service query parameters
+      const currentUrlParams = new URLSearchParams(window.location.search)
+      const serviceName = currentUrlParams.get('service')
+      if (serviceName && serviceSystemNameLookup[serviceName]) {
+        const urlService = serviceSystemNameLookup[serviceName]
+        dispatchSearch({ type: 'SetService', service: urlService })
+      }
     }
     async function fetchVideos () {
       dispatchView({ type: 'ToggleLoadingVideos' })
@@ -62,7 +75,7 @@ function AtHomeApplication () {
     fetchServices()
     fetchVideos()
     fetchBlogs()
-  }, [dispatchApplication, dispatchView])
+  }, [dispatchApplication, dispatchView, dispatchSearch])
 
   const classes = useStyles()
 
@@ -92,6 +105,7 @@ function AtHomeApplication () {
         <Container maxWidth='lg'>
           <Footer />
         </Container>
+        <Notification />
       </div>
     </BrowserRouter>
   )

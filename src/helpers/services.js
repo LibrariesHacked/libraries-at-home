@@ -5,7 +5,12 @@ const config = require('./config.json')
 export async function getServices () {
   const url = config.servicesApi
   const response = await axios.get(url)
-  if (response && response.data) return response.data
+  if (response && response.data) {
+    response.data.forEach(service => {
+      service.systemName = getServiceSystemName(service.Name)
+    })
+    return response.data
+  }
   return []
 }
 
@@ -34,4 +39,8 @@ export async function getServicesBlogs () {
   const response = await axios.get(url)
   if (response && response.data) return response.data.items
   return []
+}
+
+export function getServiceSystemName (name) {
+  return name.split(', ').reverse().join(' ').replace(/[. ,:-]+/g, '-').toLowerCase()
 }

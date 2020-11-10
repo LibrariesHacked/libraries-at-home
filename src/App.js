@@ -45,7 +45,8 @@ const initialSearchState = {
   searchType: '',
   searchDistance: 1609,
   searchPosition: [],
-  service: {}
+  service: {},
+  currentServiceSystemName: null
 }
 
 const searchReducer = (state, action) => {
@@ -60,12 +61,19 @@ const searchReducer = (state, action) => {
         ...state,
         searchPostcode: action.searchPostcode,
         searchPosition: action.searchPosition,
-        searchType: 'postcode'
+        searchType: 'postcode',
+        currentServiceSystemName: null
       }
     case 'SetService':
       return {
         ...state,
-        service: action.service
+        service: action.service,
+        currentServiceSystemName: action.service.systemName
+      }
+    case 'SetLocation':
+      return {
+        ...state,
+        searchPosition: action.searchPosition
       }
     case 'ClearAll':
       return {
@@ -73,7 +81,8 @@ const searchReducer = (state, action) => {
         searchPostcode: '',
         searchPosition: [],
         searchType: '',
-        service: {}
+        service: {},
+        currentServiceSystemName: null
       }
     default:
       return state
@@ -82,8 +91,10 @@ const searchReducer = (state, action) => {
 
 const initialViewState = {
   notificationOpen: false,
+  notificationSeverity: '',
   notificationMessage: '',
   loadingPostcode: false,
+  loadingLocation: false,
   loadingServices: false,
   loadingVideos: false,
   loadingBlogs: false
@@ -91,16 +102,16 @@ const initialViewState = {
 
 const viewReducer = (state, action) => {
   switch (action.type) {
-    case 'SetNotificationMessage':
-      return { ...state, notificationMessage: action.notificationMessage }
-    case 'SetNotification':
-      return { ...state, notificationOpen: action.notificationOpen }
     case 'ShowNotification':
-      return { ...state, notificationOpen: true, notificationMessage: action.notificationMessage }
+      return { ...state, notificationOpen: true, notificationSeverity: action.notificationSeverity, notificationMessage: action.notificationMessage }
+    case 'CloseNotification':
+      return { ...state, notificationOpen: false }
     case 'SetPostcodeSearch':
       return { ...state, loadingPostcode: false, mapPosition: action.mapPosition, mapZoom: [13] }
     case 'ToggleLoadingPostcode':
       return { ...state, loadingPostcode: !state.loadingPostcode }
+    case 'ToggleLoadingLocation':
+      return { ...state, loadingLocation: !state.loadingLocation }
     case 'ToggleLoadingServices':
       return { ...state, loadingServices: !state.loadingServices }
     case 'ToggleLoadingVideos':
