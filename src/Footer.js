@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(5),
     width: '100%'
   },
+  bullet: {
+    margin: theme.spacing(2)
+  },
   grid: {
     marginTop: theme.spacing(2)
   },
@@ -45,20 +48,26 @@ function Footer () {
       <Divider />
       <Grid container spacing={3} className={classes.grid}>
         <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
-          <Typography variant='body1' className={classes.footerText}>Built by Libraries Hacked</Typography><br />
           <Typography variant='button'>
-            <Link component={RouteLink} to='/accessibility' title='How we make this site accessible' className={classes.tapTarget}>Accessibility</Link><br />
-            <Link component={RouteLink} to='/privacy' title='Your privacy on this site' className={classes.tapTarget}>Privacy</Link><br />
-            <Link component={RouteLink} to='/data' title='Data used on this site and licensing' className={classes.tapTarget}>Data</Link><br />
-            <Link href='https://github.com/LibrariesHacked/libraries-at-home' target='_blank' title='Project on GitHub' className={classes.tapTarget}>GitHub</Link><br />
             <Link href='https://www.librarylab.uk/libraries-at-home' target='_blank' title='About the library lab projects and documentation for this project' className={classes.tapTarget}>About this project</Link>
-          </Typography>
+            <span className={classes.bullet}>&#8226;</span>
+            <Link component={RouteLink} to='/accessibility' title='How we make this site accessible' className={classes.tapTarget}>Accessibility</Link>
+            <span className={classes.bullet}>&#8226;</span>
+            <Link component={RouteLink} to='/privacy' title='Your privacy on this site' className={classes.tapTarget}>Privacy</Link>
+            <span className={classes.bullet}>&#8226;</span>
+            <Link component={RouteLink} to='/data' title='Data used on this site and licensing' className={classes.tapTarget}>Data</Link>
+            <span className={classes.bullet}>&#8226;</span>
+            <Link href='https://github.com/LibrariesHacked/libraries-at-home' target='_blank' title='Project on GitHub' className={classes.tapTarget}>GitHub</Link>
+          </Typography><br />
+          <Typography variant='body2' className={classes.footerText}>A Library Lab project by Libraries Hacked.</Typography>
         </Grid>
         <Grid className={classes.footerRight} item xs={12} sm={6} md={6} lg={6} xl={6}>
-          <Typography variant='body1'>Data help from</Typography>
+          <Typography variant='body2'>Data help from</Typography>
           <Typography variant='button'>
-            <Link rel='noopener' target='_blank' href='https://twitter.com/calire' title='Claire' className={classes.tapTarget}>@calire</Link><br />
-            <Link rel='noopener' target='_blank' href='https://twitter.com/shedsue' title='Sue' className={classes.tapTarget}>@shedsue</Link><br />
+            <Link rel='noopener' target='_blank' href='https://twitter.com/calire' title='Claire' className={classes.tapTarget}>@calire</Link>
+            <span className={classes.bullet}>&#8226;</span>
+            <Link rel='noopener' target='_blank' href='https://twitter.com/shedsue' title='Sue' className={classes.tapTarget}>@shedsue</Link>
+            <span className={classes.bullet}>&#8226;</span>
             <Link rel='noopener' target='_blank' href='https://twitter.com/richardveevers' title='Richard' className={classes.tapTarget}>@richardveevers</Link><br />
             <FavoriteIcon color='error' className={classes.loveIcon} />
           </Typography>

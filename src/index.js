@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom'
 
 import * as serviceWorker from './serviceWorker'
 
-import 'typeface-roboto'
-
 import App from './App'
 import './index.css'
 

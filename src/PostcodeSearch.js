@@ -128,6 +128,7 @@ function PostcodeSearch (props) {
       dispatchSearch({ type: 'SetPostcodeSearch', searchPostcode: postcode, searchPosition: service.location })
       dispatchSearch({ type: 'SetService', service: service.service })
       urlHelper.addService(props.history, service.service.systemName)
+      // Get nearest library and mobile library
     } else {
       dispatchView({ type: 'ShowNotification', notificationMessage: 'We could not find that postcode', notificationSeverity: 'error' })
     }

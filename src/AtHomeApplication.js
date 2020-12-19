@@ -88,7 +88,7 @@ function AtHomeApplication () {
           site={1}
           loading={loadingServices || loadingVideos || loadingBlogs}
         />
-        {loading ? <LinearProgress color='primary' /> : null}
+        {loading ? <LinearProgress variant='buffer' value={0} valueBuffer={0} color='secondary' /> : null}
         <Container maxWidth='lg'>
           <main className={classes.content}>
             <Route path='/' exact render={() => <Search />} />
