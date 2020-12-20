@@ -46,7 +46,9 @@ const initialSearchState = {
   searchDistance: 1609,
   searchPosition: [],
   service: {},
-  currentServiceSystemName: null
+  currentServiceSystemName: null,
+  library: null,
+  mobileLibrary: null
 }
 
 const searchReducer = (state, action) => {
@@ -75,6 +77,16 @@ const searchReducer = (state, action) => {
         ...state,
         searchPosition: action.searchPosition
       }
+    case 'SetLibrary':
+      return {
+        ...state,
+        library: action.library
+      }
+    case 'SetMobileLibrary':
+      return {
+        ...state,
+        mobileLibrary: action.mobileLibrary
+      }
     case 'ClearAll':
       return {
         ...state,
@@ -82,7 +94,9 @@ const searchReducer = (state, action) => {
         searchPosition: [],
         searchType: '',
         service: {},
-        currentServiceSystemName: null
+        currentServiceSystemName: null,
+        library: null,
+        mobileLibrary: null
       }
     default:
       return state

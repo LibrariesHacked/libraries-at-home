@@ -1,9 +1,9 @@
 import React from 'react'
-import RouteLink from 'react-router-dom/Link'
+import { Link } from 'react-router-dom'
 
 import Divider from '@material-ui/core/Divider'
 import Grid from '@material-ui/core/Grid'
-import Link from '@material-ui/core/Link'
+import MaterialLink from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
 
 import FavoriteIcon from '@material-ui/icons/FavoriteTwoTone'
@@ -49,26 +49,26 @@ function Footer () {
       <Grid container spacing={3} className={classes.grid}>
         <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
           <Typography variant='button'>
-            <Link href='https://www.librarylab.uk/libraries-at-home' target='_blank' title='About the library lab projects and documentation for this project' className={classes.tapTarget}>About this project</Link>
-            <span className={classes.bullet}>&#8226;</span>
-            <Link component={RouteLink} to='/accessibility' title='How we make this site accessible' className={classes.tapTarget}>Accessibility</Link>
-            <span className={classes.bullet}>&#8226;</span>
-            <Link component={RouteLink} to='/privacy' title='Your privacy on this site' className={classes.tapTarget}>Privacy</Link>
-            <span className={classes.bullet}>&#8226;</span>
-            <Link component={RouteLink} to='/data' title='Data used on this site and licensing' className={classes.tapTarget}>Data</Link>
-            <span className={classes.bullet}>&#8226;</span>
-            <Link href='https://github.com/LibrariesHacked/libraries-at-home' target='_blank' title='Project on GitHub' className={classes.tapTarget}>GitHub</Link>
+            <MaterialLink href='https://www.librarylab.uk/libraries-at-home' target='_blank' title='About the library lab projects and documentation for this project' className={classes.tapTarget}>About this project</MaterialLink>
+            <span className={classes.bullet}> &#8226; </span>
+            <MaterialLink component={Link} to='/accessibility' title='How we make this site accessible' className={classes.tapTarget}>Accessibility</MaterialLink>
+            <span className={classes.bullet}> &#8226; </span>
+            <MaterialLink component={Link} to='/privacy' title='Your privacy on this site' className={classes.tapTarget}>Privacy</MaterialLink>
+            <span className={classes.bullet}> &#8226; </span>
+            <MaterialLink component={Link} to='/data' title='Data used on this site and licensing' className={classes.tapTarget}>Data</MaterialLink>
+            <span className={classes.bullet}> &#8226; </span>
+            <MaterialLink href='https://github.com/LibrariesHacked/libraries-at-home' target='_blank' title='Project on GitHub' className={classes.tapTarget}>GitHub</MaterialLink>
           </Typography><br />
           <Typography variant='body2' className={classes.footerText}>A Library Lab project by Libraries Hacked.</Typography>
         </Grid>
         <Grid className={classes.footerRight} item xs={12} sm={6} md={6} lg={6} xl={6}>
           <Typography variant='body2'>Data help from</Typography>
           <Typography variant='button'>
-            <Link rel='noopener' target='_blank' href='https://twitter.com/calire' title='Claire' className={classes.tapTarget}>@calire</Link>
-            <span className={classes.bullet}>&#8226;</span>
-            <Link rel='noopener' target='_blank' href='https://twitter.com/shedsue' title='Sue' className={classes.tapTarget}>@shedsue</Link>
-            <span className={classes.bullet}>&#8226;</span>
-            <Link rel='noopener' target='_blank' href='https://twitter.com/richardveevers' title='Richard' className={classes.tapTarget}>@richardveevers</Link><br />
+            <MaterialLink rel='noopener' target='_blank' href='https://twitter.com/calire' title='Claire' className={classes.tapTarget}>@calire</MaterialLink>
+            <span className={classes.bullet}> &#8226; </span>
+            <MaterialLink rel='noopener' target='_blank' href='https://twitter.com/shedsue' title='Sue' className={classes.tapTarget}>@shedsue</MaterialLink>
+            <span className={classes.bullet}> &#8226; </span>
+            <MaterialLink rel='noopener' target='_blank' href='https://twitter.com/richardveevers' title='Richard' className={classes.tapTarget}>@richardveevers</MaterialLink><br />
             <FavoriteIcon color='error' className={classes.loveIcon} />
           </Typography>
         </Grid>
