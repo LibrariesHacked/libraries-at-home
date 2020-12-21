@@ -3,6 +3,8 @@
   "videoApi": "https://api.librarydata.uk/services/airtable/feeds/youtube.json",
   "blogsApi": "https://api.librarydata.uk/services/airtable/feeds/blogs.json",
   "servicesApi": "https://api.librarydata.uk/services/airtable",
+  "libraryApi": "https://api.librarydata.uk/libraries/nearest",
+  "mobileLibraryApi": "https://api.mobilelibraries.org/api/stops/nearest",
   "youTubeUrl": "https://www.youtube.com/",
   "calendarDisplay": {
     "lastDay": "[From Yesterday]",

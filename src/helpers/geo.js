@@ -50,6 +50,16 @@ export async function getServiceDataFromPostcode (postcode, services) {
   return {}
 }
 
+export async function getNearestLibrary (location) {
+  const response = await axios.get(config.libraryApi + '?latitude=' + location[1] + '&longitude=' + location[0])
+  return (response && response.data && response.data.length > 0 ? response.data[0] : null)
+}
+
+export async function getNearestMobileLibrary (location) {
+  const response = await axios.get(config.mobileLibraryApi + '?latitude=' + location[1] + '&longitude=' + location[0])
+  return (response && response.data && response.data.length > 0 ? response.data[0] : null)
+}
+
 export function validatePostcode (postcode) {
   return /^[A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}$/.test(postcode.trim())
 }
