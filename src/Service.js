@@ -31,8 +31,6 @@ const socialIcons = {
 }
 
 const useStyles = makeStyles((theme) => ({
-  alertTitle: {
-  },
   centerHeader: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
@@ -135,7 +133,7 @@ function Service () {
                 return (
                   <Grid key={'grd_service_' + idx} item xs={12} sm={6} md={4} lg={4} xl={4}>
                     <Alert severity='info'>
-                      <AlertTitle className={classes.alertTitle}>{library.title.replace('[service]', service.Name)}</AlertTitle>
+                      <AlertTitle>{library.title.replace('[service]', service.Name)}</AlertTitle>
                       {library.description}<br />
                       <Button className={classes.leadButton} size='large' color='primary' startIcon={<OpenInNewIcon />} target='_blank' href={service[library.field]}>{library.link_text}</Button>
                     </Alert>

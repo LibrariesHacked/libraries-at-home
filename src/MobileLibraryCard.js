@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
 
-import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 
@@ -16,8 +14,12 @@ const useStyles = makeStyles((theme) => ({
     margin: '0 2px',
     transform: 'scale(0.8)'
   },
-  title: {
-    fontSize: 14
+  card: {
+    marginLeft: theme.spacing(6),
+    marginRight: theme.spacing(6)
+  },
+  libraryName: {
+    fontWeight: theme.typography.fontWeightBold
   }
 }))
 
@@ -29,28 +31,17 @@ function MobileLibraryCard () {
 
   }, [])
 
-  const bull = <span className={classes.bullet}>•</span>
+  const bull = <span className={classes.bullet}> • </span>
 
   return (
     <div>
       {mobileLibrary != null
         ? (
-          <Card variant='outlined'>
+          <Card elevation={0} className={classes.card}>
             <CardContent>
-              <Typography className={classes.title} color='textSecondary' gutterBottom>Nearest mobile library</Typography>
-              <Typography variant='h5' component='h2'>
-                {mobileLibrary.name}{bull}{mobileLibrary.community}
-              </Typography>
-              <Typography className={classes.pos} color='textSecondary'>
-                {mobileLibrary.organisation_name}
-              </Typography>
-              <Typography variant='body2' component='p'>
-                {mobileLibrary.address}
-              </Typography>
+              <Typography component='h2' variant='h5'>{'Your nearest mobile library stop is '}<span className={classes.libraryName}>{mobileLibrary.name} in {mobileLibrary.community}</span></Typography>
+              <Typography variant='body2' component='p'>{Math.round(mobileLibrary.distance / 1609)} mile(s){bull}{mobileLibrary.address}{bull}{mobileLibrary.organisation_name}</Typography>
             </CardContent>
-            <CardActions>
-              <Button size='small' color='primary'>View timetable</Button>
-            </CardActions>
           </Card>
         ) : null}
     </div>
