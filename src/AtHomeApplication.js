@@ -52,7 +52,6 @@ function AtHomeApplication () {
       })
       dispatchApplication({ type: 'AddServices', services: servicesData })
       dispatchView({ type: 'ToggleLoadingServices' })
-      // Process any service query parameters
       const currentUrlParams = new URLSearchParams(window.location.search)
       const serviceName = currentUrlParams.get('service')
       if (serviceName && serviceSystemNameLookup[serviceName]) {
@@ -86,7 +85,7 @@ function AtHomeApplication () {
       <div className={classes.root}>
         <AppHeader
           site={1}
-          loading={loadingServices || loadingVideos || loadingBlogs}
+          loading={loading}
         />
         {loading ? <LinearProgress variant='buffer' value={0} valueBuffer={0} color='secondary' /> : null}
         <Container maxWidth='lg'>

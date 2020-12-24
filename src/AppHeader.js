@@ -33,7 +33,6 @@ import { useSearchStateValue } from './context/searchState'
 const useStyles = makeStyles((theme) => ({
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    backgroundColor: 'white',
     position: 'relative'
   },
   appBarTransparent: {
@@ -44,27 +43,9 @@ const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1
   },
-  siteTitle: {
-    margin: theme.spacing(1),
-    padding: theme.spacing(1),
-    display: 'inline-block',
-    verticalAlign: 'middle',
-    color: theme.palette.primary.main,
-    backgroundColor: 'rgba(250, 250, 250, 0.8)',
-    border: '1px solid #e5e5e5',
-    borderRadius: 26
-  },
-  siteTitleIcon: {
-    verticalAlign: 'sub'
-  },
-  title: {
-    margin: theme.spacing(2),
-    display: 'inline-block',
-    verticalAlign: 'middle'
-  },
   topIcon: {
     backgroundColor: 'rgba(250, 250, 250, 0.8)',
-    border: '1px solid #e5e5e5',
+    border: '1px solid white',
     '&:hover': {
       backgroundColor: 'rgba(250, 250, 250, 0.8)'
     }
@@ -198,7 +179,7 @@ function AppHeader (props) {
         </Toolbar>
       </Container>
       {appsOpen ? (
-        <AppBar position='static' color='default' elevation={0} className={appBarClass}>
+        <AppBar position='static' color='transparent' elevation={0} className={appBarClass}>
           <Container maxWidth='lg'>
             <Tabs
               centered
@@ -220,7 +201,7 @@ function AppHeader (props) {
       ) : null}
       <AppBar
         position='static'
-        color='inherit'
+        color='transparent'
         elevation={0}
         className={appBarClass}
       >

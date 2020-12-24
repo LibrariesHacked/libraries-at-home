@@ -144,6 +144,9 @@ const theme = createMuiTheme({
     },
     secondary: {
       main: blueGrey[600]
+    },
+    outline: {
+      main: blueGrey[50]
     }
   },
   overrides: {

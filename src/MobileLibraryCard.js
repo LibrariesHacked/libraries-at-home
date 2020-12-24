@@ -11,12 +11,13 @@ import { useSearchStateValue } from './context/searchState'
 const useStyles = makeStyles((theme) => ({
   bullet: {
     display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)'
+    margin: '0 2px'
   },
   card: {
-    marginLeft: theme.spacing(6),
-    marginRight: theme.spacing(6)
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    border: '1px solid',
+    borderColor: theme.palette.outline.main
   },
   libraryName: {
     fontWeight: theme.typography.fontWeightBold

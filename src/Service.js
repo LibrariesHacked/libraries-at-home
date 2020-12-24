@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 
 import AndroidIcon from '@material-ui/icons/AndroidTwoTone'
-import OpenInNewIcon from '@material-ui/icons/OpenInNewTwoTone'
+import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowserTwoTone'
 import ChevronRightIcon from '@material-ui/icons/ChevronRightTwoTone'
 
 import InstagramIcon from 'mdi-material-ui/Instagram'
@@ -135,7 +135,7 @@ function Service () {
                     <Alert severity='info'>
                       <AlertTitle>{library.title.replace('[service]', service.Name)}</AlertTitle>
                       {library.description}<br />
-                      <Button className={classes.leadButton} size='large' color='primary' startIcon={<OpenInNewIcon />} target='_blank' href={service[library.field]}>{library.link_text}</Button>
+                      <Button className={classes.leadButton} size='large' color='primary' startIcon={<OpenInBrowserIcon />} target='_blank' href={service[library.field]}>{library.link_text}</Button>
                     </Alert>
                   </Grid>
                 )

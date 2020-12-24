@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function BlogPosts () {
-  const [{ blogs }, dispatchApplication] = useApplicationStateValue() //eslint-disable-line
+  const [{ blogs }] = useApplicationStateValue() //eslint-disable-line
   const classes = useStyles()
 
   const blogsByDate = blogs.reduce(function (rv, x) {
