@@ -7,6 +7,7 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 
+import UpdateIcon from '@material-ui/icons/UpdateTwoTone'
 import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowserTwoTone'
 
 import { makeStyles } from '@material-ui/core/styles'
@@ -63,7 +64,7 @@ function LibraryCard (props) {
             </Typography>
             <CardActions>
               <Button variant='text' size='large' color='primary' startIcon={<OpenInBrowserIcon />} target='_blank' href={library.url}>Go to website</Button>
-              {library.local_authority !== service.Name ? <Button variant='text' size='large' color='primary' startIcon={<OpenInBrowserIcon />} onClick={() => changeService(library.local_authority)}>Change service to {library.local_authority}</Button> : null}
+              {library.local_authority !== service.Name ? <Button variant='text' size='large' color='primary' startIcon={<UpdateIcon />} onClick={() => changeService(library.local_authority)}>Use this library service</Button> : null}
             </CardActions>
           </CardContent>
         </Card>
