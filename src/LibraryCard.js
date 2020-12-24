@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function LibraryCard () {
-  const [{ library }] = useSearchStateValue() //eslint-disable-line
+  const [{ library, service }, dispatchSearch] = useSearchStateValue() //eslint-disable-line
   const classes = useStyles()
 
   useEffect(() => {
@@ -55,6 +55,7 @@ function LibraryCard () {
             </Typography>
             <CardActions>
               <Button variant='text' size='large' color='primary' startIcon={<OpenInBrowserIcon />} target='_blank' href={library.url}>Go to website</Button>
+              {library.local_authority !== service.Name ? <Button variant='text' size='large' color='primary' startIcon={<OpenInBrowserIcon />} target='_blank' href={library.url}>Change service to {library.local_authority}</Button> : null}
             </CardActions>
           </CardContent>
         </Card>
