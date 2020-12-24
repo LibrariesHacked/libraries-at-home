@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { withRouter } from 'react-router'
 
 import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 
@@ -9,8 +11,10 @@ import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowserTwoTone'
 
 import { makeStyles } from '@material-ui/core/styles'
 
+import { useApplicationStateValue } from './context/applicationState'
 import { useSearchStateValue } from './context/searchState'
-import { CardActions } from '@material-ui/core'
+
+import * as urlHelper from './helpers/url'
 
 const useStyles = makeStyles((theme) => ({
   bullet: {
@@ -28,16 +32,20 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-function LibraryCard () {
+function LibraryCard (props) {
+  const [{ services }] = useApplicationStateValue()
   const [{ library, service }, dispatchSearch] = useSearchStateValue() //eslint-disable-line
   const classes = useStyles()
 
-  useEffect(() => {
-
-  }, [])
+  const changeService = (serviceName) => {
+    const serviceMatch = services.filter(s => s.Name === serviceName)
+    if (serviceMatch && serviceMatch.length === 1) {
+      dispatchSearch({ type: 'SetService', service: serviceMatch[0] })
+      urlHelper.addService(props.history, serviceMatch[0].systemName)
+    }
+  }
 
   const bull = <span className={classes.bullet}> • </span>
-
   const distance = library != null ? Math.round(library.distance / 1609) : null
   return (
     <div>
@@ -55,7 +63,7 @@ function LibraryCard () {
             </Typography>
             <CardActions>
               <Button variant='text' size='large' color='primary' startIcon={<OpenInBrowserIcon />} target='_blank' href={library.url}>Go to website</Button>
-              {library.local_authority !== service.Name ? <Button variant='text' size='large' color='primary' startIcon={<OpenInBrowserIcon />} target='_blank' href={library.url}>Change service to {library.local_authority}</Button> : null}
+              {library.local_authority !== service.Name ? <Button variant='text' size='large' color='primary' startIcon={<OpenInBrowserIcon />} onClick={() => changeService(library.local_authority)}>Change service to {library.local_authority}</Button> : null}
             </CardActions>
           </CardContent>
         </Card>
@@ -64,4 +72,4 @@ function LibraryCard () {
   )
 }
 
-export default LibraryCard
+export default withRouter(LibraryCard)
