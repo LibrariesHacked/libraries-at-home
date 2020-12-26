@@ -54,11 +54,11 @@ function ServiceFilter (props) {
     <>
       {Object.keys(service).length === 0 ? (
         <Tooltip title='Choose library service'>
-          <Button color='primary' className={classes.button} onClick={(e) => openServiceMenu(e.currentTarget)} startIcon={<BusinessIcon />}>
+          <Button size='large' color='primary' className={classes.button} onClick={(e) => openServiceMenu(e.currentTarget)} startIcon={<BusinessIcon />}>
             Choose service
           </Button>
         </Tooltip>
-      ) : <Chip className={classes.chip} color='primary' onDelete={clearServiceFilter} label={service.Name} />}
+      ) : <Chip size='medium' className={classes.chip} color='primary' onDelete={clearServiceFilter} label={service.Name} />}
       <Menu
         id='menu-library-service'
         anchorEl={serviceMenuAnchor}

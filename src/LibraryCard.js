@@ -1,45 +1,71 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { withRouter } from 'react-router'
 
+import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 
+import UpdateIcon from '@material-ui/icons/UpdateTwoTone'
+import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowserTwoTone'
+
 import { makeStyles } from '@material-ui/core/styles'
 
+import { useApplicationStateValue } from './context/applicationState'
 import { useSearchStateValue } from './context/searchState'
+
+import * as urlHelper from './helpers/url'
 
 const useStyles = makeStyles((theme) => ({
   bullet: {
     display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)'
+    margin: '0 2px'
   },
   card: {
-    marginLeft: theme.spacing(6),
-    marginRight: theme.spacing(6)
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    border: '1px solid',
+    borderColor: theme.palette.outline.main
   },
   libraryName: {
     fontWeight: theme.typography.fontWeightBold
   }
 }))
 
-function LibraryCard () {
-  const [{ library }] = useSearchStateValue() //eslint-disable-line
+function LibraryCard (props) {
+  const [{ services }] = useApplicationStateValue()
+  const [{ library, service }, dispatchSearch] = useSearchStateValue() //eslint-disable-line
   const classes = useStyles()
 
-  useEffect(() => {
-
-  }, [])
+  const changeService = (serviceName) => {
+    const serviceMatch = services.filter(s => s.Name === serviceName)
+    if (serviceMatch && serviceMatch.length === 1) {
+      dispatchSearch({ type: 'SetService', service: serviceMatch[0] })
+      urlHelper.addService(props.history, serviceMatch[0].systemName)
+    }
+  }
 
   const bull = <span className={classes.bullet}> • </span>
-
+  const distance = library != null ? Math.round(library.distance / 1609) : null
   return (
     <div>
       {library != null ? (
         <Card elevation={0} className={classes.card}>
           <CardContent>
             <Typography component='h2' variant='h5'>{'Your nearest library is '}<span className={classes.libraryName}>{library.library_name}</span></Typography>
-            <Typography variant='body2' component='p'>{Math.round(library.distance / 1609)} mile(s){bull}{[library.address_1, library.address_2, library.address_3, library.postcode].filter(a => a !== '').join(', ')}{bull}{library.local_authority}</Typography>
+            <Typography variant='body2' component='p'>
+              {distance} mile{distance > 1 ? 's' : ''}
+              {bull}
+              {[library.address_1, library.address_2, library.address_3, library.postcode].filter(a => a !== '').join(', ')}
+              {bull}
+              {library.local_authority}
+              {library.colocated === 'Yes' && library.colocated_with !== null ? (bull + 'Colocated with ' + library.colocated_with) : ''}
+            </Typography>
+            <CardActions>
+              <Button variant='text' size='large' color='primary' startIcon={<OpenInBrowserIcon />} target='_blank' href={library.url}>Go to website</Button>
+              {library.local_authority !== service.Name ? <Button variant='text' size='large' color='primary' startIcon={<UpdateIcon />} onClick={() => changeService(library.local_authority)}>Use this library service</Button> : null}
+            </CardActions>
           </CardContent>
         </Card>
       ) : null}
@@ -47,4 +73,4 @@ function LibraryCard () {
   )
 }
 
-export default LibraryCard
+export default withRouter(LibraryCard)
