@@ -17,6 +17,8 @@ import { useSearchStateValue } from './context/searchState'
 
 import * as urlHelper from './helpers/url'
 
+import moment from 'moment'
+
 const useStyles = makeStyles((theme) => ({
   bullet: {
     display: 'inline-block',
@@ -29,6 +31,10 @@ const useStyles = makeStyles((theme) => ({
     borderColor: theme.palette.outline.main
   },
   libraryName: {
+    fontWeight: theme.typography.fontWeightBold
+  },
+  scheduleDate: {
+    fontSize: '1.1em',
     fontWeight: theme.typography.fontWeightBold
   }
 }))
@@ -47,7 +53,7 @@ function MobileLibraryCard (props) {
   }
 
   const bull = <span className={classes.bullet}> • </span>
-
+  const distance = mobileLibrary != null ? Math.round(mobileLibrary.distance / 1609) : null
   return (
     <div>
       {mobileLibrary != null
@@ -55,7 +61,16 @@ function MobileLibraryCard (props) {
           <Card elevation={0} className={classes.card}>
             <CardContent>
               <Typography component='h2' variant='h5'>{'Your nearest mobile library stop is '}<span className={classes.libraryName}>{mobileLibrary.name} in {mobileLibrary.community}</span></Typography>
-              <Typography variant='body2' component='p'>{Math.round(mobileLibrary.distance / 1609)} mile(s){bull}{mobileLibrary.address}{bull}{mobileLibrary.organisation_name}</Typography>
+              <Typography variant='body2' component='p'>
+                {distance} mile{distance > 1 ? 's' : ''}
+                {bull}
+                {mobileLibrary.address}
+                {bull}
+                {mobileLibrary.organisation_name}
+              </Typography>
+              <Typography variant='body2' component='p'>
+                {'Next visiting on  '}<span className={classes.scheduleDate}>{moment(mobileLibrary.route_schedule[0]).format('dddd Do MMMM h:mma')}</span>
+              </Typography>
             </CardContent>
             <CardActions>
               <Button variant='text' size='large' color='primary' startIcon={<InsertInvitationIcon />} target='_blank' href={mobileLibrary.timetable}>Go to timetable</Button>
