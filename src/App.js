@@ -158,6 +158,11 @@ const theme = createMuiTheme({
         textTransform: 'none'
       }
     },
+    MuiDivider: {
+      root: {
+        backgroundColor: blueGrey[50]
+      }
+    },
     MuiTypography: {
       button: {
         textTransform: 'none'

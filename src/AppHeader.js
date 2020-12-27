@@ -45,7 +45,6 @@ const useStyles = makeStyles((theme) => ({
   },
   topIcon: {
     backgroundColor: 'rgba(250, 250, 250, 0.8)',
-    border: '1px solid white',
     '&:hover': {
       backgroundColor: 'rgba(250, 250, 250, 0.8)'
     }

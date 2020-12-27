@@ -26,9 +26,14 @@
     "extends": "react-app",
     "settings": {
       "react": {
-        "version": "detect"
+        "version": "16.14.0"
       }
     }
+  },
+  "standard": {
+    "ignore": [
+      "build/*"
+    ]
   },
   "browserslist": {
     "production": [
@@ -43,7 +48,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.2.0",
-    "standard": "^14.3.4"
+    "gh-pages": "^2.2.0"
   }
 }

@@ -3,7 +3,6 @@ import React from 'react'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import Link from '@material-ui/core/Link'
-import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 
 import { makeStyles } from '@material-ui/core/styles'
@@ -74,10 +73,6 @@ const useStyles = makeStyles((theme) => ({
   leadButton: {
     marginTop: theme.spacing(1)
   },
-  linkContainer: {
-    marginTop: theme.spacing(2),
-    padding: theme.spacing(2)
-  },
   linkText: {
     columnWidth: '16em'
   },
@@ -96,7 +91,7 @@ function Service () {
       {service && Object.keys(service).length > 0
         ? (
           <>
-            <Typography className={classes.centerHeader} component='h2' variant='h5'>{'Your library service is '}<span className={classes.serviceName}>{service.Name}</span></Typography>
+            <Typography className={classes.centerHeader} component='h2' variant='h2'>{'Your library service is '}<span className={classes.serviceName}>{service.Name}</span></Typography>
             <div className={classes.social}>
               {config.services_text.social.filter(s => s.field in service).map((social, idx) => {
                 const IconName = socialIcons[social.icon]
@@ -141,20 +136,18 @@ function Service () {
                 )
               })}
             </Grid>
-            <Paper elevation={0} className={classes.linkContainer}>
-              <Typography component='h3' variant='h6' className={classes.header}>Useful links</Typography>
-              <Typography component='p' variant='body1' className={classes.linkText}>
-                {config.services_text.service_links.filter(s => s.field in service).map((link, idx) => {
-                  return (
-                    <Typography key={'typ_links_' + idx} component='span' className={classes.columnLink}>
-                      <ChevronRightIcon color='secondary' />
-                      <Link key={'typ_link_' + idx} target='_blank' href={service[link.field]} variant='body1'>{link.text}</Link>
-                      <br />
-                    </Typography>
-                  )
-                })}
-              </Typography>
-            </Paper>
+            <Typography component='h3' variant='h6' className={classes.header}>Useful links</Typography>
+            <Typography component='p' variant='body1' className={classes.linkText}>
+              {config.services_text.service_links.filter(s => s.field in service).map((link, idx) => {
+                return (
+                  <Typography key={'typ_links_' + idx} component='span' className={classes.columnLink}>
+                    <ChevronRightIcon color='secondary' />
+                    <Link key={'typ_link_' + idx} target='_blank' href={service[link.field]} variant='body1'>{link.text}</Link>
+                    <br />
+                  </Typography>
+                )
+              })}
+            </Typography>
           </>) : null}
     </div>
   )

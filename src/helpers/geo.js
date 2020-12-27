@@ -2,13 +2,13 @@ import axios from 'axios'
 
 const config = require('./config.json')
 
-export function getPosition (options = {}) {
+export const getPosition = (options = {}) => {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(resolve, reject, options)
   })
 }
 
-export async function getCurrentPosition () {
+export const getCurrentPosition = async () => {
   var options = {
     enableHighAccuracy: true,
     timeout: 10000,
@@ -19,7 +19,7 @@ export async function getCurrentPosition () {
   return [position.coords.longitude, position.coords.latitude]
 }
 
-export async function getCurrentPostcode (lon, lat) {
+export const getCurrentPostcode = async (lon, lat) => {
   const uri = `https://api.postcodes.io/postcodes?lon=${lon}&lat=${lat}`
   try {
     const res = await axios.get(uri)
@@ -34,7 +34,7 @@ export async function getCurrentPostcode (lon, lat) {
   }
 }
 
-export async function getPostcode (postcode) {
+export const getPostcode = async (postcode) => {
   const response = await axios.get(config.postcodeApi + postcode)
   return {
     location: [response.data.longitude, response.data.latitude],
@@ -43,23 +43,23 @@ export async function getPostcode (postcode) {
   }
 }
 
-export async function getServiceDataFromPostcode (postcode, services) {
+export const getServiceDataFromPostcode = async (postcode, services) => {
   const postcodeData = await getPostcode(postcode)
   const servicesFiltered = services.filter(s => s.Code === postcodeData.library_service)
   if (servicesFiltered.length > 0) return { service: servicesFiltered[0], location: postcodeData.location }
   return {}
 }
 
-export async function getNearestLibrary (location) {
+export const getNearestLibrary = async (location) => {
   const response = await axios.get(config.libraryApi + '?latitude=' + location[1] + '&longitude=' + location[0])
   return (response && response.data && response.data.length > 0 ? response.data[0] : null)
 }
 
-export async function getNearestMobileLibrary (location) {
+export const getNearestMobileLibrary = async (location) => {
   const response = await axios.get(config.mobileLibraryApi + '?latitude=' + location[1] + '&longitude=' + location[0])
   return (response && response.data && response.data.length > 0 ? response.data[0] : null)
 }
 
-export function validatePostcode (postcode) {
+export const validatePostcode = (postcode) => {
   return /^[A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}$/.test(postcode.trim())
 }

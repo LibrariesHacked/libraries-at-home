@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const config = require('./config.json')
 
-export async function getServices () {
+export const getServices = async () => {
   const url = config.servicesApi
   const response = await axios.get(url)
   if (response && response.data) {
@@ -14,7 +14,7 @@ export async function getServices () {
   return []
 }
 
-export function getServiceYouTubeDataFromId (id) {
+export const getServiceYouTubeDataFromId = async (id) => {
   const youtubeUrl = config.youTubeUrl
   const idTypes = {
     UC: ['channel/', 'Channel'],
@@ -27,20 +27,20 @@ export function getServiceYouTubeDataFromId (id) {
   }
 }
 
-export async function getServicesYouTubeVideos () {
+export const getServicesYouTubeVideos = async () => {
   const url = config.videoApi
   const response = await axios.get(url)
   if (response && response.data) return response.data.items
   return []
 }
 
-export async function getServicesBlogs () {
+export const getServicesBlogs = async () => {
   const url = config.blogsApi
   const response = await axios.get(url)
   if (response && response.data) return response.data.items
   return []
 }
 
-export function getServiceSystemName (name) {
+export const getServiceSystemName = (name) => {
   return name.split(', ').reverse().join(' ').replace(/[. ,:-]+/g, '-').toLowerCase()
 }
