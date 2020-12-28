@@ -18,7 +18,7 @@ import CancelIcon from '@material-ui/icons/CancelTwoTone'
 import DirectionBusIcon from '@material-ui/icons/DirectionsBusTwoTone'
 import GridOnIcon from '@material-ui/icons/GridOnTwoTone'
 import HeadsetIcon from '@material-ui/icons/HeadsetTwoTone'
-import ImportContactsIcon from '@material-ui/icons/ImportContactsTwoTone'
+import LocalLibraryIcon from '@material-ui/icons/LocalLibraryTwoTone'
 import MapIcon from '@material-ui/icons/MapTwoTone'
 import MovieIcon from '@material-ui/icons/MovieTwoTone'
 import SearchIcon from '@material-ui/icons/SearchTwoTone'
@@ -87,7 +87,7 @@ function AppHeader (props) {
     {
       title: 'Libraries at home',
       url: 'https://www.librariesathome.co.uk',
-      icon: <ImportContactsIcon />,
+      icon: <LocalLibraryIcon />,
       links: [
         {
           title: 'Find service',

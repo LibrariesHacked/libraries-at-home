@@ -20,7 +20,7 @@
         "field": "Instagram name",
         "icon": "InstagramIcon",
         "url": "https://www.instagram.com/",
-        "title": "See pictures on Instagram",
+        "title": "View on Instagram",
         "colour": "#405DE6"
       },
       {
@@ -34,7 +34,7 @@
         "field": "Twitter handle",
         "icon": "TwitterIcon",
         "url": "https://twitter.com/",
-        "title": "See library tweets",
+        "title": "Read tweets",
         "colour": "#1DA1F2"
       }
     ],
@@ -62,12 +62,6 @@
         "title": "Info for children",
         "description": "Libraries for everyone",
         "link_text": "See children's services"
-      },
-      {
-        "field": "Audiobook URL",
-        "title": "Library audiobooks",
-        "description": "Listen to stories",
-        "link_text": "Find an audiobook"
       },
       {
         "field": "Ebook URL",

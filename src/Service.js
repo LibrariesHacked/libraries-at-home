@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Button from '@material-ui/core/Button'
+import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Grid from '@material-ui/core/Grid'
 import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
@@ -30,48 +31,26 @@ const socialIcons = {
 }
 
 const useStyles = makeStyles((theme) => ({
-  centerHeader: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-    textAlign: 'center'
+  bold: {
+    fontWeight: theme.typography.fontWeightBold
   },
   header: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-    textAlign: 'center'
-  },
-  socialHeader: {
-    textAlign: 'center'
-  },
-  appsHeader: {
-    marginTop: theme.spacing(2),
     textAlign: 'center'
   },
   root: {
     paddingTop: theme.spacing(2)
-  },
-  serviceName: {
-    fontWeight: theme.typography.fontWeightBold
   },
   social: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
   },
-  apps: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  socialIcon: {
-    marginBottom: theme.spacing(2),
-    marginRight: theme.spacing(1)
+  gridContainer: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2)
   },
   appsIcon: {
     margin: theme.spacing(1)
-  },
-  leadButton: {
-    marginTop: theme.spacing(1)
   },
   linkText: {
     columnWidth: '16em'
@@ -91,52 +70,52 @@ function Service () {
       {service && Object.keys(service).length > 0
         ? (
           <>
-            <Typography className={classes.centerHeader} component='h2' variant='h2'>{'Your library service is '}<span className={classes.serviceName}>{service.Name}</span></Typography>
+            <Typography className={classes.header} component='h2' variant='h4' gutterBottom>{'Your library service is '}<span className={classes.bold}>{service.Name}</span></Typography>
             <div className={classes.social}>
-              {config.services_text.social.filter(s => s.field in service).map((social, idx) => {
-                const IconName = socialIcons[social.icon]
-                return (
-                  <Button
-                    key={'icn_social_' + idx}
-                    style={
-                      { color: social.colour }
-                    }
-                    className={classes.socialIcon}
-                    target='_blank'
-                    href={social.url + service[social.field]}
-                    title={social.title}
-                    startIcon={<IconName />}
-                  >
-                    {social.title}
-                  </Button>
-                )
-              })}
+              <ButtonGroup size='large' color='secondary' aria-label='Links to social media'>
+                {config.services_text.social.filter(s => s.field in service).map((social, idx) => {
+                  const IconName = socialIcons[social.icon]
+                  return (
+                    <Button
+                      key={'icn_social_' + idx}
+                      target='_blank'
+                      href={social.url + service[social.field]}
+                      title={social.title}
+                      startIcon={<IconName />}
+                    >
+                      {social.title}
+                    </Button>
+                  )
+                })}
+              </ButtonGroup>
             </div>
-            <div className={classes.social}>
+            <Grid container spacing={3} className={classes.gridContainer}>
               {service['Android app URL'] || service['iOS app URL']
                 ? (
                   <>
-                    <div className={classes.apps}>
-                      {service['Android app URL'] ? <Button size='large' color='primary' className={classes.socialIcon} target='_blank' href={service['Android app URL']} title='Library app for Android' startIcon={<AndroidIcon />}>Library app for Android</Button> : null}
-                      {service['iOS app URL'] ? <Button size='large' color='primary' className={classes.socialIcon} target='_blank' href={service['iOS app URL']} title='Library app for iOS' startIcon={<AppleIcon />}>Library app for iOS</Button> : null}
-                    </div>
+                    <Grid item xs={12} sm={6} md={4} lg={4} xl={4}>
+                      <Alert severity='info'>
+                        <AlertTitle>Mobile application</AlertTitle>
+                        Use the library on your phone <br />
+                        {service['Android app URL'] ? <Button size='large' color='primary' className={classes.socialIcon} target='_blank' href={service['Android app URL']} title='App for Android' startIcon={<AndroidIcon />}>Android app</Button> : null}
+                        {service['iOS app URL'] ? <Button size='large' color='primary' className={classes.socialIcon} target='_blank' href={service['iOS app URL']} title='App for iOS' startIcon={<AppleIcon />}>iOS app</Button> : null}
+                      </Alert>
+                    </Grid>
                   </>
                 ) : null}
-            </div>
-            <Grid container spacing={3}>
               {config.services_text.library_service.filter(s => s.field in service).map((library, idx) => {
                 return (
                   <Grid key={'grd_service_' + idx} item xs={12} sm={6} md={4} lg={4} xl={4}>
                     <Alert severity='info'>
                       <AlertTitle>{library.title.replace('[service]', service.Name)}</AlertTitle>
                       {library.description}<br />
-                      <Button className={classes.leadButton} size='large' color='primary' startIcon={<OpenInBrowserIcon />} target='_blank' href={service[library.field]}>{library.link_text}</Button>
+                      <Button size='large' color='primary' startIcon={<OpenInBrowserIcon />} target='_blank' href={service[library.field]}>{library.link_text}</Button>
                     </Alert>
                   </Grid>
                 )
               })}
             </Grid>
-            <Typography component='h3' variant='h6' className={classes.header}>Useful links</Typography>
+            <Typography component='h4' variant='h5' className={classes.header} gutterBottom>Useful links</Typography>
             <Typography component='p' variant='body1' className={classes.linkText}>
               {config.services_text.service_links.filter(s => s.field in service).map((link, idx) => {
                 return (
