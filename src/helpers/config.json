@@ -73,39 +73,48 @@
     "service_links": [
       {
         "field": "Libraries URL",
-        "text": "Find your local library"
+        "text": "Find your local library",
+        "icon": "FindInPageIcon"
       },
       {
         "field": "Mobile libraries URL",
-        "text": "Discover when the mobile library visits"
+        "text": "Discover when the mobile library visits",
+        "icon": "DirectionsBusIcon"
       },
       {
         "field": "Home service URL",
-        "text": "Check if the library can come to your home"
+        "text": "Check if the library can come to your home",
+        "icon": "HomeIcon"
       },
       {
         "field": "Events URL",
-        "text": "See events in libraries"
+        "text": "See events in libraries",
+        "icon": "EventIcon"
       },
       {
         "field": "Computer access URL",
-        "text": "Book a computer in the library"
+        "text": "Book a computer in the library",
+        "icon": "ComputerIcon"
       },
       {
         "field": "Wifi access URL",
-        "text": "Use Wifi in the library"
+        "text": "Use Wifi in the library",
+        "icon": "WifiIcon"
       },
       {
         "field": "Fees and charges URL",
-        "text": "Understand fees and charges for library services"
+        "text": "Understand fees and charges for library services",
+        "icon": "PaymentIcon"
       },
       {
         "field": "News or Blog URL",
-        "text": "Read latest library news"
+        "text": "Read latest library news",
+        "icon": "DescriptionIcon"
       },
       {
         "field": "Podcast URL",
-        "text": "Listen to a library Podcast"
+        "text": "Listen to a library Podcast",
+        "icon": "MicIcon"
       }
     ]
   },

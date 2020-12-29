@@ -21,9 +21,6 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 'auto',
     marginBottom: '10px'
   },
-  subtitle: {
-    textAlign: 'center'
-  },
   title: {
     textAlign: 'center'
   }
@@ -37,7 +34,7 @@ function Search () {
       <div className={classes.search}>
         <PostcodeSearch settings={false} />
       </div>
-      <Typography component='p' variant='body1' className={classes.subtitle} gutterBottom>Use this postcode search to find the library service in your area</Typography>
+      <Typography component='p' variant='body1' className={classes.title} gutterBottom>Use this postcode search to find the library service in your area</Typography>
       <div className={classes.search}>
         <ServiceFilter />
       </div>
