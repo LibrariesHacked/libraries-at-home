@@ -1,8 +1,7 @@
 import React from 'react'
 
-import Typography from '@material-ui/core/Typography'
-
 import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
 
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -34,7 +33,7 @@ function Search () {
       <div className={classes.search}>
         <PostcodeSearch settings={false} />
       </div>
-      <Typography component='p' variant='body1' className={classes.title} gutterBottom>Use this postcode search to find the library service in your area</Typography>
+      <Typography component='p' variant='body1' className={classes.title} gutterBottom>Use this search to find the library service in your area</Typography>
       <div className={classes.search}>
         <ServiceFilter />
       </div>

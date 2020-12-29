@@ -136,7 +136,6 @@ function Service () {
                 )
               })}
             </Grid>
-            <Typography component='h4' variant='h6' className={classes.header} gutterBottom>Things you can do</Typography>
             <Typography component='p' className={classes.linkText}>
               {config.services_text.service_links.filter(s => s.field in service).map((link, idx) => {
                 const IconName = linkIcons[link.icon]

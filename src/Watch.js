@@ -44,8 +44,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
     width: '100%'
   },
-  overlayTitle: {
-  },
   playIcon: {
     color: '#2e7d32'
   },
@@ -116,7 +114,7 @@ function Watch () {
                         title={item.title}
                       />
                       <CardContent className={classes.overlay}>
-                        <Typography className={classes.overlayTitle} variant='caption' component='p'>{item.title}</Typography>
+                        <Typography variant='caption' component='p'>{item.title}</Typography>
                       </CardContent>
                       <CardActions>
                         <Button size='small' className={classes.playIcon} startIcon={<PlayIcon />} onClick={handlePlayVideo.bind(this, item.guid)}>Play</Button>
@@ -136,7 +134,6 @@ function Watch () {
                 )
               })}
             </Grid>
-            <br />
           </React.Fragment>
         )
       })}
