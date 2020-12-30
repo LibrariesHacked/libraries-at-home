@@ -21,7 +21,7 @@ function Listen () {
   return (
     <>
       <Typography component='h1' variant='h3' color='secondary' className={classes.header}>Listen</Typography>
-      <Typography component='p' variant='body1' className={classes.subtitle}>Hear what libraries are talking about</Typography>
+      <Typography component='p' variant='body1' className={classes.subtitle} gutterBottom>Hear what libraries are talking about</Typography>
       <Podcasts />
     </>
   )
