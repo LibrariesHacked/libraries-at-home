@@ -20,8 +20,8 @@ function Read () {
 
   return (
     <>
-      <Typography component='h2' variant='h6' color='secondary' className={classes.header}>Read</Typography>
-      <Typography component='p' variant='body1' className={classes.subtitle}>The things library services are writing</Typography>
+      <Typography component='h1' variant='h3' color='secondary' className={classes.header}>Read</Typography>
+      <Typography component='p' variant='body1' className={classes.subtitle} gutterBottom>The things library services are writing</Typography>
       <BlogPosts />
     </>
   )

@@ -49,7 +49,7 @@ function Footer () {
       <Grid container spacing={3} className={classes.grid}>
         <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
           <Typography variant='button'>
-            <MaterialLink href='https://www.librarylab.uk/libraries-at-home' target='_blank' title='About the library lab projects and documentation for this project' className={classes.tapTarget}>About this project</MaterialLink>
+            <MaterialLink href='https://www.librarylab.uk/libraries-at-home' target='_blank' rel='noopener' title='About the library lab projects and documentation for this project' className={classes.tapTarget}>About this project</MaterialLink>
             <span className={classes.bullet}> &#8226; </span>
             <MaterialLink component={Link} to='/accessibility' title='How we make this site accessible' className={classes.tapTarget}>Accessibility</MaterialLink>
             <span className={classes.bullet}> &#8226; </span>
@@ -57,7 +57,7 @@ function Footer () {
             <span className={classes.bullet}> &#8226; </span>
             <MaterialLink component={Link} to='/data' title='Data used on this site and licensing' className={classes.tapTarget}>Data</MaterialLink>
             <span className={classes.bullet}> &#8226; </span>
-            <MaterialLink href='https://github.com/LibrariesHacked/libraries-at-home' target='_blank' title='Project on GitHub' className={classes.tapTarget}>GitHub</MaterialLink>
+            <MaterialLink href='https://github.com/LibrariesHacked/libraries-at-home' target='_blank' rel='noopener' title='Project on GitHub' className={classes.tapTarget}>GitHub</MaterialLink>
           </Typography><br />
           <Typography variant='body2' className={classes.footerText}>A Library Lab project by Libraries Hacked.</Typography>
         </Grid>

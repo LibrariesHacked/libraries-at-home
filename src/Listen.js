@@ -20,8 +20,8 @@ function Listen () {
 
   return (
     <>
-      <Typography component='h2' variant='h6' color='secondary' className={classes.header}>Listen</Typography>
-      <Typography component='p' variant='body1' className={classes.subtitle}>Beautiful noise</Typography>
+      <Typography component='h1' variant='h3' color='secondary' className={classes.header}>Listen</Typography>
+      <Typography component='p' variant='body1' className={classes.subtitle} gutterBottom>Hear what libraries are talking about</Typography>
       <Podcasts />
     </>
   )

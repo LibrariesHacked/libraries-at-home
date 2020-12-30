@@ -18,7 +18,7 @@ import CancelIcon from '@material-ui/icons/CancelTwoTone'
 import DirectionBusIcon from '@material-ui/icons/DirectionsBusTwoTone'
 import GridOnIcon from '@material-ui/icons/GridOnTwoTone'
 import HeadsetIcon from '@material-ui/icons/HeadsetTwoTone'
-import ImportContactsIcon from '@material-ui/icons/ImportContactsTwoTone'
+import LocalLibraryIcon from '@material-ui/icons/LocalLibraryTwoTone'
 import MapIcon from '@material-ui/icons/MapTwoTone'
 import MovieIcon from '@material-ui/icons/MovieTwoTone'
 import SearchIcon from '@material-ui/icons/SearchTwoTone'
@@ -45,7 +45,6 @@ const useStyles = makeStyles((theme) => ({
   },
   topIcon: {
     backgroundColor: 'rgba(250, 250, 250, 0.8)',
-    border: '1px solid white',
     '&:hover': {
       backgroundColor: 'rgba(250, 250, 250, 0.8)'
     }
@@ -88,7 +87,7 @@ function AppHeader (props) {
     {
       title: 'Libraries at home',
       url: 'https://www.librariesathome.co.uk',
-      icon: <ImportContactsIcon />,
+      icon: <LocalLibraryIcon />,
       links: [
         {
           title: 'Find service',
@@ -182,7 +181,6 @@ function AppHeader (props) {
         <AppBar position='static' color='transparent' elevation={0} className={appBarClass}>
           <Container maxWidth='lg'>
             <Tabs
-              centered
               value={tabValue}
               onChange={(e, v) => { setTabValue(v) }}
               variant='scrollable'

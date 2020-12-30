@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
   search: {
     position: 'relative',
     border: '1px solid #E0E0E0',
+    borderColor: theme.palette.outline.main,
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.8),
     '&:hover': {
@@ -150,6 +151,7 @@ function PostcodeSearch (props) {
         value={tempPostcode}
         onChange={(e) => setTempPostcode(e.target.value.toUpperCase())}
         onKeyDown={(e) => { if (e.keyCode === 13) postcodeSearch() }}
+        inputProps={{ 'aria-label': 'search by postcode' }}
       />
       {searchType === 'postcode'
         ? (

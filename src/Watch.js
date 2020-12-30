@@ -23,15 +23,11 @@ import moment from 'moment'
 import * as serviceHelper from './helpers/services'
 
 import { useApplicationStateValue } from './context/applicationState'
-import { useViewStateValue } from './context/viewState'
 
 const config = require('./helpers/config.json')
 
 const useStyles = makeStyles((theme) => ({
-  header: {
-    textAlign: 'center'
-  },
-  subtitle: {
+  title: {
     textAlign: 'center'
   },
   card: {
@@ -48,8 +44,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
     width: '100%'
   },
-  overlayTitle: {
-  },
   playIcon: {
     color: '#2e7d32'
   },
@@ -62,8 +56,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function Watch () {
-  const [{ videos, services }, dispatchApplication] = useApplicationStateValue() //eslint-disable-line
-  const [{ loadingVideos }, dispatchView] = useViewStateValue() //eslint-disable-line
+  const [{ videos, services }] = useApplicationStateValue() //eslint-disable-line
   const classes = useStyles()
   const [dialogOpen, setDialogOpen] = useState(false)
   const [videoUrl, setVideoUrl] = useState('')
@@ -92,8 +85,8 @@ function Watch () {
 
   return (
     <>
-      <Typography component='h2' variant='h6' color='secondary' className={classes.header}>Library TV</Typography>
-      <Typography component='p' variant='body1' className={classes.subtitle}>Watch videos published by library services on YouTube</Typography>
+      <Typography component='h1' variant='h3' color='secondary' className={classes.title}>Library TV</Typography>
+      <Typography component='p' variant='body1' className={classes.title}>Watch videos published by library services on YouTube</Typography>
       {Object.keys(videosByDate).map((date, idx) => {
         return (
           <React.Fragment key={'frg_dates_' + idx}>
@@ -121,16 +114,16 @@ function Watch () {
                         title={item.title}
                       />
                       <CardContent className={classes.overlay}>
-                        <Typography className={classes.overlayTitle} variant='caption' component='p'>{item.title}</Typography>
+                        <Typography variant='caption' component='p'>{item.title}</Typography>
                       </CardContent>
                       <CardActions>
                         <Button size='small' className={classes.playIcon} startIcon={<PlayIcon />} onClick={handlePlayVideo.bind(this, item.guid)}>Play</Button>
                         {service ? <Button size='small' color='secondary' startIcon={<PlaylistPlay />} target='_blank' rel='noopener' href={serviceYtData.url}>{service.Name}</Button> : null}
                         {
-                          mediaStarRating && rating && rating > 0
+                          mediaStarRating && rating && parseFloat(rating) > 0
                             ? (
                               <Tooltip title={rating ? 'Rated ' + rating : 'No rating'} aria-label='add'>
-                                <span><Rating size='small' className={classes.rating} name='read-only' value={rating} precision={0.5} readOnly /></span>
+                                <span><Rating size='small' className={classes.rating} name='read-only' value={parseFloat(rating)} precision={0.5} readOnly /></span>
                               </Tooltip>
                             )
                             : null
@@ -141,7 +134,6 @@ function Watch () {
                 )
               })}
             </Grid>
-            <br />
           </React.Fragment>
         )
       })}

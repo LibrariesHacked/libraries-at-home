@@ -2,7 +2,6 @@ import React from 'react'
 
 import Link from '@material-ui/core/Link'
 import ListSubheader from '@material-ui/core/ListSubheader'
-import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 
 import ArticleIcon from '@material-ui/icons/DescriptionTwoTone'
@@ -21,18 +20,13 @@ const useStyles = makeStyles((theme) => ({
     display: 'inline-flex'
   },
   header: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1)
-  },
-  linkContainer: {
-    marginTop: theme.spacing(2),
-    padding: theme.spacing(2)
-  },
-  link: {
-    display: 'inline'
+    textAlign: 'center'
   },
   linkText: {
     columnWidth: '16em'
+  },
+  columnLinkIcon: {
+    marginRight: theme.spacing(1)
   }
 }))
 
@@ -49,29 +43,27 @@ function BlogPosts () {
 
   return (
     <>
-      <Paper elevation={0} className={classes.linkContainer}>
-        <Typography component='h3' variant='h6' className={classes.header}>Recent blogs</Typography>
-        <Typography component='p' variant='body1' className={classes.linkText}>
-          {Object.keys(blogsByDate).slice(0, 3).map((date, blgIdx) => {
-            return (
-              <React.Fragment key={'frg_blogdates_' + blgIdx}>
-                <ListSubheader disableSticky component='span' className={classes.columnLink}>{moment(date, 'YYYY-MM-DD').calendar(null, config.calendarDisplay)}</ListSubheader>
-                <br />
-                {blogsByDate[date].map((item, idx) => {
-                  return (
-                    <React.Fragment key={'typ_links_' + idx}>
-                      <Typography component='span' className={classes.columnLink}>
-                        <ArticleIcon />
-                        <Link className={classes.link} key={'typ_link_' + idx} target='_blank' rel='noopener' href={item.url} variant='body1'>{item.author + '. ' + item.title}</Link>
-                      </Typography>
-                      <br />
-                    </React.Fragment>)
-                })}
-              </React.Fragment>
-            )
-          })}
-        </Typography>
-      </Paper>
+      <Typography component='h3' variant='h6' className={classes.header} gutterBottom>Recent blogs</Typography>
+      <Typography component='p' className={classes.linkText}>
+        {Object.keys(blogsByDate).slice(0, 3).map((date, blgIdx) => {
+          return (
+            <React.Fragment key={'frg_blogdates_' + blgIdx}>
+              <ListSubheader disableSticky component='span' className={classes.columnLink}>{moment(date, 'YYYY-MM-DD').calendar(null, config.calendarDisplay)}</ListSubheader>
+              <br />
+              {blogsByDate[date].map((item, idx) => {
+                return (
+                  <React.Fragment key={'typ_links_' + idx}>
+                    <Typography component='span' className={classes.columnLink}>
+                      <ArticleIcon color='secondary' className={classes.columnLinkIcon} />
+                      <Link key={'typ_link_' + idx} target='_blank' rel='noopener' href={item.url} variant='subtitle2'>{item.author + '. ' + item.title}</Link>
+                    </Typography>
+                    <br />
+                  </React.Fragment>)
+              })}
+            </React.Fragment>
+          )
+        })}
+      </Typography>
     </>
   )
 }

@@ -1,8 +1,7 @@
 import React from 'react'
 
-import Typography from '@material-ui/core/Typography'
-
 import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
 
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -21,10 +20,6 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 'auto',
     marginBottom: '10px'
   },
-  subtitle: {
-    textAlign: 'center',
-    marginBottom: '5px'
-  },
   title: {
     textAlign: 'center'
   }
@@ -34,11 +29,11 @@ function Search () {
   const classes = useStyles()
   return (
     <>
-      <Typography component='h2' variant='h6' color='secondary' className={classes.title}>Your library service</Typography>
-      <Typography component='p' variant='body1' className={classes.subtitle}>Search by postcode to find the library service in your area</Typography>
+      <Typography component='h1' variant='h3' color='secondary' className={classes.title} gutterBottom>Your library service</Typography>
       <div className={classes.search}>
         <PostcodeSearch settings={false} />
       </div>
+      <Typography component='p' variant='body1' className={classes.title} gutterBottom>Use this search to find the library service in your area</Typography>
       <div className={classes.search}>
         <ServiceFilter />
       </div>
