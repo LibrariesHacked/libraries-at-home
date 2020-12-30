@@ -14,7 +14,7 @@ export const getServices = async () => {
   return []
 }
 
-export const getServiceYouTubeDataFromId = async (id) => {
+export const getServiceYouTubeDataFromId = (id) => {
   const youtubeUrl = config.youTubeUrl
   const idTypes = {
     UC: ['channel/', 'Channel'],

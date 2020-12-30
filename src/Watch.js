@@ -120,10 +120,10 @@ function Watch () {
                         <Button size='small' className={classes.playIcon} startIcon={<PlayIcon />} onClick={handlePlayVideo.bind(this, item.guid)}>Play</Button>
                         {service ? <Button size='small' color='secondary' startIcon={<PlaylistPlay />} target='_blank' rel='noopener' href={serviceYtData.url}>{service.Name}</Button> : null}
                         {
-                          mediaStarRating && rating && rating > 0
+                          mediaStarRating && rating && parseFloat(rating) > 0
                             ? (
                               <Tooltip title={rating ? 'Rated ' + rating : 'No rating'} aria-label='add'>
-                                <span><Rating size='small' className={classes.rating} name='read-only' value={rating} precision={0.5} readOnly /></span>
+                                <span><Rating size='small' className={classes.rating} name='read-only' value={parseFloat(rating)} precision={0.5} readOnly /></span>
                               </Tooltip>
                             )
                             : null
