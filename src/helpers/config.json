@@ -20,21 +20,21 @@
         "field": "Instagram name",
         "icon": "InstagramIcon",
         "url": "https://www.instagram.com/",
-        "title": "View on Instagram",
+        "title": "Instagram",
         "colour": "#405DE6"
       },
       {
         "field": "Facebook page name",
         "icon": "FacebookIcon",
         "url": "https://www.facebook.com/",
-        "title": "Follow on Facebook",
+        "title": "Facebook",
         "colour": "#4267B2"
       },
       {
         "field": "Twitter handle",
         "icon": "TwitterIcon",
         "url": "https://twitter.com/",
-        "title": "Read tweets",
+        "title": "Twitter",
         "colour": "#1DA1F2"
       }
     ],
@@ -42,32 +42,37 @@
       {
         "field": "Service URL",
         "title": "Visit [service] website",
-        "description": "Information about your library service",
-        "link_text": "Go to the website"
+        "description": "View all information about your library service",
+        "link_text": "Go to the website",
+        "icon": "OpenInBrowserIcon"
       },
       {
         "field": "Catalogue URL",
         "title": "Browse the catalogue",
-        "description": "Find an item to borrow",
-        "link_text": "Online catalogue"
+        "description": "Find an item to borrow or reserve",
+        "link_text": "Online catalogue",
+        "icon": "FindInPageIcon"
       },
       {
         "field": "New member URL",
         "title": "Join [service] libraries",
-        "description": "Start having fun",
-        "link_text": "Join now"
+        "description": "Start having fun with your library",
+        "link_text": "Join now",
+        "icon": "FaceIcon"
       },
       {
         "field": "Childrens service URL",
-        "title": "Info for children",
+        "title": "Information for children",
         "description": "Libraries for everyone",
-        "link_text": "See children's services"
+        "link_text": "See children's services",
+        "icon": "GroupIcon"
       },
       {
         "field": "Ebook URL",
         "title": "Library ebooks",
-        "description": "Read ebooks on devices",
-        "link_text": "Find an ebook"
+        "description": "Read ebooks on your devices",
+        "link_text": "Find an ebook",
+        "icon": "TabletMacIcon"
       }
     ],
     "service_links": [
@@ -88,7 +93,7 @@
       },
       {
         "field": "Events URL",
-        "text": "See events in libraries",
+        "text": "See events in your libraries",
         "icon": "EventIcon"
       },
       {
@@ -103,7 +108,7 @@
       },
       {
         "field": "Fees and charges URL",
-        "text": "Understand fees and charges for library services",
+        "text": "Understand fees and charges for your library service",
         "icon": "PaymentIcon"
       },
       {

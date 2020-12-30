@@ -151,6 +151,7 @@ function PostcodeSearch (props) {
         value={tempPostcode}
         onChange={(e) => setTempPostcode(e.target.value.toUpperCase())}
         onKeyDown={(e) => { if (e.keyCode === 13) postcodeSearch() }}
+        inputProps={{ 'aria-label': 'search by postcode' }}
       />
       {searchType === 'postcode'
         ? (

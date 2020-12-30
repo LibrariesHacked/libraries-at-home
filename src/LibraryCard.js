@@ -62,11 +62,11 @@ function LibraryCard (props) {
               {library.local_authority}
               {library.colocated === 'Yes' && library.colocated_with !== null ? (bull + 'Colocated with ' + library.colocated_with) : ''}
             </Typography>
-            <CardActions>
-              <Button variant='text' size='large' color='primary' startIcon={<OpenInBrowserIcon />} target='_blank' href={library.url}>Go to website</Button>
-              {library.local_authority !== service.Name ? <Button variant='text' size='large' color='primary' startIcon={<UpdateIcon />} onClick={() => changeService(library.local_authority)}>Use this library service</Button> : null}
-            </CardActions>
           </CardContent>
+          <CardActions>
+            <Button variant='text' size='large' color='primary' startIcon={<OpenInBrowserIcon />} target='_blank' href={library.url}>Go to website</Button>
+            {library.local_authority !== service.Name ? <Button variant='text' size='large' color='primary' startIcon={<UpdateIcon />} onClick={() => changeService(library.local_authority)}>Use this library service</Button> : null}
+          </CardActions>
         </Card>
       ) : null}
     </div>

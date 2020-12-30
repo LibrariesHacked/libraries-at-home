@@ -181,7 +181,6 @@ function AppHeader (props) {
         <AppBar position='static' color='transparent' elevation={0} className={appBarClass}>
           <Container maxWidth='lg'>
             <Tabs
-              centered
               value={tabValue}
               onChange={(e, v) => { setTabValue(v) }}
               variant='scrollable'
