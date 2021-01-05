@@ -7,6 +7,7 @@ import LinearProgress from '@material-ui/core/LinearProgress'
 
 import { makeStyles } from '@material-ui/core/styles'
 
+import Alerts from './Alerts'
 import AppHeader from './AppHeader'
 import Footer from './Footer'
 import Search from './Search'
@@ -94,6 +95,7 @@ function AtHomeApplication () {
             <Route path='/watch' exact render={() => <Watch />} />
             <Route path='/read' exact render={() => <Read />} />
             <Route path='/listen' exact render={() => <Listen />} />
+            <Route path='/alerts' exact render={() => <Alerts />} />
             <Route path='/about' exact render={() => <MarkdownPage page={About} />} />
             <Route path='/accessibility' exact render={() => <MarkdownPage page={Accessibility} />} />
             <Route path='/data' exact render={() => <MarkdownPage page={Data} />} />

@@ -130,9 +130,9 @@ function PostcodeSearch (props) {
       dispatchSearch({ type: 'SetService', service: service.service })
       urlHelper.addService(props.history, service.service.systemName)
       // Get nearest library and mobile library
-      const [library, mobileLibrary] = await Promise.all([geoHelper.getNearestLibrary(service.location), geoHelper.getNearestMobileLibrary(service.location)])
-      dispatchSearch({ type: 'SetLibrary', library: library })
-      dispatchSearch({ type: 'SetMobileLibrary', mobileLibrary: mobileLibrary })
+      // const [library, mobileLibrary] = await Promise.all([geoHelper.getNearestLibrary(service.location), geoHelper.getNearestMobileLibrary(service.location)])
+      // dispatchSearch({ type: 'SetLibrary', library: library })
+      // dispatchSearch({ type: 'SetMobileLibrary', mobileLibrary: mobileLibrary })
     } else {
       dispatchView({ type: 'ShowNotification', notificationMessage: 'We could not find that postcode', notificationSeverity: 'error' })
     }

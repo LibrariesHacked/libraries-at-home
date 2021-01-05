@@ -35,6 +35,8 @@ import FacebookIcon from 'mdi-material-ui/Facebook'
 import TwitterIcon from 'mdi-material-ui/Twitter'
 import AppleIcon from 'mdi-material-ui/AppleIos'
 
+import AlertEntry from './AlertEntry'
+
 import { useSearchStateValue } from './context/searchState'
 
 const config = require('./helpers/config.json')
@@ -119,6 +121,9 @@ function Service () {
         ? (
           <>
             <Typography className={classes.header} component='h2' variant='h4' gutterBottom>{'Your library service is '}<span className={classes.bold}>{service.Name}</span></Typography>
+            {
+              service['Library notification'] ? <AlertEntry service={service} /> : null
+            }
             <div className={classes.social}>
               <ButtonGroup size='large' color='secondary' aria-label='Links to social media'>
                 {config.services_text.social.filter(s => s.field in service).map((social, idx) => {
