@@ -77,7 +77,7 @@ function Alerts () {
       </div>
       <Grid container spacing={3} className={classes.gridContainer}>
         {services
-          .filter(service => service['Library notification'])
+          .filter(service => service['Library notification'] && service['Library notification'] !== '')
           .filter(service => (searchTerm === '' || (service.Name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1 || service['Library notification'].toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1)))
           .map((service, idx) => {
             return (
