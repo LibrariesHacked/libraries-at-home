@@ -122,7 +122,7 @@ function Service () {
           <>
             <Typography className={classes.header} component='h2' variant='h4' gutterBottom>{'Your library service is '}<span className={classes.bold}>{service.Name}</span></Typography>
             {
-              service['Library notification'] && service['Library notification'] !== '' ? <AlertEntry service={service} /> : null
+              service['Library notification'] && service['Library notification'] !== '' && service['Library notification'] !== '\n' ? <AlertEntry service={service} /> : null
             }
             <div className={classes.social}>
               <ButtonGroup size='large' color='secondary' aria-label='Links to social media'>
