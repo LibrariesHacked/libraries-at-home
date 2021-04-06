@@ -4,7 +4,6 @@ import { Link, useLocation } from 'react-router-dom'
 
 import AppBar from '@material-ui/core/AppBar'
 import Button from '@material-ui/core/Button'
-import Chip from '@material-ui/core/Chip'
 import Container from '@material-ui/core/Container'
 import Hidden from '@material-ui/core/Hidden'
 import IconButton from '@material-ui/core/IconButton'
@@ -23,7 +22,6 @@ import MapIcon from '@material-ui/icons/MapTwoTone'
 import MovieIcon from '@material-ui/icons/MovieTwoTone'
 import SearchIcon from '@material-ui/icons/SearchTwoTone'
 import PetsIcon from '@material-ui/icons/PetsTwoTone'
-import WarningIcon from '@material-ui/icons/WarningTwoTone'
 
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -113,12 +111,6 @@ function AppHeader (props) {
           short: 'Listen',
           icon: <HeadsetIcon />,
           to: '/listen'
-        },
-        {
-          title: 'Check alerts',
-          short: 'Alerts',
-          icon: <WarningIcon />,
-          to: '/alerts'
         }
       ]
     },
@@ -178,10 +170,6 @@ function AppHeader (props) {
             {appsOpen ? <CancelIcon /> : <PetsIcon />}
           </IconButton>
           <span className={classes.grow} />
-          <Chip
-            label={sites[site].title}
-            color='secondary'
-          />
         </Toolbar>
       </Container>
       {appsOpen ? (

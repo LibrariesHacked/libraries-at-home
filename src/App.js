@@ -2,7 +2,7 @@ import React from 'react'
 
 import CssBaseline from '@material-ui/core/CssBaseline'
 
-import blue from '@material-ui/core/colors/blue'
+import lightBlue from '@material-ui/core/colors/lightBlue'
 import blueGrey from '@material-ui/core/colors/blueGrey'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 
@@ -140,7 +140,7 @@ const viewReducer = (state, action) => {
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: blue[800]
+      main: lightBlue[800]
     },
     secondary: {
       main: blueGrey[600]

@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
 
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import Container from '@material-ui/core/Container'
 import LinearProgress from '@material-ui/core/LinearProgress'
 
 import { makeStyles } from '@material-ui/core/styles'
 
-import Alerts from './Alerts'
 import AppHeader from './AppHeader'
 import Footer from './Footer'
 import Search from './Search'
@@ -81,6 +80,12 @@ function AtHomeApplication () {
 
   const loading = loadingServices || loadingVideos || loadingBlogs || loadingPostcode
 
+  const Page404 = ({ location }) => (
+    <div>
+      <h2>Sorry! That page was not found</h2>
+    </div>
+  )
+
   return (
     <BrowserRouter>
       <div className={classes.root}>
@@ -91,16 +96,18 @@ function AtHomeApplication () {
         {loading ? <LinearProgress variant='buffer' value={0} valueBuffer={0} color='secondary' /> : null}
         <Container maxWidth='lg'>
           <main className={classes.content}>
-            <Route path='/' exact render={() => <Search />} />
-            <Route path='/watch' exact render={() => <Watch />} />
-            <Route path='/read' exact render={() => <Read />} />
-            <Route path='/listen' exact render={() => <Listen />} />
-            <Route path='/alerts' exact render={() => <Alerts />} />
-            <Route path='/about' exact render={() => <MarkdownPage page={About} />} />
-            <Route path='/accessibility' exact render={() => <MarkdownPage page={Accessibility} />} />
-            <Route path='/data' exact render={() => <MarkdownPage page={Data} />} />
-            <Route path='/privacy' exact render={() => <MarkdownPage page={Privacy} />} />
-            <Route path={['/http:', '/https:']} component={props => { window.location.replace(props.location.pathname.substr(1)); return null }} />
+            <Switch>
+              <Route path='/' exact render={() => <Search />} />
+              <Route path='/watch' exact render={() => <Watch />} />
+              <Route path='/read' exact render={() => <Read />} />
+              <Route path='/listen' exact render={() => <Listen />} />
+              <Route path='/about' exact render={() => <MarkdownPage page={About} />} />
+              <Route path='/accessibility' exact render={() => <MarkdownPage page={Accessibility} />} />
+              <Route path='/data' exact render={() => <MarkdownPage page={Data} />} />
+              <Route path='/privacy' exact render={() => <MarkdownPage page={Privacy} />} />
+              <Route path={['/http:', '/https:']} component={props => { window.location.replace(props.location.pathname.substr(1)); return null }} />
+              <Route component={Page404} />
+            </Switch>
           </main>
         </Container>
         <Container maxWidth='lg'>

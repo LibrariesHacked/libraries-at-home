@@ -1,26 +1,28 @@
 {
   "name": "libraries-at-home",
+  "homepage": "https://www.librariesathome.co.uk",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.11.2",
+    "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.57",
     "axios": "^0.21.1",
-    "markdown-to-jsx": "^6.11.4",
-    "mdi-material-ui": "^6.21.0",
+    "markdown-to-jsx": "^7.1.2",
+    "mdi-material-ui": "^6.22.0",
     "moment": "^2.29.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
     "react-router-sitemap": "^1.2.0",
-    "react-scripts": "^3.4.4"
+    "react-scripts": "^4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "sitemap": "node src/sitemap-builder.js"
   },

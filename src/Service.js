@@ -22,6 +22,7 @@ import DirectionsBusIcon from '@material-ui/icons/DirectionsBusTwoTone'
 import EventIcon from '@material-ui/icons/EventTwoTone'
 import ExploreIcon from '@material-ui/icons/ExploreTwoTone'
 import FindInPageIcon from '@material-ui/icons/FindInPageTwoTone'
+import SpeakerTwoTone from '@material-ui/icons/SpeakerTwoTone'
 import HomeIcon from '@material-ui/icons/HomeTwoTone'
 import MicIcon from '@material-ui/icons/MicTwoTone'
 import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowserTwoTone'
@@ -56,6 +57,7 @@ const linkIcons = {
   EventIcon: EventIcon,
   ExploreIcon: ExploreIcon,
   FindInPageIcon: FindInPageIcon,
+  SpeakerTwoTone: SpeakerTwoTone,
   HomeIcon: HomeIcon,
   MicIcon: MicIcon,
   OpenInBrowserIcon: OpenInBrowserIcon,
@@ -121,15 +123,14 @@ function Service () {
         ? (
           <>
             <Typography className={classes.header} component='h2' variant='h4' gutterBottom>{'Your library service is '}<span className={classes.bold}>{service.Name}</span></Typography>
-            {
-              service['Library notification'] && service['Library notification'] !== '' && service['Library notification'] !== '\n' ? <AlertEntry service={service} /> : null
-            }
             <div className={classes.social}>
               <ButtonGroup size='large' color='secondary' aria-label='Links to social media'>
                 {config.services_text.social.filter(s => s.field in service).map((social, idx) => {
                   const IconName = socialIcons[social.icon]
                   return (
                     <Button
+                      variant='text'
+                      color='primary'
                       key={'icn_social_' + idx}
                       target='_blank'
                       rel='noopener'
@@ -144,6 +145,14 @@ function Service () {
               </ButtonGroup>
             </div>
             <Grid container spacing={3} className={classes.gridContainer}>
+              {
+                service['Library notification'] && service['Library notification'] !== '' && service['Library notification'] !== '\n'
+                  ? (
+                    <Grid item xs={12} sm={6} md={4} lg={4} xl={4}>
+                      <AlertEntry service={service} />
+                    </Grid>
+                  ) : null
+              }
               {service['Android app URL'] || service['iOS app URL']
                 ? (
                   <>

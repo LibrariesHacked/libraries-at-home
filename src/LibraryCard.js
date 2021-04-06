@@ -20,13 +20,16 @@ import * as urlHelper from './helpers/url'
 const useStyles = makeStyles((theme) => ({
   bullet: {
     display: 'inline-block',
-    margin: '0 2px'
+    margin: '0 4px'
   },
   card: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    border: '1px solid',
-    borderColor: theme.palette.outline.main
+    border: '2px solid #ffe0b2'
+  },
+  cardActions: {
+    backgroundColor: '#fff3e0',
+    color: '#388e3c'
   },
   libraryName: {
     fontWeight: theme.typography.fontWeightBold
@@ -53,18 +56,17 @@ function LibraryCard (props) {
       {library != null ? (
         <Card elevation={0} className={classes.card}>
           <CardContent>
-            <Typography component='h2' variant='h5'>{'Your nearest library is '}<span className={classes.libraryName}>{library.library_name}</span></Typography>
+            <Typography component='h2' variant='h5'>Your nearest library is {distance} mile{distance > 1 ? 's' : ''}</Typography>
+            <Typography component='p' variant='h5'><span className={classes.libraryName}>{library.library_name}</span></Typography>
             <Typography variant='body2' component='p'>
-              {distance} mile{distance > 1 ? 's' : ''}
-              {bull}
               {[library.address_1, library.address_2, library.address_3, library.postcode].filter(a => a !== '').join(', ')}
               {bull}
               {library.local_authority}
               {library.colocated === 'Yes' && library.colocated_with !== null ? (bull + 'Colocated with ' + library.colocated_with) : ''}
             </Typography>
           </CardContent>
-          <CardActions>
-            <Button variant='text' size='large' color='primary' startIcon={<OpenInBrowserIcon />} target='_blank' href={library.url}>Go to website</Button>
+          <CardActions className={classes.cardActions}>
+            <Button variant='text' size='large' color='secondary' startIcon={<OpenInBrowserIcon />} target='_blank' href={library.url}>Go to website</Button>
             {library.local_authority !== service.Name ? <Button variant='text' size='large' color='primary' startIcon={<UpdateIcon />} onClick={() => changeService(library.local_authority)}>Use this library service</Button> : null}
           </CardActions>
         </Card>

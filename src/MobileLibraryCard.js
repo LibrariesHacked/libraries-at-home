@@ -20,22 +20,20 @@ import * as urlHelper from './helpers/url'
 import moment from 'moment'
 
 const useStyles = makeStyles((theme) => ({
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px'
-  },
   card: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    border: '1px solid',
-    borderColor: theme.palette.outline.main
+    border: '2px solid #c8e6c9'
+  },
+  cardActions: {
+    backgroundColor: '#e8f5e9',
+    color: '#388e3c'
   },
   libraryName: {
     fontWeight: theme.typography.fontWeightBold
   },
   scheduleDate: {
-    fontSize: '1.1em',
-    fontWeight: theme.typography.fontWeightBold
+    fontSize: '1.1em'
   }
 }))
 
@@ -52,7 +50,6 @@ function MobileLibraryCard (props) {
     }
   }
 
-  const bull = <span className={classes.bullet}> • </span>
   const distance = mobileLibrary != null ? Math.round(mobileLibrary.distance / 1609) : null
   return (
     <div>
@@ -60,20 +57,14 @@ function MobileLibraryCard (props) {
         ? (
           <Card elevation={0} className={classes.card}>
             <CardContent>
-              <Typography component='h2' variant='h5'>{'Your nearest mobile library stop is '}<span className={classes.libraryName}>{mobileLibrary.name} in {mobileLibrary.community}</span></Typography>
-              <Typography variant='body2' component='p'>
-                {distance} mile{distance > 1 ? 's' : ''}
-                {bull}
-                {mobileLibrary.address}
-                {bull}
-                {mobileLibrary.organisation_name}
-              </Typography>
-              <Typography variant='body2' component='p'>
-                {'Next visiting on  '}<span className={classes.scheduleDate}>{moment(mobileLibrary.route_schedule[0]).format('dddd Do MMMM h:mma')}</span>
+              <Typography component='h2' variant='h5'>{'Your nearest mobile stop is ' + distance + ' mile' + (distance > 1 ? 's' : '')}</Typography>
+              <Typography component='p' variant='h5'><span className={classes.libraryName}>{mobileLibrary.name} in {mobileLibrary.community}</span></Typography>
+              <Typography component='p' variant='body1'>
+                {'Next visiting '}<span className={classes.scheduleDate}>{moment(mobileLibrary.route_schedule[0]).format('h:mma dddd Do MMMM')}</span>
               </Typography>
             </CardContent>
-            <CardActions>
-              <Button variant='text' size='large' color='primary' startIcon={<InsertInvitationIcon />} target='_blank' href={mobileLibrary.timetable}>Go to timetable</Button>
+            <CardActions className={classes.cardActions}>
+              <Button variant='text' size='large' color='secondary' startIcon={<InsertInvitationIcon />} target='_blank' href={mobileLibrary.timetable}>Go to timetable</Button>
               {mobileLibrary.organisation_name !== service.Name ? <Button variant='text' size='large' color='primary' startIcon={<UpdateIcon />} onClick={() => changeService(mobileLibrary.organisation_name)}>Use this library service</Button> : null}
             </CardActions>
           </Card>

@@ -1,21 +1,26 @@
 import React from 'react'
 
-import Chip from '@material-ui/core/Chip'
-
-import AlertTitle from '@material-ui/lab/AlertTitle'
-import Alert from '@material-ui/lab/Alert'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
 
 import { makeStyles } from '@material-ui/core/styles'
 
 import ReactMarkdown from 'markdown-to-jsx'
+import { Typography } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
-  alert: {
-    marginBottom: theme.spacing(1)
+  bullet: {
+    margin: theme.spacing()
   },
-  chip: {
-    margin: theme.spacing(0.5),
-    backgroundColor: 'white'
+  card: {
+    border: '2px solid #b3e5fc'
+  },
+  cardHeader: {
+    backgroundColor: '#e1f5fe'
+  },
+  service: {
+    display: 'inline',
+    fontWeight: 500
   }
 }))
 
@@ -24,13 +29,18 @@ function AlertEntry (props) {
   const classes = useStyles()
 
   return (
-    <Alert severity='warning' className={classes.alert}>
-      <AlertTitle>{service.Name}</AlertTitle>
-      {service.Services ? service.Services.map((s, i) => <Chip key={i} variant='outlined' size='small' className={classes.chip} label={s} />) : null}
-      <ReactMarkdown className={classes.root}>
-        {service['Library notification'] && service['Library notification'] !== '' ? service['Library notification'] : ''}
-      </ReactMarkdown>
-    </Alert>
+    <Card elevation={0} className={classes.card}>
+      <CardContent>
+        <ReactMarkdown className={classes.root}>
+          {service['Library notification'] && service['Library notification'] !== '' ? service['Library notification'] : ''}
+        </ReactMarkdown>
+      </CardContent>
+      <CardContent className={classes.cardHeader}>
+        {service.Services ? service.Services.map((s, i) => {
+          return <><Typography color='primary' className={classes.service} variant='body2'>{s}</Typography>{(i !== service.Services.length - 1 ? <span className={classes.bullet}> &#8226; </span> : null)}</>
+        }) : null}
+      </CardContent>
+    </Card>
   )
 }
 

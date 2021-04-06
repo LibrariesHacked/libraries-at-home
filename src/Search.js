@@ -37,7 +37,7 @@ function Search () {
       <div className={classes.search}>
         <ServiceFilter />
       </div>
-      <Grid container spacing={3}>
+      <Grid container spacing={1}>
         <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
           <LibraryCard />
         </Grid>

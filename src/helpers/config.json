@@ -66,13 +66,6 @@
         "description": "Libraries for everyone",
         "link_text": "See children's services",
         "icon": "GroupIcon"
-      },
-      {
-        "field": "Ebook URL",
-        "title": "Library ebooks",
-        "description": "Read ebooks on your devices",
-        "link_text": "Find an ebook",
-        "icon": "TabletMacIcon"
       }
     ],
     "service_links": [
@@ -80,6 +73,16 @@
         "field": "Libraries URL",
         "text": "Find your local library",
         "icon": "FindInPageIcon"
+      },
+      {
+        "field": "Ebook URL",
+        "text": "Read ebooks on your devices",
+        "icon": "TabletMacIcon"
+      },
+      {
+        "field": "Audiobook URL",
+        "text": "Listen to audiobooks on your devices",
+        "icon": "SpeakerTwoTone"
       },
       {
         "field": "Mobile libraries URL",
