@@ -1,26 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.69eda509.chunk.css",
-    "main.js": "/static/js/main.c868ed6f.chunk.js",
-    "main.js.map": "/static/js/main.c868ed6f.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.67920098.js",
-    "runtime-main.js.map": "/static/js/runtime-main.67920098.js.map",
-    "static/js/2.1574a467.chunk.js": "/static/js/2.1574a467.chunk.js",
-    "static/js/2.1574a467.chunk.js.map": "/static/js/2.1574a467.chunk.js.map",
+    "main.css": "/static/css/main.2ae47eeb.chunk.css",
+    "main.js": "/static/js/main.af934d05.chunk.js",
+    "main.js.map": "/static/js/main.af934d05.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.e0ddfd6c.js",
+    "runtime-main.js.map": "/static/js/runtime-main.e0ddfd6c.js.map",
+    "static/js/2.c39ba007.chunk.js": "/static/js/2.c39ba007.chunk.js",
+    "static/js/2.c39ba007.chunk.js.map": "/static/js/2.c39ba007.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.3d8cea7eb0830d5f7b1b88c738fb8548.js": "/precache-manifest.3d8cea7eb0830d5f7b1b88c738fb8548.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.69eda509.chunk.css.map": "/static/css/main.69eda509.chunk.css.map",
-    "static/js/2.1574a467.chunk.js.LICENSE.txt": "/static/js/2.1574a467.chunk.js.LICENSE.txt",
-    "static/media/about.md": "/static/media/about.1ea0fd5a.md",
-    "static/media/accessibility.md": "/static/media/accessibility.a43f53e5.md",
-    "static/media/data.md": "/static/media/data.e34f2471.md",
-    "static/media/privacy.md": "/static/media/privacy.a013c74b.md"
+    "static/css/main.2ae47eeb.chunk.css.map": "/static/css/main.2ae47eeb.chunk.css.map",
+    "static/js/2.c39ba007.chunk.js.LICENSE.txt": "/static/js/2.c39ba007.chunk.js.LICENSE.txt",
+    "static/media/about.5b9b36e1.md": "/static/media/about.5b9b36e1.md",
+    "static/media/accessibility.e860c768.md": "/static/media/accessibility.e860c768.md",
+    "static/media/data.c4f47691.md": "/static/media/data.c4f47691.md",
+    "static/media/privacy.d85474c9.md": "/static/media/privacy.d85474c9.md"
   },
   "entrypoints": [
-    "static/js/runtime-main.67920098.js",
-    "static/js/2.1574a467.chunk.js",
-    "static/css/main.69eda509.chunk.css",
-    "static/js/main.c868ed6f.chunk.js"
+    "static/js/runtime-main.e0ddfd6c.js",
+    "static/js/2.c39ba007.chunk.js",
+    "static/css/main.2ae47eeb.chunk.css",
+    "static/js/main.af934d05.chunk.js"
   ]
 }
