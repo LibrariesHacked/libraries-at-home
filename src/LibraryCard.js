@@ -56,7 +56,7 @@ function LibraryCard (props) {
       {library != null ? (
         <Card elevation={0} className={classes.card}>
           <CardContent>
-            <Typography component='h2' variant='h5'>Your nearest library is {distance} mile{distance > 1 ? 's' : ''}</Typography>
+            <Typography component='h2' variant='h5'>Your nearest library is {distance} mile{distance !== 1 ? 's' : ''}</Typography>
             <Typography component='p' variant='h5'><span className={classes.libraryName}>{library.library_name}</span></Typography>
             <Typography variant='body2' component='p'>
               {[library.address_1, library.address_2, library.address_3, library.postcode].filter(a => a !== '').join(', ')}
@@ -67,7 +67,7 @@ function LibraryCard (props) {
           </CardContent>
           <CardActions className={classes.cardActions}>
             <Button variant='text' size='large' color='secondary' startIcon={<OpenInBrowserIcon />} target='_blank' href={library.url}>Go to website</Button>
-            {library.local_authority !== service.Name ? <Button variant='text' size='large' color='primary' startIcon={<UpdateIcon />} onClick={() => changeService(library.local_authority)}>Use this library service</Button> : null}
+            {library.local_authority !== service.Name ? <Button variant='text' size='large' color='secondary' startIcon={<UpdateIcon />} onClick={() => changeService(library.local_authority)}>Use this library service</Button> : null}
           </CardActions>
         </Card>
       ) : null}
