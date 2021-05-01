@@ -43,9 +43,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1
   },
   topIcon: {
-    backgroundColor: 'rgba(250, 250, 250, 0.8)',
+    backgroundColor: 'rgba(250, 250, 250, 0)',
     '&:hover': {
-      backgroundColor: 'rgba(250, 250, 250, 0.8)'
+      backgroundColor: 'rgba(250, 250, 250, 0)'
     }
   },
   topTitle: {
